@@ -1,0 +1,6 @@
+01.png: Minimal valuable product version of the habit tracker
+02.gif: Home view of the app that shows all habits and allows to check of the current day
+03.gif: Habit view that shows a calendar of the habit and a header image chosen by the user
+04.gif: Completing a week of a habit
+05.gif: Values can be tracked for habits to show the users their achievements
+06.gif: The tree ring view offers an alternative view of the current streak
