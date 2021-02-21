@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content="Hi, I am David, a software developer and designer from Germany. I love programming and creating products that are enjoyable to use. This is my portfolio.">
+  <meta name="keywords" content="David Schneller, dave_slr, interaction design, programming, Chalmers, Göteborg, Gothenburg, Germany, Leverkusen, Aachen, FH Aachen, IxD, C#, HTML, CSS, mobile, Prototyping, Usability, designer, arduino, processing, tangible">
+
+  <title>{{page.title}}</title>
+
+  <link rel="stylesheet" href="/css/style.min.css" /> 
+  <!--
+  <link rel="stylesheet" href="/css/foundation/normalize.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <link rel="stylesheet" href="/css/gallery.css" />
+  -->
+  <script src="/js/vendor/custom.modernizr.js"></script>
+</head>
+<body class="{{ page.bodystyle }}">
+  <a name="intro"></a>
+  <div class="main">
+
+    {{ content }}
+
+  </div>
+
+  <footer>
+    <p>Copyright &copy; {{ site.time | date: '%Y' }} David Schneller &mdash; <a href="imprint.html" rel="nofollow">Imprint</a></p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>  
+  <script src="/js/app.min.js"></script>  
+
+  <!--
+  <script src="/js/gallery.js"></script>
+  <script src="/js/app.js"></script>
+  -->
+
+  <script src="//cdn.rawgit.com/noelboss/featherlight/1.0.3/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="/js/foundation/foundation.js"></script>
+  
+  <script src="/js/foundation/foundation.forms.js"></script>
+  
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  
+  <script src="/js/foundation/foundation.placeholder.js"></script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41337406-1', 'davidschneller.com');
+    ga('send', 'pageview');
+
+    $(document).foundation({
+      magellan:{threshold: 50 }
+    });
+  </script>
+</body>
+</html>

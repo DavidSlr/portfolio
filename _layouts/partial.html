@@ -1,0 +1,31 @@
+<div>
+	<h1>{{ page.title }}</h1>
+	<p class="tagline">{{ page.shortdesc }}</p>
+
+	{{ content }}
+
+	<dl class="project-footer">
+		<dt>Context</dt>
+		<dd>{{ page.context }}</dd>
+
+		<dt>Duration</dt>
+		<dd>{{ page.duration }}</dd>
+
+		<dt>Used skills</dt>
+		<dd>{{ page.used_skills }}</dd>
+
+		<dt>Division of work</dt>
+		<dd>{{ page.division_of_work }}</dd>
+
+		{% if page.attributions %}
+		<dt class="attributions">Attributions</dt>
+		<dd class="attributions">{{ page.attributions | markdownify}}</dd>
+		{% endif %}
+	</dl>
+	<div class="controls">
+		<a href="#" class="close-pf-item">close</a>
+	</div>
+
+	<script>
+  </script>
+</div>
