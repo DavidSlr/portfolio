@@ -13,13 +13,13 @@ used_skills: Mobile web (HTML, CSS)
 division_of_work: The project was done in a group of four people. We created the concept toghether during contest day. For the prototyping I implemented the mobile app. The graphics were created by our graphic designer. The two other people worked on the lanterns (case, electronics and software).
 ---
 
-{% image fullwidth projects/lightminers/long.png %}
+ image fullwidth projects/lightminers/long.png 
 
 My team created the concept for this game during a one day design competition. We were then invited to prototype the game during a three day trip to Schladming, Asutria. The lanterns contain a Raspberry Pi that connects to a WiFi network and polls its state and therefore color from a backend service. The app on the players' phones displays a map with the locations of all the lanterns and the distance to the closest one. A player can conquer the lantern by using the app and press "claim" in its vicinity. This will change the lantern state in the backend service and the lamp will change its color after polling the new state.
 
-{% vimeo 112409420 %}
+ vimeo 112409420 
 
-{% image_folder path: images/projects/lightminers/gal %}
+ image_folder path: images/projects/lightminers/gal 
 
 ##Implementation
 

@@ -13,13 +13,13 @@ used_skills: Arduino, Processing (language), electronics, soldering, web develop
 division_of_work: The project was executed in a group of 5 people. Everybody was involved in the design an concepting phase. Later work was split into electronics/programming and building the physical prototype. I wrote a part of the Arduino code, made the Processing client, soldered one of the motor modules and was involved with the final assembly.
 ---
 
-{% vimeo 113342246  %}
+ vimeo 113342246  
 
 The Beat the Wall project was executed during the Interaction Design Project course. The goal for this years projects was to enhance big outdoor sports events. We decided to create an installation that provides a fun side event for visitors of marathon races. In the spirit of running, visitors can participate in a casual sprint race competing against a virtual competitor. This competitor is visualized by a wall, made with vertical transparent pipes which are filled with styrofoam. Motors under the pipes are turned on in sequence and create a wave of styrofoam moving along the wall. The installation was limited to be five metres long to make the project viable in terms of costs, build time etc. An improved version would be 20 metres or more to offer a decent distance for a race.
 
 The goal is to run faster than the wave. The speed of the wave dependens on a competitor that is randomized before every race. Four well-known characters with diferent speeds are available.
 
-{% image_folder path: images/projects/beatthewall/gal %}
+ image_folder path: images/projects/beatthewall/gal 
 
 Our intention with this installation was to meet some of the goals that were set by the event organizers. This includes improving the festive atmosphere at the event and attracting people to specific areas along the track. The engaging nature of this installation should be especially exciting for children which can get bored quickly when watching the race gets too monotonous. Also the unconventional visualization should be interesting and memorable for spectators.
 

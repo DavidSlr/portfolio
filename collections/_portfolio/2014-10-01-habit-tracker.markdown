@@ -15,11 +15,11 @@ used_skills: Windows Phone development (XAML, C#, Blend), Adobe Illustrator, Use
 division_of_work: This thesis project was executed by me with consultancy of my supervisors at the university and Microsoft.
 ---
 
-{% image fullwidth projects/habittracker/long.gif %} 
+ image fullwidth projects/habittracker/long.gif  
 
 The Habit Tracker app lets users create daily habits like exercising or reading. If the habit was successfuly pursued on that day, it will be checked off in the calendar. Consecutive days count as a chain and will motivate users to keep the habit going.
 
-{% image_folder path: images/projects/habittracker/gal  %}
+ image_folder path: images/projects/habittracker/gal  
 
 The topic of my thesis was the exploration of emotional design for mobile apps and finding guidelines on how to use emotional design to improve the user experience. A collection of positive emotions were collected and app aspects were designed specifically to evoke certain emotions in users.
 
@@ -36,7 +36,7 @@ The Habit Tracker app was developed to evaluate emotional designs. Therefore, a 
 * __Hallway usability tesing__ was done to find and fix rough usability issues.
 * Test users were __interviewed__ about their experience after two weeks of testing.
 
-{% image_folder path: images/projects/habittracker/process  %}
+ image_folder path: images/projects/habittracker/process  
 
 ##Project Takeaways
 
