@@ -1,8 +1,8 @@
 ---
 layout: portfolio
-title:  RetroSpect Birdhouse
+title:  dalibri website
 categories: portfolio
-image: images/projects/retrospect/birdhouse_square.png
+image: images/projects/dalibri/dalibri-square.png
 
 tagline: A birdhouse that helps you watch birds and keep memories 
 shortdesc: The "RetroSpect" birdhouse is a system that combines a birdhouse for the garden with a cuckoo clock in the living room. The clock will notify the user about arriving birds and keep pictures of them. The chronological picture collection can be traversed by spinning the hand of the clock back or forward.

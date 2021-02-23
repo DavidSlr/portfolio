@@ -1,8 +1,8 @@
 ---
 layout: portfolio
-title:  Beat the Wall Project
+title:  Beat the Wall
 categories: portfolio
-image: images/projects/beatthewall/thumb.jpg
+image: images/projects/beatthewall/beatthewall.png
 tagline: Installation for running events, made in interaction design project course
 
 shortdesc: Beat The Wall is an interactive installation, designed as a side event for running competitions. The idea is to provide the wave as a virtual opponent that can be adjusted in speed.
