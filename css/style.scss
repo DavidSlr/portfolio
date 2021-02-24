@@ -5,8 +5,13 @@
 @import "mixins";
 
 .main {
+    width: 95%;
     max-width: 56rem;
-    margin: 4rem auto;
+    margin: 2rem auto;
+
+    @include breakpoint('medium') {
+        margin: 4rem auto; 
+    }
 }
 
 /* Typography
@@ -52,6 +57,10 @@ a {
     font-weight: 400;
 }
 
+img {
+    display: block;
+}
+
 .portfolio-list {
     display: flex;
     flex-direction: column;
@@ -70,15 +79,34 @@ a {
         @include breakpoint('medium') {
             flex: 0 0 calc(50% - 0.5em);
         }
+
+        @include breakpoint('large') {
+            flex: 0 0 calc(33% - 0.5em);
+        }
         
         img {
             width: 100%;
         }
 
-        div {
+        .overlay {
+            position: absolute;
+            background: linear-gradient(15deg, #000A 0%, #fff0 90%);
+            
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            &:hover {
+                background: linear-gradient(15deg, #0009 0%, #fff0 30%);
+            }
+        }
+
+        .label {
             position: absolute;
             bottom: 0.7rem;
             left: 1rem;
+            line-height: 1;
             
             .title {
                 font-weight: 900;

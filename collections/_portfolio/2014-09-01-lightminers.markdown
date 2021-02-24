@@ -3,7 +3,7 @@ layout: portfolio
 title:  Light Miners Game
 tagline: Pervasive game prototype created for a design competition and research project
 categories: portfolio
-image: images/projects/lightminers/thumb.jpg
+image: images/projects/lightminers/square.png
 
 shortdesc: Light Miners is a pervasive game that is played with two teams. Team members use a smartphone app to locate game lanterns in the environment. When a player is close to a lantern, it can be conquered for the team. The lantern will then switch it's color to the team color. At the end of the round the team that had the most time of lanterns shining in their color wins.
 

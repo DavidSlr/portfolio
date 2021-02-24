@@ -1,8 +1,8 @@
 ---
 layout: portfolio
-title:  Habit Tracker for WP8
+title:  Survey Tool
 categories: portfolio
-image: images/projects/habittracker/thumb.jpg
+image: images/projects/survey/square.png
 
 tagline: Windows Phone 8 app for tracking habits, developed as part of my thesis project
 

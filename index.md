@@ -17,13 +17,15 @@ Hi, I am David. I am a UX designer, prototyper and former software developer who
 {% for item in site.portfolio %}
 
 <div class="portfolio-teaser">
-<a href="{{item.url}}">
     <img src="{{ item.image }}">
-    <div>
-        <span class="title">{{item.title}}</span>
+    <a href="{{item.url}}">
+    <div class="overlay">
+        <div class="label">
+            <span class="title">{{item.title}}</span>
+        </div>
     </div>
-
-</a>
+    </a>
 </div>
+
 {% endfor %}
 </div>
