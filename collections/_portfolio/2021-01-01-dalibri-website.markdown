@@ -1,25 +1,38 @@
 ---
 layout: portfolio
 title:  dalibri website
-categories: portfolio
 image: images/projects/dalibri/dalibri-square.png
 
-tagline: A birdhouse that helps you watch birds and keep memories 
-shortdesc: The "RetroSpect" birdhouse is a system that combines a birdhouse for the garden with a cuckoo clock in the living room. The clock will notify the user about arriving birds and keep pictures of them. The chronological picture collection can be traversed by spinning the hand of the clock back or forward.
+tagline: New content and redesign of our agency website
 
-context: Tangible Interaction course, semester 1 of Interaction Design & Methodologies Master
-duration: ~8 days
-used_skills: Building physical protoypes, Arduino, Processing (language)
-division_of_work: Project was executed in a group of 2, Concept, woodworking and electronics were done by both of us, programming was done by me
+context: Internal project of dalibri
+duration: 4 weeks
+used_skills: Web UX, visual design, web development (html, sass)
+division_of_work: Content produced with photographers and content writer, structure developed in workshops with dalibri staff
 ---
 
-fullwidth projects/retrospect/long.jpg
+<div class="images">
+<a href="/images/projects/dalibri/full.png" class="float-right"><img src="/images/projects/dalibri/full.png"></a>
+</div>
 
- As soon as a bird apears at the birdhouse the small cuckoo will come out of the small door and inform the people in the living room that there is a bird to watch. The birdhouse will also safe a picture of the bird with the integrated webcam and save it on a connected computer. Users can go back in time by turning the hand of the clock to scroll through the picture archive on the computer. Additionally the clock has an LED indicator that will show how much birdfood is left in the birdhouse. The birdhouse was the final project of the Tangible Interfaces course.
+In 2020, dalibri's website was still one that has been put together in two evenings. It was clear that if new potential clients that looked us up should get a better first impression. The goal was to have professional but friendly presentation that shows what services dalibri provides at a quick glance and a more detailed level.
 
-vimeo 76945760
+## Process
 
-image_folder path: images/projects/retrospect/gal
+- Collecting and sorting of structure and content in a workshop
+- Creation of a wireframe for the start page
+- Text was developed with a content writer in interviews and iterations
+- Exploration of design direction
+- Decision for design direction and itereation to close to final design
+- Implementation of the responsive website with support for two languages
 
-##How it works
-An IR heat sensor is built into the bird house to recognize birds. The ultra sonic sensor in the roof measures the filling level of the food storage. The clock hand is mounted on a rotary encoder. All those sensors are read by the Arduino. A Processing application is running on the computer displaying the photos of the birds. The Arduino is connected to the computer via USB and sends messages containing information about the presence of the bird, changes of the clock hand and amount of birdfood left to the application. In the roof of the birdhouse is a webcam. It is connected to the computer via USB. The Processing app will capture an image from the webcam when it gets a message about a present bird from the Arduino.
+## Design & Tech Stack
+
+- Designs and wireframes were done in Figma
+- The website was built with HTML, CSS (SASS) and Jekyll as a static site generator
+- The code was checked into a bitbucket repository and deployed with a bitbucket pipeline script
+
+<div class="gallery images">
+    <a href="/images/projects/dalibri/structure.jpg"><img src="/images/projects/dalibri/structure.jpg"></a>
+    <a href="/images/projects/dalibri/exploration.png"><img src="/images/projects/dalibri/exploration.png"></a>
+</div>

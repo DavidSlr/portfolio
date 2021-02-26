@@ -3,6 +3,15 @@
 
 @import "normalize";
 @import "mixins";
+@import "simpleLightbox.min.css";
+
+/* Colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+$light-accent:#89b4ca;
+$dark-accent:#49a0cc;
+
+/* Outer container
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .main {
     width: 95%;
@@ -41,25 +50,64 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2rem;
     line-height: 1;
     font-weight: 400;
-    color:#89b4ca;
-    margin: 0 0 2rem 0;
+    color: $light-accent;
+    margin: 0.5rem 0 2rem 0;
 }
 
-p {
+p, li, dd {
     max-width: 48rem;
     margin-top: 0;
     font-size: 1.2rem;
 }
 
 a {
-    color: #49a0cc;
+    color: $dark-accent;
     text-decoration: underline dotted #555;
     font-weight: 400;
 }
 
+/* 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 img {
     display: block;
 }
+
+.gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    img  {
+        max-height: 12rem;
+        margin: 0.5rem;
+    }
+}
+
+a.float-right {
+    display: block;
+    float: right;
+    margin-left: 2rem;
+    img {
+        width: 20rem;
+    }
+}
+
+.specs {
+    dt {
+        color: $light-accent;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+    dd {
+        margin-left: 0;
+        margin-bottom: 1rem;
+        max-width: 48rem;
+    }
+}
+
+/* Portfolio List
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .portfolio-list {
     display: flex;
@@ -116,5 +164,16 @@ img {
             }
             
         }
+    }
+}
+
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+footer {
+    border-top: 1px solid $light-accent;
+    margin-top: 4rem;
+    padding-top: 1rem;
+    p {
+        font-size: 1rem;
     }
 }

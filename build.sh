@@ -12,7 +12,7 @@ params=("watch" "prod")
 
 #if [ "$1" != "watch" ]; then
 #if [[ "${params[@]}" =~ "$1" ]]; then
-if [ "$1" != "watch" ] && [ "$1" != "prod" ]; then
+if [ "$1" != "watch" ] && [ "$1" != "prod" ] && [ "$1" != "bash" ]; then
   echo "";  
   echo -e "${BOLD}Call the script with one of these parameters${NC}";
   printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
@@ -30,5 +30,11 @@ if [ "$1" == "prod" ]; then
     echo -e "${BOLD}Starting the Jekyll Docker and building for production in /_prod_site${NC}";
     
     docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" jekyll/jekyll:3.8 jekyll build --destination _prod_site/ #--config _config.yml,_config_prod.yml
+fi
+
+if [ "$1" == "bash" ]; then
+    echo -e "${BOLD}Starting the Jekyll Docker and getting a bash prompt${NC}";
+    
+    docker run -it --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" jekyll/jekyll:3.8 bash
 fi
 

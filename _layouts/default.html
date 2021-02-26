@@ -25,9 +25,15 @@
     {{ content }}
 
     <footer>
-      <p>Copyright &copy; {{ site.time | date: '%Y' }} David Schneller &mdash; <a href="imprint.html" rel="nofollow">Imprint</a></p>
+      <a href="/">Home</a> &mdash; <a href="imprint.html" rel="nofollow">Legal notice</a>
+      <p>Copyright &copy; {{ site.time | date: '%Y' }} David Schneller </p>
     </footer>
   </div>
 
+  <script lang="js" src="/script/simpleLightbox.min.js" ></script>
+  <script lang="js">
+    var SimpleLightbox = window.SimpleLightbox;
+    var lightbox = new SimpleLightbox({elements: '.gallery a'});
+  </script>
 </body>
 </html>

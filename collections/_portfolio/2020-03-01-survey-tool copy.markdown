@@ -4,42 +4,32 @@ title:  Survey Tool
 categories: portfolio
 image: images/projects/survey/square.png
 
-tagline: Windows Phone 8 app for tracking habits, developed as part of my thesis project
+tagline: Redesigning a 20 year old web application for data collection
 
-shortdesc: The Habit Tracker app is a Windows Phone 8 app that helps the users to track and establish daily habits. It was part of my master thesis and was used to evaluate emotional design as a way to improve the user experience.
+context: Client project at Cognizant
+duration: 10 weeks
 
-context: Master Thesis project, semester 4 of Interaction Design & Methodologies Master
-duration: 20 weeks
-
-used_skills: Windows Phone development (XAML, C#, Blend), Adobe Illustrator, User Interviews, Emotional Design
-division_of_work: This thesis project was executed by me with consultancy of my supervisors at the university and Microsoft.
+used_skills: User research, user interviews, Sketch, InVision, stakeholder management
+division_of_work: The implementation was done by a web development team
 ---
 
- image fullwidth projects/habittracker/long.gif  
+The client had an web application that contained surveys that need to be filled out by all locations departments wolrdwide. It also provided ways to audit data in a multi-stage appproval process. The interface was very outdate and tedious to handle.
 
-The Habit Tracker app lets users create daily habits like exercising or reading. If the habit was successfuly pursued on that day, it will be checked off in the calendar. Consecutive days count as a chain and will motivate users to keep the habit going.
+The brief from the client said that they wanted to freshen it up and make it look modern. After some convincing the client agreed to have a user research phase that helped to understand the usage patterns and pain points. In the end the application wasn't just redesigned with a modern style and the company's corporate identity. Instead the interface was also adapted to drop a lot of unnecessary complexity, more obvious survey progress and a more straightforward entrypoint for the many users that only use the system one to three times per year.
 
- image_folder path: images/projects/habittracker/gal  
+The interface was changed for the presentation in this portfolio so that the client and details of their processes would not be shown.
 
-The topic of my thesis was the exploration of emotional design for mobile apps and finding guidelines on how to use emotional design to improve the user experience. A collection of positive emotions were collected and app aspects were designed specifically to evoke certain emotions in users.
+## Design Process
 
-The Habit Tracker app was developed to evaluate emotional designs. Therefore, a minimal valuable version and a version with several emotional design enhancements were developed and delivered to testers. Later, the test user were interviewed about the impact of the version differences on their usage and perception of the app.
+- Kickoff workshops with the client
+- Interviews with 5 user in different locations
+- Wireframes to discuss UI and workflow changes with the client stakeholders
+- User testing with click prototypes based on wireframes
+- HiFi Mockups deliverd with Zeplin and click prototypes for the developers
 
-##Design Process
 
-* I __interviewed__ users about their favorite apps, enjoyable app features/designs/aspects, perceived emotions. This was supported with simple selfmade emotion cards. Those helped the user to select and talk about emotions.
-* A minimal valuable product (MVP) was __sketched__ that provides the basic functionality for the app concept.
-* Two __design workshops__ were held with design students to get a more diverse set of ideas on how to design for emotions.
-* Quick __sketches__ of workshop ideas were created.
-* The MVP was __implemented__ and delivered to test users a Windows Store closed beta release.
-* The enhanced version was __implemented__ as an update for the MVP.
-* __Hallway usability tesing__ was done to find and fix rough usability issues.
-* Test users were __interviewed__ about their experience after two weeks of testing.
+## Project Takeaways
 
- image_folder path: images/projects/habittracker/process  
+Web applications are often accepted to be complex and less user friendly. The common solution for this project is to provide training for users. However, a lot of complexity can be hidden or processes can be better guided by the interface which reduces the need to training.
 
-##Project Takeaways
-
-* Targeting specific emotions can help to make an app more meaningful to the user and provide additional motivation to use it.
-* Emotional design can only work if basic requirements on usability and user satisfaction are met first.
-* Interviews revealed that there were some usability issues in the final prototype. Another iteration would have improved the user experience and enabled some of the emotional design aspects to strengthen their impact.
+When client stakeholders don't have experience with projects that include a user experience component it is difficult for them to anticipate what UX design can do for the project. In this case it was obvious that a designer would help to create a more apealing interface. However, the stakeholders did not expect to change the workflow or interface beyond visual aspects like typography, colors etc. When they heard about the potential to increase satisfaction, reduce friction, reduce demand for support and training as well as reduce user mistakes they were motivated to adapt.

@@ -14,18 +14,17 @@ Hi, I am David. I am a UX designer, prototyper and former software developer who
 ## Portfolio
 
 <div class="portfolio-list">
-{% for item in site.portfolio %}
-
+{% assign portfolio = site.portfolio  | sort: 'date' | reverse %}
+{% for item in portfolio %}
 <div class="portfolio-teaser">
     <img src="{{ item.image }}">
     <a href="{{item.url}}">
-    <div class="overlay">
-        <div class="label">
-            <span class="title">{{item.title}}</span>
+        <div class="overlay">
+            <div class="label">
+                <span class="title">{{item.title}}</span>
+            </div>
         </div>
-    </div>
     </a>
 </div>
-
 {% endfor %}
 </div>
