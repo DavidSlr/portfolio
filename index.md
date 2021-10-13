@@ -11,6 +11,8 @@ layout: default
 
 Hi, I am David. I am a UX designer, prototyper and former software developer who still likes to code. I am working for [dalibri](http://dalibri.com), a small team that offers their skills to client projects as contractors. If you need a UX designer for your team please get in touch.
 
+[my LinkedIn](https://www.linkedin.com/in/davidslr)
+
 ## Portfolio
 
 <div class="portfolio-list">
@@ -27,4 +29,11 @@ Hi, I am David. I am a UX designer, prototyper and former software developer who
     </a>
 </div>
 {% endfor %}
+</div>
+
+{% include cv.html %}
+
+## Get in touch
+<div>
+    <p>Find some more details and get in touch on <a href="https://www.linkedin.com/in/davidslr">LinkedIn</a> or <a href="https://www.xing.com/profile/David_Schneller">Xing</a>.</p>   
 </div>

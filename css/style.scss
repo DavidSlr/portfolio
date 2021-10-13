@@ -9,6 +9,9 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $light-accent:#89b4ca;
 $dark-accent:#49a0cc;
+$dark-text: #555;
+$light-text: #888;
+$light-border: #aaa;
 
 /* Outer container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -31,7 +34,7 @@ body {
     line-height: 1.6;
     background-color: #fff;
     font-size: 100%;
-    color: #555;
+    color: $dark-text;
     font-weight: 300;
 }
 
@@ -47,11 +50,15 @@ h1, h2, h3, h4, h5, h6 {
   h4 { font-size: 2.0rem; line-height: 1.35; letter-spacing: -.08rem; }
 
 .tagline {
-    font-size: 2rem;
-    line-height: 1;
+    .main > & {
+        font-size: 2em;
+        margin: 0.5rem 0 2rem 0;
+        line-height: 1;
+    }
+    font-size: 1em;
+    line-height: 1.5;
     font-weight: 400;
     color: $light-accent;
-    margin: 0.5rem 0 2rem 0;
 }
 
 p, li, dd {
@@ -64,6 +71,29 @@ a {
     color: $dark-accent;
     text-decoration: underline dotted #555;
     font-weight: 400;
+}
+
+header.subpage {
+    padding: 1rem 0;
+    border-bottom: 1px dotted $light-text;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    a {
+        text-decoration: none;
+    }
+
+    h3, h4 {
+        margin: 0;
+    }
+    h3 {
+        font-size: 1rem;
+        letter-spacing: -.02rem;
+    }
+    h4 {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: $light-border;
+    }
 }
 
 /* 
@@ -164,6 +194,33 @@ a.float-right {
             }
             
         }
+    }
+}
+
+
+/* CV
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.cv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & > div {
+        @include breakpoint('medium') {
+            flex: 0 0 calc(50% - 0.5em);
+        }
+    }
+
+    h3, h4 {
+        margin-bottom: 0;
+    }
+    h3 { font-size: 1.4rem; line-height: 1.5;  letter-spacing: -.06rem; }
+    h4 {
+        font-size: 1.0rem;
+        line-height: 1.75;
+        letter-spacing: -.02rem;
+        font-weight: 400;
     }
 }
 
