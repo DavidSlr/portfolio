@@ -13,11 +13,20 @@ used_skills: User research, user interviews, Sketch, InVision, stakeholder manag
 division_of_work: The implementation was done by a web development team
 ---
 
+<div class="images">
+    <a href="/images/projects/survey/quest_overview.png" class="float-right"><img src="/images/projects/survey/quest_overview.png"></a>
+</div>
+
 The client had an web application that contained surveys that need to be filled out by all locations departments wolrdwide. It also provided ways to audit data in a multi-stage appproval process. The interface was very outdate and tedious to handle.
 
 The brief from the client said that they wanted to freshen it up and make it look modern. After some convincing the client agreed to have a user research phase that helped to understand the usage patterns and pain points. In the end the application wasn't just redesigned with a modern style and the company's corporate identity. Instead the interface was also adapted to drop a lot of unnecessary complexity, more obvious survey progress and a more straightforward entrypoint for the many users that only use the system one to three times per year.
 
 The interface was changed for the presentation in this portfolio so that the client and details of their processes would not be shown.
+
+<div class="gallery images">
+    <a href="/images/projects/survey/dashboard.png"><img src="/images/projects/survey/dashboard.png"></a>
+    <a href="/images/projects/survey/quest_overview.png"><img src="/images/projects/survey/quest_overview.png"></a>
+</div>
 
 ## Design Process
 
