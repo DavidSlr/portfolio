@@ -23,22 +23,25 @@ The brief from the client said that they wanted to freshen it up and make it loo
 
 The interface was changed for the presentation in this portfolio so that the client and details of their processes would not be shown.
 
-<div class="gallery images">
-    <a href="/images/projects/survey/dashboard.png"><img src="/images/projects/survey/dashboard.png"></a>
-    <a href="/images/projects/survey/quest_overview.png"><img src="/images/projects/survey/quest_overview.png"></a>
-</div>
+
+{% include gallery.html base_url="/images/projects/survey/"
+                        images="dashboard.png,quest_overview.png"%}
 
 ## Design Process
 
 - Kickoff workshops with the client
 - Interviews with 5 user in different locations
-- Wireframes to discuss UI and workflow changes with the client stakeholders
+- Sort through results and discuss findings with stakeholders
+- Wireframes to discuss UI and workflow changes with stakeholders
 - User testing with click prototypes based on wireframes
 - HiFi Mockups deliverd with Zeplin and click prototypes for the developers
+- Animations and interactions built as guide for developers with [Drama](https://www.drama.app)
 
+{% include gallery.html base_url="/images/projects/survey/"
+                        images="process_actors.jpg,affinity_diagramming.jpg,interaction.gif"%}
 
 ## Project Takeaways
 
-Web applications are often accepted to be complex and less user friendly. The common solution for this project is to provide training for users. However, a lot of complexity can be hidden or processes can be better guided by the interface which reduces the need to training.
+Web applications for professionals are often accepted to be complex and less user friendly. The common attempt to solve thia is to provide training for users. However, a lot of complexity can be hidden or processes can be better guided by the interface which reduces the need for training.
 
 When client stakeholders don't have experience with projects that include a user experience component it is difficult for them to anticipate what UX design can do for the project. In this case it was obvious that a designer would help to create a more apealing interface. However, the stakeholders did not expect to change the workflow or interface beyond visual aspects like typography, colors etc. When they heard about the potential to increase satisfaction, reduce friction, reduce demand for support and training as well as reduce user mistakes they were motivated to adapt.
