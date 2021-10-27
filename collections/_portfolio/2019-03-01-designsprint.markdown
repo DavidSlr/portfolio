@@ -4,42 +4,42 @@ title:  Design Sprint
 categories: portfolio
 image: images/projects/designsprint/square.png
 
-tagline: Windows Phone 8 app for tracking habits, developed as part of my thesis project
+tagline: Working through problems and solutions for business inteligence management
 
-shortdesc: The Habit Tracker app is a Windows Phone 8 app that helps the users to track and establish daily habits. It was part of my master thesis and was used to evaluate emotional design as a way to improve the user experience.
+context: A design sprint executed as a try out for a longer project for a big client at Cognizant.
+duration: 4 days
 
-context: Master Thesis project, semester 4 of Interaction Design & Methodologies Master
-duration: 20 weeks
-
-used_skills: Windows Phone development (XAML, C#, Blend), Adobe Illustrator, User Interviews, Emotional Design
-division_of_work: This thesis project was executed by me with consultancy of my supervisors at the university and Microsoft.
+used_skills: Deisgn sprints, user interviews, sketching, Sketch, InVision
+division_of_work: I went through the sprint as a two-people team with our Head of UX
 ---
 
- image fullwidth projects/habittracker/long.gif  
+A big German enterprise approached us because they needed a solution to manage and provide access to the vast amount of diverse business inteligence resources that are built internally. We got invited to a four-day event where we could work through a design sprint and showing a first draft of what a solution could look like.
 
-The Habit Tracker app lets users create daily habits like exercising or reading. If the habit was successfuly pursued on that day, it will be checked off in the calendar. Consecutive days count as a chain and will motivate users to keep the habit going.
+The goal of this design sprint was to give us insights into the company context and problem details while observing our UX approach and letting us compete against other invited teams for the following project.
 
- image_folder path: images/projects/habittracker/gal  
 
-The topic of my thesis was the exploration of emotional design for mobile apps and finding guidelines on how to use emotional design to improve the user experience. A collection of positive emotions were collected and app aspects were designed specifically to evoke certain emotions in users.
+<div class="images">
+    <a href="/images/projects/designsprint/head.png">
+        <img src="/images/projects/designsprint/head.png" class="full-width">
+    </a>
+</div>
 
-The Habit Tracker app was developed to evaluate emotional designs. Therefore, a minimal valuable version and a version with several emotional design enhancements were developed and delivered to testers. Later, the test user were interviewed about the impact of the version differences on their usage and perception of the app.
+## Process
 
-##Design Process
+- Stakeholder interviews and result sorting on sticky notes
+- Worflow mapping and user goal extraction
+- Identify areas for improvement
+- Select areas to focus on with stakeholders
+- Ideation and skechting
+- User flows and wireframes
+- Mockups and prototype
+- User testing
+- Feedback sorting and possible next steps
 
-* I __interviewed__ users about their favorite apps, enjoyable app features/designs/aspects, perceived emotions. This was supported with simple selfmade emotion cards. Those helped the user to select and talk about emotions.
-* A minimal valuable product (MVP) was __sketched__ that provides the basic functionality for the app concept.
-* Two __design workshops__ were held with design students to get a more diverse set of ideas on how to design for emotions.
-* Quick __sketches__ of workshop ideas were created.
-* The MVP was __implemented__ and delivered to test users a Windows Store closed beta release.
-* The enhanced version was __implemented__ as an update for the MVP.
-* __Hallway usability tesing__ was done to find and fix rough usability issues.
-* Test users were __interviewed__ about their experience after two weeks of testing.
+{% include gallery.html base_url="/images/projects/designsprint/"
+                        images="workflowmap.png,problems.png,sketches.png,wireframes.png"%}
 
- image_folder path: images/projects/habittracker/process  
+## Project Takeaways
 
-##Project Takeaways
-
-* Targeting specific emotions can help to make an app more meaningful to the user and provide additional motivation to use it.
-* Emotional design can only work if basic requirements on usability and user satisfaction are met first.
-* Interviews revealed that there were some usability issues in the final prototype. Another iteration would have improved the user experience and enabled some of the emotional design aspects to strengthen their impact.
+- Running a four day design sprint can be a very effective way to get a kickstart with a problem space. It yields very fast results that might not be optimal but will certainly create a better understanding. From here you can test and iterate.
+- A good portion of the available time is not spend ideating and designing. It can be scary to push what feels like the core work of a project so far back. But trusting the process and taking the time to define and work with problem never failed me.
