@@ -1,5 +1,5 @@
 {% assign images = include.images | split: ',' %}
-<div class="gallery images">
+<div class="gallery images border">
 {% for image in images %}
    <a href="{{include.base_url}}{{ image }}"><img src="{{include.base_url}}{{ image }}"></a>
 {% endfor %}

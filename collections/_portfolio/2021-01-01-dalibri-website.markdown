@@ -12,7 +12,7 @@ division_of_work: Content produced with photographers and content writer, struct
 ---
 
 <div class="images">
-<a href="/images/projects/dalibri/full.png" class="float-right"><img src="/images/projects/dalibri/full.png"></a>
+    <a href="/images/projects/dalibri/full.png" class="float-right"><img src="/images/projects/dalibri/full.png"></a>
 </div>
 
 In 2020, dalibri's website was still one that has been put together in two evenings. It was clear that if new potential clients that looked us up should get a better first impression. The goal was to have professional but friendly presentation that shows what services dalibri provides at a quick glance and a more detailed level.
@@ -32,7 +32,5 @@ In 2020, dalibri's website was still one that has been put together in two eveni
 - The website was built with HTML, CSS (SASS) and Jekyll as a static site generator
 - The code was checked into a bitbucket repository and deployed with a bitbucket pipeline script
 
-<div class="gallery images">
-    <a href="/images/projects/dalibri/structure.jpg"><img src="/images/projects/dalibri/structure.jpg"></a>
-    <a href="/images/projects/dalibri/exploration.png"><img src="/images/projects/dalibri/exploration.png"></a>
-</div>
+{% include gallery.html base_url="/images/projects/dalibri/"
+                        images="structure.jpg,exploration.png"%}

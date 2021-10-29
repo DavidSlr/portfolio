@@ -4,42 +4,54 @@ title:  News Monitoring
 categories: portfolio
 image: images/projects/discover/square.png
 
-tagline: Windows Phone 8 app for tracking habits, developed as part of my thesis project
+tagline: Creating a customizable news monitoring tool as part of the Schibsted toolbox for newsroom staff
 
-shortdesc: The Habit Tracker app is a Windows Phone 8 app that helps the users to track and establish daily habits. It was part of my master thesis and was used to evaluate emotional design as a way to improve the user experience.
+shortdesc: Discover is part of the toolbox for newsrooms by Schibsted Products & Technology. It is used to monitor, read and publish news from several sources like news wires, public websites, mobile notifications and social media.
 
-context: Master Thesis project, semester 4 of Interaction Design & Methodologies Master
-duration: 20 weeks
+context: My main project inside Schibsted Product & Technology since January 2016
+duration: 18 months
 
-used_skills: Windows Phone development (XAML, C#, Blend), Adobe Illustrator, User Interviews, Emotional Design
-division_of_work: This thesis project was executed by me with consultancy of my supervisors at the university and Microsoft.
+used_skills: Teamwork in a distributed team, Axure wireframing, Sketch mockups, InVision prototyping, Framer prototyping, user interviews, design workshops
+
+division_of_work: This was an established project when I joined and is in constant development with a team of 4 - 6 engineers, a product manager and me as the UX designer.
 ---
 
- image fullwidth projects/habittracker/long.gif  
 
-The Habit Tracker app lets users create daily habits like exercising or reading. If the habit was successfuly pursued on that day, it will be checked off in the calendar. Consecutive days count as a chain and will motivate users to keep the habit going.
+<div class="images">
+    <a href="/images/projects/discover/discover_laptop.png" class="float-right"><img src="/images/projects/discover/discover_laptop.png"></a>
+</div>
 
- image_folder path: images/projects/habittracker/gal  
+The Discover tool is a part of an award-winning set of tools that gives professional newsroom users the functionality they need to publish newspapers in the digital age. Discover is used to find, read and monitor news from a variety of sources.
 
-The topic of my thesis was the exploration of emotional design for mobile apps and finding guidelines on how to use emotional design to improve the user experience. A collection of positive emotions were collected and app aspects were designed specifically to evoke certain emotions in users.
+News articles are collected from websites, mobile apps and social media are pushed into customizable "lanes" on the user's screen. The lanes can be filtered and set up for topics and sources that are currently relevant to the user.
 
-The Habit Tracker app was developed to evaluate emotional designs. Therefore, a minimal valuable version and a version with several emotional design enhancements were developed and delivered to testers. Later, the test user were interviewed about the impact of the version differences on their usage and perception of the app.
+**Some key challenges developing the tool were**
 
-##Design Process
+- How do we handle and prioritize a high amount of news coming in on a constant basis.
+- Understanding the needs of news editors and journalist while balancing them with the goal of facilitating the change from focusing on print newspapers to being primarily web news providers
+- Unifying five toolbox products that were developed separately by their own teams and UX designers to feature a common look & feel
 
-* I __interviewed__ users about their favorite apps, enjoyable app features/designs/aspects, perceived emotions. This was supported with simple selfmade emotion cards. Those helped the user to select and talk about emotions.
-* A minimal valuable product (MVP) was __sketched__ that provides the basic functionality for the app concept.
-* Two __design workshops__ were held with design students to get a more diverse set of ideas on how to design for emotions.
-* Quick __sketches__ of workshop ideas were created.
-* The MVP was __implemented__ and delivered to test users a Windows Store closed beta release.
-* The enhanced version was __implemented__ as an update for the MVP.
-* __Hallway usability tesing__ was done to find and fix rough usability issues.
-* Test users were __interviewed__ about their experience after two weeks of testing.
+{% include gallery.html base_url="/images/projects/discover/"
+                        images="01.png,02.png,03.png"%}
 
- image_folder path: images/projects/habittracker/process  
+## Design Process
 
-##Project Takeaways
+This was a long-running and ever changing project. So the process was less linear and adapted.
 
-* Targeting specific emotions can help to make an app more meaningful to the user and provide additional motivation to use it.
-* Emotional design can only work if basic requirements on usability and user satisfaction are met first.
-* Interviews revealed that there were some usability issues in the final prototype. Another iteration would have improved the user experience and enabled some of the emotional design aspects to strengthen their impact.
+-  A huge part of the development work in terms of UX were user interviews. We relied a lot on qualitative feedback from our users that were in-house. They were contacted and met on a regular basis to talk about the general state of the app, their perception of new feature, how their workflow is changing or can be improved and so on.
+- As a means of communication and discussion with the team wireframes and mockups were created with pen+paper, Axure RP Pro or Sketch.
+- Framer or InVision prototypes were created to present ideas to users and gather feedback.
+- Most ideas were discussed with between product and UX first via in-person meetings or VCs and then discussed further in GitHub issues.
+- Sometimes we held design workshops or design sprints with the whole team to gather ideas and create a common understanding of the problem.
+- Asking questions in interview is sometimes limiting because users need to be very conscious about their own behavior. Sometimes we used exercises like a collaborative workflow mapping and card sorting. This challenged users to question their priorities.
+
+Here are some example of prototypes that I have made to test ideas for interactions, animations and so on:
+
+{% include gallery.html base_url="/images/projects/discover/"
+                        images="prot_form.gif,prot_tele.gif,prot_notif2.gif"%}
+
+## Project Takeaways
+
+- Users are quick to ask for specific changes but it is always good idea to ask more questions and figure out the real need behind it. Often more elegant solutions are possible to more fundamental problems.
+- Adding features may add value but it also adds cost for complexity and learnability.
+- Don't be afraid to question if you are really solving the right problem after testing an MVP and pivot. We had features that were solving a certain problem but during testing revealed that the new understanding of the problem suggests other solutions that work better.

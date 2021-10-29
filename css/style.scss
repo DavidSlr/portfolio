@@ -11,7 +11,7 @@ $light-accent:#89b4ca;
 $dark-accent:#49a0cc;
 $dark-text: #555;
 $light-text: #888;
-$light-border: #aaa;
+$light-border: #ddd;
 
 /* Outer container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -73,6 +73,10 @@ a {
     font-weight: 400;
 }
 
+strong {
+    font-weight: bold;
+}
+
 header.subpage {
     padding: 1rem 0;
     border-bottom: 1px dotted $light-text;
@@ -120,6 +124,10 @@ img {
         max-height: 12rem;
         margin: 0.5rem;
     }
+}
+
+.border img {
+    border: 1px solid $light-border;
 }
 
 a.float-right {
