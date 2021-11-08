@@ -1,39 +1,47 @@
 
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Hi, I am David, a software developer and designer from Germany. I love programming and creating products that are enjoyable to use. This is my portfolio.">
+    <meta name="keywords" content="David Schneller, dave_slr, interaction design, programming, Chalmers, Göteborg, Gothenburg, Germany, Leverkusen, Aachen, FH Aachen, IxD, C#, HTML, CSS, mobile, Prototyping, Usability, designer, arduino, processing, tangible">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <meta name="description" content="Hi, I am David, a software developer and designer from Germany. I love programming and creating products that are enjoyable to use. This is my portfolio.">
-  <meta name="keywords" content="David Schneller, dave_slr, interaction design, programming, Chalmers, Göteborg, Gothenburg, Germany, Leverkusen, Aachen, FH Aachen, IxD, C#, HTML, CSS, mobile, Prototyping, Usability, designer, arduino, processing, tangible">
+    <title>David Schneller - {{page.title}}</title>
 
-  <title>{{page.title}}</title>
+    <link rel="stylesheet" href="/css/style.css" /> 
 
-  <link rel="stylesheet" href="/css/style.css" /> 
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900"
-    rel="stylesheet"
-  />
-</head>
-<body>
-  <a name="intro"></a>
-  <div class="main">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a name="intro"></a>
+    <div class="main">
 
-    {{ content }}
+      {{ content }}
 
-    <footer>
-      <a href="/">Home</a> &mdash; <a href="imprint.html" rel="nofollow">Legal notice</a>
-      <p>Copyright &copy; {{ site.time | date: '%Y' }} David Schneller </p>
-    </footer>
-  </div>
+      <footer>
+        <p>
+          <a href="/">Home</a> &mdash; <a href="legalnotice.html" rel="nofollow">Legal notice</a>
+          <br />
+          Copyright &copy; {{ site.time | date: '%Y' }} David Schneller
+        </p>
+      </footer>
+    </div>
 
-  <script lang="js" src="/script/simpleLightbox.min.js" ></script>
-  <script lang="js">
-    var SimpleLightbox = window.SimpleLightbox;
-    var lightbox = new SimpleLightbox({elements: '.images a'});
-  </script>
-</body>
+    <script lang="js" src="/script/simpleLightbox.min.js" ></script>
+    <script lang="js">
+      var SimpleLightbox = window.SimpleLightbox;
+      var lightbox = new SimpleLightbox({elements: '.images a'});
+    </script>
+  </body>
 </html>
