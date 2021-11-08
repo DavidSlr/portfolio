@@ -3,15 +3,27 @@
 
 @import "normalize";
 @import "mixins";
-@import "simpleLightbox.min.css";
+@import "simpleLightbox.min.scss";
 
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$light-accent:#89b4ca;
-$dark-accent:#49a0cc;
-$dark-text: #555;
+$accent:#0083B0;
+$light-accent: $accent;
+$dark-accent: $accent;
+
+$dark-text: #222;
+$medium-text: #555;
 $light-text: #888;
 $light-border: #ddd;
+
+
+$gradient1:#00B4DB;
+$gradient2: $accent;
+$gradient3:#F4E14C;
+$gradient4: #E5B300;
+
+// $gradient1:#49a0cc;
+// $gradient2:#94cfec;
 
 /* Outer container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -34,15 +46,15 @@ body {
     line-height: 1.6;
     background-color: #fff;
     font-size: 100%;
-    color: $dark-text;
+    color: $medium-text;
     font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 2rem;
-    font-weight: 600;
-    color: #222;
+    font-weight: 700;
+    color: $dark-text;
 }
   h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem; font-weight: 900; margin-bottom: 0}
   h2 { font-size: 3.2rem; line-height: 1.25; letter-spacing: -.1rem; margin-top: 4rem;}
@@ -67,10 +79,36 @@ p, li, dd {
     font-size: 1.2rem;
 }
 
-a {
+p > a {
     color: $dark-accent;
     text-decoration: underline dotted #555;
     font-weight: 400;
+    position: relative;
+    transition: color .2s ease-out;
+
+    &:hover {
+        color: $dark-accent;
+        right: 0;
+        text-decoration: none;
+    }
+    &:hover:after {
+        border-color: $dark-accent;
+        right: 0;
+    }
+    &:after {
+        border-radius: 1em;
+        border-top: .1em solid $dark-accent;
+        content: "";
+        position: absolute;
+        right: 100%;
+        bottom: 0;
+        left: 0;
+        transition: right .4s ease-out,
+                border-color .2s ease-out;
+    }
+    &:hover:after {
+        right: 0;
+    }
 }
 
 strong {
@@ -90,13 +128,13 @@ header.subpage {
         margin: 0;
     }
     h3 {
-        font-size: 1rem;
+        font-size: 1.2rem;
         letter-spacing: -.02rem;
     }
     h4 {
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: 400;
-        color: $light-border;
+        color: $light-text;
     }
 }
 
@@ -141,12 +179,12 @@ a.float-right {
 
 .full-width {
     width: 100%;
+    margin-bottom: 2rem;
 }
 
 .specs {
     dt {
         color: $light-accent;
-        font-size: 0.8rem;
         font-weight: 400;
     }
     dd {
@@ -168,6 +206,18 @@ a.float-right {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        &::after {
+            content: "";
+            flex: 0 0 calc(50% - 0.5em);;
+        }
+    }
+
+    @include breakpoint('large') {
+        &::after {
+            content: "";
+            flex: 0 0 calc(33% - 0.5em);;
+        }
     }
 
     .portfolio-teaser {
@@ -184,20 +234,43 @@ a.float-right {
         
         img {
             width: 100%;
+            transition: filter .4s ease-in-out;
+
+            @media (hover: hover) {
+                filter: saturate(0%);
+            }
         }
 
+        &:hover {
+            .overlay {
+                //background: linear-gradient(to top, $dark-accent-bg2 0%, $dark-accent-bg1 50%);
+                //background-position: 0 20%;
+                opacity: 0;
+                transition: opacity .4s ease-in-out;
+            }
+
+            img {
+                filter: saturate(100%);
+                transition: filter .4s ease-in-out;
+            }
+        }
+
+        $accent-gradient: darken($accent, 15%);
         .overlay {
             position: absolute;
-            background: linear-gradient(15deg, #000A 0%, #fff0 90%);
+            background: linear-gradient(to top, rgba($dark-text, 60%) 0%, rgba($dark-text, 0%) 30%);
+            opacity: 1;
+            transition: opacity .4s ease-in-out;
             
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
 
-            &:hover {
-                background: linear-gradient(15deg, #0009 0%, #fff0 30%);
+            @media (hover: hover) {
+                background: linear-gradient(to top, rgba($accent-gradient, 100%) 0%, rgba($accent-gradient, 30%) 30%, rgba($accent-gradient, 10%) 100%);
             }
+
         }
 
         .label {
@@ -205,12 +278,14 @@ a.float-right {
             bottom: 0.7rem;
             left: 1rem;
             line-height: 1;
+            pointer-events:none;
             
             .title {
                 font-weight: 900;
                 color: #fff;
                 font-size: 2rem;
                 text-decoration: none;
+                text-shadow: 1px 1px 10px $dark-text;
             }
             
         }
@@ -242,6 +317,55 @@ a.float-right {
         letter-spacing: -.02rem;
         font-weight: 400;
     }
+
+    img.flag {
+        display: inline-block;
+        vertical-align: middle;
+        height: 12px;
+        margin-bottom: 3px;
+    }
+}
+
+/* Video
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul.skills {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        list-style-type: none;
+        padding: 0.05rem 0.5rem;
+        //background-color: $light-accent;
+        border-radius: 5px;
+        margin-right: 0.5rem;
+        margin-bottom: 1rem;
+        color: #E5F8FF;
+        font-weight: 400;
+        cursor: default;
+
+        //background-image: linear-gradient(135deg, $gradient1, $gradient2, $gradient3);
+        background-image: linear-gradient(135deg, $gradient1, $gradient2 50%, $gradient3 55%, $gradient4);
+
+        background-size: 300% 100%;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+        &:hover {
+            background-position: 100% 0;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+            color: #524000;
+        }
+    }
+}
+
+/* Video
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.vimeo {
+    width: 100%;
+    height: 24rem;
 }
 
 /* Footer

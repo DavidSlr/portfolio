@@ -3,6 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
+title: Portfolio
 
 ---
 
@@ -25,9 +26,9 @@ Hi, I am David. I am a UX designer, prototyper and former software developer who
     <img src="{{ item.image }}">
     <a href="{{item.url}}">
         <div class="overlay">
-            <div class="label">
-                <span class="title">{{item.title}}</span>
-            </div>
+        </div>
+        <div class="label">
+            <span class="title">{{item.title}}</span>
         </div>
     </a>
 </div>
@@ -35,6 +36,9 @@ Hi, I am David. I am a UX designer, prototyper and former software developer who
 </div>
 
 {% include cv.html %}
+
+## Things I worked with
+{% include skills.html %}
 
 ## Get in touch
 <div>
