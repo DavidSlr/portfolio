@@ -15,6 +15,7 @@ jobs:
     - name: Setup Environment.
       run: |
         sudo apt-get install -y lftp
+        ssh-keyscan $ftp_location >> ~/.ssh/known_hosts
     - name: Upload site to FTP.
       env: 
         ftp_location: ${{ secrets.FTP_LOCATION }}
