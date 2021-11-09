@@ -18,23 +18,24 @@ if [ "$1" != "watch" ] && [ "$1" != "prod" ] && [ "$1" != "bash" ]; then
   printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
   echo -e "- ${GREEN}build.sh watch${NC} = Serving the website on localhost:4000 and watching the folder for changes";
   echo -e "- ${GREEN}build.sh prod${NC} = Compile the website for production into ./_prod_site folder";
+  echo -e "- ${GREEN}build.sh bash${NC} = Start a bash prompt in the jekyll container";
   exit 1;
 fi
 
 if [ "$1" == "watch" ]; then
     echo -e "${BOLD}Starting the Jekyll Docker container and serve on localhost:4000${NC}";
-    docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" -p 4000:4000 jekyll/jekyll:3.8 jekyll serve --force_polling
+    docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" -p 4000:4000 jekyll/jekyll:4.2.0 jekyll serve --force_polling
 fi
 
 if [ "$1" == "prod" ]; then
     echo -e "${BOLD}Starting the Jekyll Docker and building for production in /_prod_site${NC}";
     
-    docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" jekyll/jekyll:3.8 jekyll build --destination _prod_site/ #--config _config.yml,_config_prod.yml
+    docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" jekyll/jekyll:4.2.0 jekyll build --destination _prod_site/ --config _config.yml,_config_prod.yml
 fi
 
 if [ "$1" == "bash" ]; then
     echo -e "${BOLD}Starting the Jekyll Docker and getting a bash prompt${NC}";
     
-    docker run -it --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" jekyll/jekyll:3.8 bash
+    docker run -it --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" jekyll/jekyll:4.2.0 bash
 fi
 

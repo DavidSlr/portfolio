@@ -1,0 +1,3 @@
+# called in build.sh to overwrite params from _config.yml in production build
+sass:
+  style: compressed
