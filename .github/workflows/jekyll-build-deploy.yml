@@ -22,4 +22,4 @@ jobs:
         ftp_password: ${{ secrets.FTP_PASSWORD }} 
         ftp_path: ${{ secrets.FTP_PATH }} 
       run: |
-        lftp sftp://$ftp_username:$ftp_password@$ftp_location  -e "set cmd:at-exit; set net:timeout 10; set net:max-retries 3; mirror --verbose --no-perms --only-newer -R _prod_site $ftp_path; bye"
+        lftp sftp://$ftp_username:$ftp_password@$ftp_location  -e "set cmd:at-exit; set net:timeout 10; set net:max-retries 3; mirror --verbose --no-perms --only-newer -R _prod_site $ftp_path; bye" -d
