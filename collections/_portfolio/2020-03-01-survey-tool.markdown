@@ -17,9 +17,9 @@ division_of_work: The implementation was done by a web development team
     <a href="/images/projects/survey/quest_overview.png" class="float-right"><img src="/images/projects/survey/quest_overview.png"></a>
 </div>
 
-The client had an web application that contained surveys that need to be filled out by all locations departments wolrdwide. It also provided ways to audit data in a multi-stage appproval process. The interface was very outdate and tedious to handle.
+The client had an web application that contained surveys that need to be filled out by all locations departments worldwide. It also provided ways to audit data in a multi-stage approval process. The interface was very outdate and tedious to handle.
 
-The brief from the client said that they wanted to freshen it up and make it look modern. After some convincing the client agreed to have a user research phase that helped to understand the usage patterns and pain points. In the end the application wasn't just redesigned with a modern style and the company's corporate identity. Instead the interface was also adapted to drop a lot of unnecessary complexity, more obvious survey progress and a more straightforward entrypoint for the many users that only use the system one to three times per year.
+The brief from the client said that they wanted to freshen it up and make it look modern. After some convincing the client agreed to have a user research phase that helped to understand the usage patterns and pain points. In the end the application wasn't just redesigned with a modern style and the company's corporate identity. Instead the interface was also adapted to drop a lot of unnecessary complexity, more obvious survey progress and a more straightforward entry point for the many users that only use the system one to three times per year.
 
 The interface was changed for the presentation in this portfolio so that the client and details of their processes would not be shown.
 
@@ -34,7 +34,7 @@ The interface was changed for the presentation in this portfolio so that the cli
 - Sort through results and discuss findings with stakeholders
 - Wireframes to discuss UI and workflow changes with stakeholders
 - User testing with click prototypes based on wireframes
-- HiFi Mockups deliverd with Zeplin and click prototypes for the developers
+- HiFi Mockups delivered with Zeplin and click prototypes for the developers
 - Animations and interactions built as guide for developers with [Drama](https://www.drama.app)
 
 {% include gallery.html base_url="/images/projects/survey/"
@@ -42,6 +42,6 @@ The interface was changed for the presentation in this portfolio so that the cli
 
 ## Project Takeaways
 
-Web applications for professionals are often accepted to be complex and less user friendly. The common attempt to solve thia is to provide training for users. However, a lot of complexity can be hidden or processes can be better guided by the interface which reduces the need for training.
+Web applications for professionals are often accepted to be complex and less user friendly. The common attempt to solve this is to provide training for users. However, a lot of complexity can be hidden or processes can be better guided by the interface which reduces the need for training.
 
-When client stakeholders don't have experience with projects that include a user experience component it is difficult for them to anticipate what UX design can do for the project. In this case it was obvious that a designer would help to create a more apealing interface. However, the stakeholders did not expect to change the workflow or interface beyond visual aspects like typography, colors etc. When they heard about the potential to increase satisfaction, reduce friction, reduce demand for support and training as well as reduce user mistakes they were motivated to adapt.
+When client stakeholders don't have experience with projects that include a user experience component it is difficult for them to anticipate what UX design can do for the project. In this case it was obvious that a designer would help to create a more appealing interface. However, the stakeholders did not expect to change the workflow or interface beyond visual aspects like typography, colors etc. When they heard about the potential to increase satisfaction, reduce friction, reduce demand for support and training as well as reduce user mistakes they were motivated to adapt.

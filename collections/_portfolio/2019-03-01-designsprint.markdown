@@ -4,19 +4,18 @@ title:  Design Sprint
 categories: portfolio
 image: images/projects/designsprint/square.png
 
-tagline: Working through problems and solutions for business inteligence management
+tagline: Working through problems and solutions for business intelligence management
 
 context: A design sprint executed as a try out for a longer project for a big client at Cognizant.
 duration: 4 days
 
-used_skills: Deisgn sprints, user interviews, sketching, Sketch, InVision
+used_skills: Design sprints, user interviews, sketching, Sketch, InVision
 division_of_work: I went through the sprint as a two-people team with our Head of UX
 ---
 
-A big German enterprise approached us because they needed a solution to manage and provide access to the vast amount of diverse business inteligence resources that are built internally. We got invited to a four-day event where we could work through a design sprint and showing a first draft of what a solution could look like.
+A big German enterprise approached us because they needed a solution to manage and provide access to the vast amount of diverse business intelligence resources that are built internally. We got invited to a four-day event where we could work through a design sprint and showing a first draft of what a solution could look like.
 
 The goal of this design sprint was to give us insights into the company context and problem details while observing our UX approach and letting us compete against other invited teams for the following project.
-
 
 <div class="images">
     <a href="/images/projects/designsprint/head.png">
@@ -27,10 +26,10 @@ The goal of this design sprint was to give us insights into the company context 
 ## Process
 
 - Stakeholder interviews and result sorting on sticky notes
-- Worflow mapping and user goal extraction
+- Workflow mapping and user goal extraction
 - Identify areas for improvement
 - Select areas to focus on with stakeholders
-- Ideation and skechting
+- Ideation and sketching
 - User flows and wireframes
 - Mockups and prototype
 - User testing

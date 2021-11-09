@@ -23,7 +23,7 @@ In 2020, dalibri's website was still one that has been put together in two eveni
 - Creation of a wireframe for the start page
 - Text was developed with a content writer in interviews and iterations
 - Exploration of design direction
-- Decision for design direction and itereation to close to final design
+- Decision for design direction and iteration to close to final design
 - Implementation of the responsive website with support for two languages
 
 ## Design & Tech Stack
