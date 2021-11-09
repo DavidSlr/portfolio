@@ -13,10 +13,12 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --destination _prod_site/ --config _config.yml,_config_prod.yml"
     - name: Setup Environment.
+      env:
+        known_hosts: ${{ secrets.KNOWN_HOSTS }} 
       run: |
         sudo apt-get install -y lftp
         mkdir -p ~/.ssh/
-        ssh-keyscan $ftp_location >> ~/.ssh/known_hosts
+        echo $known_hosts >> ~/.ssh/known_hosts
     - name: Upload site to FTP.
       env: 
         ftp_location: ${{ secrets.FTP_LOCATION }}
