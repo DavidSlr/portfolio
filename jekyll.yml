@@ -1,0 +1,25 @@
+name: Jekyll site CI
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+    - name: Setup Environment.
+      run: |
+        sudo apt-get install -y ncftp
+    - name: Upload site to FTP.
+      env: 
+        ftp_location: ${{ secrets.FTP_LOCATION }}
+        ftp_username: ${{ secrets.FTP_USERNAME }}
+        ftp_password: ${{ secrets.FTP_PASSWORD }} 
+        ftp_path: ${{ secrets.FTP_PATH }} 
+      run: |
+        ncftpput -R -v -u "$ftp_username" -p "$ftp_password" $ftp_location $ftp_path _site/* 
