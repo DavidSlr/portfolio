@@ -36,7 +36,7 @@ The goal of this design sprint was to give us insights into the company context 
 - Feedback sorting and possible next steps
 
 {% include gallery.html base_url="/images/projects/designsprint/"
-                        images="workflowmap.png,problems.png,sketches.png,wireframes.png"%}
+                        images="workflowmap.jpg,problems.jpg,sketches.jpg,wireframes.png"%}
 
 ## Project Takeaways
 
