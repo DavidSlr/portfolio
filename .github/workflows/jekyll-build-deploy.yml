@@ -14,7 +14,7 @@ jobs:
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
     - name: Setup Environment.
       run: |
-        sudo apt-get install -y ncftp
+        sudo apt-get install -y lftp
     - name: Upload site to FTP.
       env: 
         ftp_location: ${{ secrets.FTP_LOCATION }}
@@ -22,4 +22,4 @@ jobs:
         ftp_password: ${{ secrets.FTP_PASSWORD }} 
         ftp_path: ${{ secrets.FTP_PATH }} 
       run: |
-        ncftpput -R -v -u "$ftp_username" -p "$ftp_password" $ftp_location $ftp_path _site/* 
+        lftp sftp://$ftp_username:$ftp_password@$ftp_location  -e "set cmd:at-exit; set net:timeout 10; set net:max-retries 3; mirror --verbose --no-perms --only-newer -R _prod_site $ftp_path; bye"
