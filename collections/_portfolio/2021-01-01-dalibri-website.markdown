@@ -12,7 +12,7 @@ division_of_work: Content produced with photographers and content writer, struct
 ---
 
 <div class="images">
-    <a href="/images/projects/dalibri/full.png" class="float-right"><img src="/images/projects/dalibri/full.png"></a>
+    <a href="/images/projects/dalibri/full.jpg" class="float-right"><img src="/images/projects/dalibri/full.jpg"></a>
 </div>
 
 In 2020, dalibri's website was still one that has been put together in two evenings. It was clear that if new potential clients that looked us up should get a better first impression. The goal was to have professional but friendly presentation that shows what services dalibri provides at a quick glance and a more detailed level.

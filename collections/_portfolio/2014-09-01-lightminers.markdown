@@ -34,6 +34,9 @@ The lanterns contain a Raspberry Pi that connects to a WiFi network and polls it
 * The electronics inside the lanterns include a Raspberry Pi that runs a Python script to get the data from the backend. The Raspberry Pi will communicate with an Arduino-compatible Teensy board that changes the color of the the LED strip. The boards are powered by a battery pack and built into a 3D-printed lantern housing.
 * The app is a simple mobile website that is built with HTML, CSS, jQuery and jQuery mobile. Google Maps is used to display lanterns in the environment. During the testing it was used on iOS, Android and Windows Phone.
 
+{% include gallery.html base_url="/images/projects/lightminers/"
+                        images="01.jpg,02.jpg,03.jpg"%}
+
 ## Competition
 
 This project was the entry of our group for a student competition. The aim of that competition was to let participants design a pervasive game that motivates players to explore the environment of a place like Schladming in Austria. The games were supposed to a use a backend that was created for the [Experimedia research project](https://www.ri.se/en/what-we-do/projects/experimedia). After creating a concept on the actual competition our team and another one were invited to Schladming, Austria to prototype the game concept.

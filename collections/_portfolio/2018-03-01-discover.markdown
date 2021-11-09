@@ -18,7 +18,7 @@ division_of_work: This was an established project when I joined and is in consta
 
 
 <div class="images">
-    <a href="/images/projects/discover/discover_laptop.png" class="float-right"><img src="/images/projects/discover/discover_laptop.png"></a>
+    <a href="/images/projects/discover/discover_laptop.jpg" class="float-right"><img src="/images/projects/discover/discover_laptop.jpg"></a>
 </div>
 
 The Discover tool is a part of an award-winning set of tools that gives professional newsroom users the functionality they need to publish newspapers in the digital age. Discover is used to find, read and monitor news from a variety of sources.
