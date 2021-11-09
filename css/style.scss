@@ -11,7 +11,7 @@ $accent:#0083B0;
 $light-accent: $accent;
 $dark-accent: $accent;
 
-$dark-text: #222;
+$dark-text: #333;
 $medium-text: #555;
 $light-text: #888;
 $light-border: #ddd;
@@ -21,9 +21,6 @@ $gradient1:#00B4DB;
 $gradient2: $accent;
 $gradient3:#F4E14C;
 $gradient4: #E5B300;
-
-// $gradient1:#49a0cc;
-// $gradient2:#94cfec;
 
 /* Outer container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -76,7 +73,10 @@ h1, h2, h3, h4, h5, h6 {
 p, li, dd {
     max-width: 48rem;
     margin-top: 0;
+    margin-bottom: 0.5rem;
     font-size: 1.2rem;
+
+    list-style-image: url('/images/box.svg');
 }
 
 p > a {
@@ -243,8 +243,6 @@ a.float-right {
 
         &:hover {
             .overlay {
-                //background: linear-gradient(to top, $dark-accent-bg2 0%, $dark-accent-bg1 50%);
-                //background-position: 0 20%;
                 opacity: 0;
                 transition: opacity .4s ease-in-out;
             }
@@ -336,7 +334,6 @@ ul.skills {
     li {
         list-style-type: none;
         padding: 0.05rem 0.5rem;
-        //background-color: $light-accent;
         border-radius: 5px;
         margin-right: 0.5rem;
         margin-bottom: 1rem;
@@ -344,7 +341,6 @@ ul.skills {
         font-weight: 400;
         cursor: default;
 
-        //background-image: linear-gradient(135deg, $gradient1, $gradient2, $gradient3);
         background-image: linear-gradient(135deg, $gradient1, $gradient2 50%, $gradient3 55%, $gradient4);
 
         background-size: 300% 100%;
@@ -356,6 +352,7 @@ ul.skills {
             -o-transition: all .4s ease-in-out;
             -webkit-transition: all .4s ease-in-out;
             transition: all .4s ease-in-out;
+
             color: #524000;
         }
     }
