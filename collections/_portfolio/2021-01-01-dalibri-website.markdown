@@ -15,16 +15,16 @@ division_of_work: Content produced with photographers and content writer, struct
     <a href="/images/projects/dalibri/full.jpg" class="float-right"><img src="/images/projects/dalibri/full.jpg"></a>
 </div>
 
-In 2020, dalibri's website was still one that has been put together in two evenings. It was clear that if new potential clients that looked us up should get a better first impression. The goal was to have professional but friendly presentation that shows what services dalibri provides at a quick glance and a more detailed level.
+In 2020, dalibri's website was still one that has been put together in two evenings. It was clear that potential new clients that looked us up should get a better first impression. The goal was to have a professional but friendly presentation that shows what services dalibri provides at a quick glance and a more detailed level.
 
 ## Process
 
-- Collecting and sorting of structure and content in a workshop
-- Creation of a wireframe for the start page
-- Text was developed with a content writer in interviews and iterations
-- Exploration of design direction
-- Decision for design direction and iteration to close to final design
-- Implementation of the responsive website with support for two languages
+- Collecting and sorting the outline and content in a workshop
+- Creating a wireframe for the start page
+- Developing text with a content writer in interviews and iterations
+- Exploring design direction
+- Deciding on design direction and iteration close to final design
+- Implementing the responsive website with support for two languages
 
 ## Design & Tech Stack
 
