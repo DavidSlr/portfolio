@@ -319,11 +319,16 @@ a.float-right {
         }
     }
 
-    h3, h4 {
+    h3, p {
         margin-bottom: 0;
     }
-    h3 { font-size: 1.4rem; line-height: 1.5;  letter-spacing: -.06rem; }
-    h4 {
+    h3 {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        letter-spacing: -.06rem;
+        margin-top: 1rem;
+    }
+    p {
         font-size: 1.0rem;
         line-height: 1.75;
         letter-spacing: -.02rem;
