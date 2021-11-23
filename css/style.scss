@@ -81,7 +81,8 @@ p, li, dd {
 
 p > a, .bottom-navigation a {
     color: $dark-accent;
-    text-decoration: underline dotted #555;
+    text-decoration: none;
+    border-bottom: 2px dotted #555;
     font-weight: 400;
     position: relative;
     transition: color .2s ease-out;
@@ -89,7 +90,6 @@ p > a, .bottom-navigation a {
     &:hover {
         color: $dark-accent;
         right: 0;
-        text-decoration: none;
     }
     &:hover:after {
         border-color: $dark-accent;
@@ -97,14 +97,14 @@ p > a, .bottom-navigation a {
     }
     &:after {
         border-radius: 1em;
-        border-top: .1em solid $dark-accent;
+        border-top: 2px solid $dark-accent;
         content: "";
         position: absolute;
         right: 100%;
-        bottom: 0;
+        bottom: -2px;
         left: 0;
-        transition: right .4s ease-out,
-                border-color .2s ease-out;
+        transition: right .3s ease-in,
+                border-color .2s ease-in;
     }
     &:hover:after {
         right: 0;
@@ -346,13 +346,21 @@ a.float-right {
 /* Portfolio item page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .bottom-navigation{
-    display: flex;
-    justify-content: space-between;
     margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoint('medium') {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
     a {
         display: block;
+        margin: 1rem 0;
     }
+
     div.empty{
         width: 7rem;
     }
