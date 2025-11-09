@@ -8,7 +8,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 4.2.0"
+gem "jekyll", "~> 4.2.2"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
@@ -20,7 +20,8 @@ end
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?
 
+gem "webrick"
 
-gem "csv", "~> 3.3"
+#gem "csv", "~> 3.3"
 
-gem "logger", "~> 1.7"
+#gem "logger", "~> 1.7"

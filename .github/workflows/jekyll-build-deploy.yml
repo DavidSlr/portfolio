@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Build the site in the jekyll/builder container
       # running jekyll build in docker. Using a different destination folder and two config files
       # config_prod overrides values in config which are for development
@@ -21,14 +21,30 @@ jobs:
         sudo apt-get install -y lftp
         mkdir -p ~/.ssh/
         echo $known_hosts >> ~/.ssh/known_hosts
-    - name: Upload site to FTP.
-      env: 
-        ftp_location: ${{ secrets.FTP_LOCATION }}
-        ftp_username: ${{ secrets.FTP_USERNAME }}
-        ftp_password: ${{ secrets.FTP_PASSWORD }} 
-        ftp_path: ${{ secrets.FTP_PATH }} 
-      # mirror -R uploads files to the folder to the FTP server
-      # timeout and max-tries set to make it stop when the upload doesn't work instead of retrying
-      # $ftp_path may not end with a "/". Otherwise the source folder is uploaded and not just its contents
-      run: |
-        lftp sftp://$ftp_username:$ftp_password@$ftp_location  -e "set cmd:at-exit; set net:timeout 10; set net:max-retries 3; mirror --verbose --no-perms -R _prod_site/ $ftp_path; bye"
+
+    - name: Build and Deploy to Netlify
+      uses: nwtgck/actions-netlify@v3.0
+      with:
+        publish-dir: './_prod_site'
+        production-branch: master
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        deploy-message: "Deploy from GitHub Actions"
+        enable-pull-request-comment: false
+        enable-commit-comment: true
+        overwrites-pull-request-comment: true
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      timeout-minutes: 1
+
+    # - name: Upload site to FTP.
+    #   env: 
+    #     ftp_location: ${{ secrets.FTP_LOCATION }}
+    #     ftp_username: ${{ secrets.FTP_USERNAME }}
+    #     ftp_password: ${{ secrets.FTP_PASSWORD }} 
+    #     ftp_path: ${{ secrets.FTP_PATH }} 
+    #   # mirror -R uploads files to the folder to the FTP server
+    #   # timeout and max-tries set to make it stop when the upload doesn't work instead of retrying
+    #   # $ftp_path may not end with a "/". Otherwise the source folder is uploaded and not just its contents
+    #   run: |
+    #     lftp sftp://$ftp_username:$ftp_password@$ftp_location  -e "set cmd:at-exit; set net:timeout 10; set net:max-retries 3; mirror --verbose --no-perms -R _prod_site/ $ftp_path; bye"
