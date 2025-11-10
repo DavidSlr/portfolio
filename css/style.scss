@@ -271,7 +271,7 @@ a.float-right {
         $accent-gradient: darken($accent, 15%);
         .overlay {
             position: absolute;
-            background: linear-gradient(to top, rgba($dark-text, 60%) 0%, rgba($dark-text, 0%) 30%);
+            background: linear-gradient(to top, rgba($dark-text, 0.6) 0%, rgba($dark-text, 0) 30%);
             opacity: 1;
             transition: opacity .4s ease-in-out;
             
@@ -281,7 +281,7 @@ a.float-right {
             right: 0;
 
             @media (hover: hover) {
-                background: linear-gradient(to top, rgba($accent-gradient, 100%) 0%, rgba($accent-gradient, 30%) 30%, rgba($accent-gradient, 10%) 100%);
+                background: linear-gradient(to top, rgba($accent-gradient, 1.0) 0%, rgba($accent-gradient, 0.3) 30%, rgba($accent-gradient, 0.1) 100%);
             }
 
         }
