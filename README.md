@@ -10,7 +10,7 @@ I used
 
 - [Jekyll](http://jekyllrb.com/) as a static site generator. My portfolio pages are implemented as a collection that is listed on the homepage.
 - Standalone [Simple Lightbox](https://simplelightbox.com/) to present and skip through images
-- Github Actions to build and deploy to SFTP on commits to main branch
+- Github Actions to build and deploy to ~~SFTP~~ [netlify](https://www.netlify.com/) on commits to main branch
 
 ## Dev
 
