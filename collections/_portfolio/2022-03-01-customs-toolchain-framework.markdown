@@ -17,7 +17,7 @@ division_of_work: Changing UX team with 0-4 other UX and product designers and a
 
 As a part of the development the [Quadrel application and UI framework](https://www.bazg.admin.ch/bazg/de/home/themen/dazit/vereinfachung-und-digitalisierung/entwicklerplattform.html) was built. The goal was to leverage standardized components to reduce frontend development effort in the application teams, make maintenance easier and improve UX/UI consistency.
 
-I worked here as a UX designer for close to 4 years and primarily worked with the application teams to plan their concepts and make sure that the framework is used withing its capabilities, standard design decisions are followed and UX best practices are considered. Further, I communicated the requirement of applications back to the framework team and made proposals how framework extensions could work and bring value to the whole program.
+I worked here as a UX designer for close to 4 years and primarily worked with the application teams to plan their concepts and make sure that the framework is used within its capabilities, standard design decisions are followed and UX best practices are considered. Further, I communicated the requirement of applications back to the framework team and made proposals how framework extensions could work and bring value to the whole program.
 
 
 {% include gallery.html base_url="/images/projects/customs/"
