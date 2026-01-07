@@ -21,7 +21,7 @@ Hi, I am David. I am a UX designer, prototyper and former software developer who
 
 <div class="portfolio-list">
 
-<p>These are some of the projects I worked on during my career. The bottom three items are projects from my time as an IxD student which are fun to look back on.</p>
+<p>These are some of the projects I worked on during my career. The bottom three items are some less serious projects from my time as an IxD student.</p>
 
 {% assign portfolio = site.portfolio  | sort: 'date' | reverse %}
 {% for item in portfolio %}
