@@ -13,7 +13,7 @@ used_skills: Design sprints, user interviews, sketching, Sketch, InVision
 division_of_work: I went through the sprint as a two-people team with our Head of UX
 ---
 
-A big German enterprise approached us because they needed a solution to manage and provide access to the huge and growing collection of business intelligence resources that are built internally. We got invited to a four-day event where we could work through a design sprint and show a first draft of what a solution could look like.
+A German enterprise approached us because they needed a solution to manage and provide access to the huge and growing collection of business intelligence resources that are built internally. We got invited to a four-day event where we could work through a design sprint and show a first draft of what a solution could look like.
 
 The goal of this design sprint was to give us insights into the company context and problem details while the client could observe our UX approach and let us compete against other invited teams for the project.
 

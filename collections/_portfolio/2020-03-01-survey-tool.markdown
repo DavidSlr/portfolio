@@ -17,15 +17,17 @@ division_of_work: The implementation was done by a web development team
     <a href="/images/projects/survey/quest_overview.png" class="float-right"><img src="/images/projects/survey/quest_overview.png"></a>
 </div>
 
-The client had a web application that contained surveys which needed to be filled out by all locations worldwide. The application also provided ways to audit data in a multi-stage approval process. The interface was very outdated and tedious to handle.
+The client had a web application to fill out surveys by departments all over the world. The application also provided ways to audit data in a multi-stage approval process. The interface was very outdated and tedious to handle.
 
-The brief from the client said that they wanted to freshen it up and make it look modern. After some convincing the client agreed to have a user research phase that helped us understand the usage patterns and pain points. In the end the application wasn't just redesigned with a modern style and the company's corporate identity. Instead, the interface was also adapted to drop a lot of unnecessary complexity, clearly display survey progress and provide a more straightforward entry point to the currently relevant survey. This benefits the many users that only use the system one to three times per year.
+The brief from the client said that they wanted to have a moder redesign of their application without any major changes of the structure. After some convincing, the client agreed to have a user research phase that helped us understand the usage patterns and pain points.
 
-The interface was changed for the presentation in this portfolio so that the client and details of their processes would not be shown.
+In the end the application was not just redesigned with a modern style and the company's corporate identity. Instead, the interface was also adapted to drop unnecessary complexity, clearly display survey progress and provide a more straightforward entry point to the currently relevant survey. This benefits the many users that only use the system one to three times per year.
+
+The interface was changed for the presentation in this portfolio to not show client information and processes.
 
 
 {% include gallery.html base_url="/images/projects/survey/"
-                        images="dashboard.png,quest_overview.png"%}
+                        images="dashboard.png,quest_overview.png,quest_category.png"%}
 
 ## Design Process
 
@@ -39,6 +41,11 @@ The interface was changed for the presentation in this portfolio so that the cli
 
 {% include gallery.html base_url="/images/projects/survey/"
                         images="process_actors.jpg,affinity_diagramming.jpg,interaction.gif"%}
+
+## UX learnings
+- The old app made thes user set very specific filters to find the surveys they needed to fill out. Working with sorting and account-specific parameters yielded the most relevant surveys to the user for most use cases wihout any filtering and all other surveys with very few filter interactions.
+- Reviews were handled outside the system by email or phone. Integrating this into the system made it a lot easier to keep track of states for user who fill out surveys as well as reviewers.
+- The responsibility for different part of surveys is split in departments. Parallel data entry is therefore better supported via state visualization and display of the change history.
 
 ## Project Takeaways
 
