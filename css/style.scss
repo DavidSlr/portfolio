@@ -3,7 +3,6 @@
 
 @import "normalize";
 @import "mixins";
-@import "simple-lightbox.min.scss";
 
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -21,6 +20,14 @@ $gradient1:#00B4DB;
 $gradient2: $accent;
 $gradient3:#F4E14C;
 $gradient4: #E5B300;
+
+/* Simple Lightbox
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+$sl-font-family: Inter, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sl-overlay-background: #000;
+$sl-navigation-color: #fff;
+
+@import "simple-lightbox.scss";
 
 /* Outer container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

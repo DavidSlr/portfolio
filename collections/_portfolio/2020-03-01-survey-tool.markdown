@@ -9,7 +9,7 @@ tagline: Redesigning a 20-year-old web application for data collection
 context: Client project at Cognizant
 duration: 10 weeks
 
-used_skills: User research, user interviews, Sketch, InVision, stakeholder management
+used_skills: User research, user interviews, Sketch, InVision, Drama, stakeholder management
 division_of_work: The implementation was done by a web development team
 ---
 
@@ -19,7 +19,7 @@ division_of_work: The implementation was done by a web development team
 
 The client had a web application to fill out surveys by departments all over the world. The application also provided ways to audit data in a multi-stage approval process. The interface was very outdated and tedious to handle.
 
-The brief from the client said that they wanted to have a moder redesign of their application without any major changes of the structure. After some convincing, the client agreed to have a user research phase that helped us understand the usage patterns and pain points.
+The brief from the client said that they wanted to have a modern redesign of their application without any major changes of the structure. After some convincing, the client agreed to have a user research phase that helped us understand the usage patterns and pain points.
 
 In the end the application was not just redesigned with a modern style and the company's corporate identity. Instead, the interface was also adapted to drop unnecessary complexity, clearly display survey progress and provide a more straightforward entry point to the currently relevant survey. This benefits the many users that only use the system one to three times per year.
 
@@ -43,7 +43,7 @@ The interface was changed for the presentation in this portfolio to not show cli
                         images="process_actors.jpg,affinity_diagramming.jpg,interaction.gif"%}
 
 ## UX learnings
-- The old app made thes user set very specific filters to find the surveys they needed to fill out. Working with sorting and account-specific parameters yielded the most relevant surveys to the user for most use cases wihout any filtering and all other surveys with very few filter interactions.
+- In the old app the users had to set very specific filters to find the surveys they needed to fill out. Working with sorting and account-specific parameters yielded the most relevant surveys to the user for most use cases without any filtering and all other surveys with very few filter interactions.
 - Reviews were handled outside the system by email or phone. Integrating this into the system made it a lot easier to keep track of states for user who fill out surveys as well as reviewers.
 - The responsibility for different part of surveys is split in departments. Parallel data entry is therefore better supported via state visualization and display of the change history.
 
