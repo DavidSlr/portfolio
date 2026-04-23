@@ -27,7 +27,7 @@ The interface was changed for the presentation in this portfolio to not show cli
 
 
 {% include gallery.html base_url="/images/projects/survey/"
-                        images="dashboard.png,quest_overview.png,quest_category.png"%}
+                        images="dashboard.png:Dashboard,quest_overview.png:Survey overview,quest_category.png:One category of a survey with questions"%}
 
 ## Design Process
 
@@ -40,7 +40,7 @@ The interface was changed for the presentation in this portfolio to not show cli
 - Animations and interactions built as guide for developers with [Drama](https://www.drama.app)
 
 {% include gallery.html base_url="/images/projects/survey/"
-                        images="process_actors.jpg,affinity_diagramming.jpg,interaction.gif"%}
+                        images="process_actors.jpg: Review process mapped out with stakeholders,affinity_diagramming.jpg:Affinity diagramming of interview findings,interaction.gif:Draft of an animation to add conditional questions to a questionnaire"%}
 
 ## UX learnings
 - In the old app the users had to set very specific filters to find the surveys they needed to fill out. Working with sorting and account-specific parameters yielded the most relevant surveys to the user for most use cases without any filtering and all other surveys with very few filter interactions.
