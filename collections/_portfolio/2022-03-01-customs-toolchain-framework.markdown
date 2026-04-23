@@ -21,7 +21,7 @@ I worked here as a UX designer for close to 4 years and primarily worked with th
 
 
 {% include gallery.html base_url="/images/projects/customs/"
-                        images="mock1-passar.png,mock2-prezius.png,mock3-prezius.png,mock4-prezius.png"%}
+                        images="mock1-passar.png: Goods declaration for review by the customs office,mock2-prezius.png:Request management at the office for precious metals,mock3-prezius.png:Request for manufacturer's mark registration with progress guide,mock4-prezius.png:New request screen adapting to registered items in the user's account"%}
 
 ## Application Design Process
 
@@ -40,7 +40,7 @@ The rough process looked something like this:
 - Iterate after testing and getting feedback from real world use
 
 {% include gallery.html base_url="/images/projects/customs/"
-                        images="proc-user-flow.png,proc-suchverfahren.png,proc-figma.png"%}
+                        images="proc-user-flow.png:User flow mapping of customer-facing account management,proc-suchverfahren.png:Process overview of customs communication with other countries - co-created with stakeholders,proc-figma.png:Request management for precious metals - UI design and prototyping in Figma"%}
 
 ## Challenges and UX impact
 While working with the application teams to draft and plan new features we usually had to strengthen in the user-centered aspects into the processes.
@@ -67,7 +67,7 @@ The UI framework was developed in an agile way during the project and was consta
 On top of our usual Figma component library I established a FigJam board that includes a majority of our components. This lets Business Analysts copy & paste those components to their own FigJam Boards and easily compose their own UI drafts. This has a few limitations but is very easy to learn and avoids more difficult concepts like the layer tree, auto layout and component configuration while allowing text changes and component variants. This was very valuable when we only had 1-3 UX designers to support 14+ application teams as it enabled BAs to prepare simple concepts and discuss them with stakeholders while upholding UI standards.
 
 {% include gallery.html base_url="/images/projects/customs/"
-                        images="ba-toolkit.png,ba-toolkit2.png"%}
+                        images="ba-toolkit.png:Business analyst FigJam toolkit for simple mockups,ba-toolkit2.png:Form components in FigJam toolkit"%}
 
 In this screencast you can see how the UIs can be quickly composed with the FigJam components.
 
