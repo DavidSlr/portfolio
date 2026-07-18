@@ -43,7 +43,11 @@
     <script lang="js" src="/script/simple-lightbox.min.js"></script>
     <script lang="js">
       var SimpleLightbox = window.SimpleLightbox;
-      var lightbox = new SimpleLightbox('.images a', {uniqueImages: false});
+      var lightbox = new SimpleLightbox('.images a',
+      {
+        uniqueImages: false,
+        fileExt: 'png|jpg|jpeg|gif|svg'
+      });
     </script>
   </body>
 </html>
