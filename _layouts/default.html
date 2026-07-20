@@ -48,6 +48,14 @@
         uniqueImages: false,
         fileExt: 'png|jpg|jpeg|gif|svg'
       });
+
+      // Open external links in a new tab; leave internal links untouched
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        if (link.hostname !== window.location.hostname && /^https?:$/.test(link.protocol)) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      });
     </script>
   </body>
 </html>
