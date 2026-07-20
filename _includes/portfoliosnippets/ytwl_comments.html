@@ -1,0 +1,49 @@
+<style>
+.wla-sentiment-figure{box-sizing:border-box;margin:1.5rem 0;max-width:460px;}
+.wla-sentiment-figure *{box-sizing:border-box;}
+.wla-sentiment-demo{width:100%;padding:16px 18px;background:#0f0f0f;border:1px solid #2e2e2e;border-radius:8px;font-family:Inter,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#e8e8e8;font-size:14px;line-height:1.45;}
+.wla-sentiment-demo .wsd-header{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;color:#e8e8e8;padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid #2e2e2e;}
+.wla-sentiment-demo .wsd-caret{color:#888;font-size:11px;}
+.wla-sentiment-demo .wsd-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-bottom:6px;background:#1a1a1a;}
+.wla-sentiment-demo .wsd-bar span{display:block;height:100%;}
+.wla-sentiment-demo .wsd-legend{font-size:12px;color:#aaa;margin-bottom:14px;}
+.wla-sentiment-demo .wsd-themes{display:flex;flex-direction:column;gap:12px;}
+.wla-sentiment-demo .wsd-item{border-left:3px solid #2e2e2e;padding:2px 0 2px 12px;display:flex;flex-direction:column;gap:4px;}
+.wla-sentiment-demo .wsd-item.is-pos{border-left-color:#28ada0;}
+.wla-sentiment-demo .wsd-item.is-neg{border-left-color:#e5484d;}
+.wla-sentiment-demo .wsd-title{font-size:14px;font-weight:600;color:#e8e8e8;line-height:1.45;}
+.wla-sentiment-demo .wsd-sign{font-weight:700;margin-right:4px;}
+.wla-sentiment-demo .wsd-sign.pos{color:#28ada0;}
+.wla-sentiment-demo .wsd-sign.neg{color:#e5484d;}
+.wla-sentiment-demo .wsd-quote{font-size:12px;font-style:italic;color:#aaa;line-height:1.45;}
+.wla-sentiment-caption{margin:0.6rem 0 0;font-size:0.85rem;line-height:1.4;color:#666;}
+/* Float beside the text on wider screens; stack on narrow ones */
+@media (min-width:48rem){
+  .wla-sentiment-figure{float:right;clear:right;width:20rem;max-width:20rem;margin:0.25rem 0 1rem 2rem;}
+}
+</style>
+<figure class="wla-sentiment-figure">
+  <div class="wla-sentiment-demo">
+    <div class="wsd-header"><span>Comment Sentiment</span><span class="wsd-caret">&#9662;</span></div>
+    <div class="wsd-bar">
+      <span style="width:41%;background:#28ada0"></span>
+      <span style="width:35%;background:#888888"></span>
+      <span style="width:24%;background:#e5484d"></span>
+    </div>
+    <div class="wsd-legend">41% positive &middot; 35% neutral &middot; 24% critical</div>
+    <div class="wsd-themes">
+      <div class="wsd-item is-pos">
+        <span class="wsd-title"><span class="wsd-sign pos">+</span>Innovation and practical value of new tools like Make Kits and AI-assisted design</span>
+        <span class="wsd-quote">"This is genuinely innovative work, and I do think tools like Figma Make are exciting"</span>
+      </div>
+      <div class="wsd-item is-neg">
+        <span class="wsd-title"><span class="wsd-sign neg">&minus;</span>Concern that AI framing oversells automation and undervalues human craft and judgment</span>
+        <span class="wsd-quote">"I strongly believe that the craftsmanship behind design will always be the foundation, even more so with AI."</span>
+      </div>
+      <div class="wsd-item is-neg">
+        <span class="wsd-title"><span class="wsd-sign neg">&minus;</span>Skepticism about pace of delivery and actual implementation timeline</span>
+        <span class="wsd-quote">"This all sounds great! But&hellip; when? Can we move faster?"</span>
+      </div>
+    </div>
+  </div>
+</figure>
