@@ -55,12 +55,13 @@ The **comment sentiment** presents how commenters feel about the video as statis
 
 ## What Needed Adjustment
 
+{% include portfoliosnippets/ytwl_comments.html %}
+
 When I initially asked the AI to rate the comments as positive or negative, it rated the tone of each individual comment. That flagged comments as negative when they were angry about the topic but actually agreed with the video, and as positive when they joked around while disagreeing with it. I had to make it clear that the comments should be rated according to how they relate to the video's message. It is not perfect but gives a lot better insight into the reception of the video.
 
 The fix wasn't a code change but realizing the model was answering the wrong question. It is so useful to have these [prompts](https://github.com/DavidSlr/yt-watch-later-triage/blob/master/pages/prompts.js) in an easy-to-find place in the code so they can be iterated on. Through trial and error it is possible to fill in the context gaps that leave the AI guessing and missing the desired outcome.
 
-{% include gallery.html base_url="/images/projects/watchlater/"
-                        images="comment_sentiment.png:A video's comment section shows positive sentiment about the promising features and negative sentiment about AI being treated too favorably"%}
+<div style="clear:both"></div>
 
 ## Knowing When to Stop
 
