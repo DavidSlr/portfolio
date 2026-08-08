@@ -13,6 +13,8 @@
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $accent:#0083B0;
+// Darkened accent for solid fills behind white text
+$accent-dark: color.adjust($accent, $lightness: -10%);
 
 $dark-text: #333;
 $medium-text: #555;
@@ -56,7 +58,8 @@ h1, h2, h3, h4, h5, h6 {
   h4 { font-size: 1.4rem; line-height: 1.35; letter-spacing: -.06rem; margin-top: 2rem;}
 
 .tagline {
-    .main > & {
+    .main > &,
+    .error-page > & {
         font-size: 2em;
         margin: 0.5rem 0 2rem 0;
         line-height: 1.25;
@@ -414,14 +417,38 @@ ul.skills {
     }
 }
 
+/* Button
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+// Deliberately not inside a <p>, so the animated underline on `p > a` and
+// this solid treatment never apply to the same link.
+.button {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    background-color: $accent-dark;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .2s ease-out;
+
+    &:hover {
+        background-color: color.adjust($accent, $lightness: -18%);
+    }
+}
+
 /* 404
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .error-page {
-    margin: 4rem 0;
+    margin: 4rem 0 6rem;
     text-align: center;
 
     p {
         max-width: none;
+    }
+
+    .button {
+        margin-top: 1.5rem;
     }
 }
 
