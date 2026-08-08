@@ -4,3 +4,4 @@ _prod_site
 .jekyll-metadata
 .jekyll-cache
 vendor
+.DS_Store

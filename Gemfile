@@ -21,7 +21,3 @@ end
 gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?
 
 gem "webrick"
-
-#gem "csv", "~> 3.3"
-
-#gem "logger", "~> 1.7"

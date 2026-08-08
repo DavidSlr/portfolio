@@ -11,17 +11,37 @@ collections_dir: collections
 collections:
   portfolio:
     output: true
+  # Older projects, kept in the repo for reference but deliberately not
+  # published. To bring them back, set output to true here AND remove the
+  # matching image folders from the exclude list below.
+  portfolio-archive:
+    output: false
 
 sass:
   sass_dir: _sass
 
 # Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
+# Anything not listed here that sits in the project root gets copied into the
+# build output and published, so keep dev tooling in this list.
 exclude:
   - build.sh
+  - Dockerfile
+  - .dockerignore
+  - README.md
   - Gemfile
   - Gemfile.lock
   - vendor
-  
-#   - node_modules
+
+  # Images kept in the repo but left out of the build. Everything under
+  # /images is otherwise copied wholesale, so anything unused has to be
+  # listed here or it ships as dead weight.
+  #
+  # Belong to the unpublished portfolio-archive collection (~9.3 MB):
+  - images/projects/lightminers
+  - images/projects/beatthewall
+  - images/projects/retrospect
+  # Superseded figures that no current page references (~0.8 MB):
+  - images/projects/customs/framework1.png
+  - images/projects/discover/03ani.gif
+  - images/projects/discover/prot_notif.gif
+  - images/projects/watchlater/comment_sentiment.png

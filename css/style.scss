@@ -13,19 +13,11 @@
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $accent:#0083B0;
-$light-accent: $accent;
-$dark-accent: $accent;
 
 $dark-text: #333;
 $medium-text: #555;
 $light-text: #6b6b6b;
 $light-border: #ddd;
-
-
-$gradient1:#00B4DB;
-$gradient2: $accent;
-$gradient3:#F4E14C;
-$gradient4: #E5B300;
 
 /* Outer container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -73,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1em;
     line-height: 1.5;
     font-weight: 400;
-    color: $light-accent;
+    color: $accent;
 }
 
 p, li, dd {
@@ -86,7 +78,7 @@ p, li, dd {
 }
 
 p > a, .bottom-navigation a {
-    color: $dark-accent;
+    color: $accent;
     text-decoration: none;
     border-bottom: 2px dotted $light-text;
     font-weight: 400;
@@ -94,16 +86,16 @@ p > a, .bottom-navigation a {
     transition: color .2s ease-out;
 
     &:hover {
-        color: $dark-accent;
+        color: $accent;
         right: 0;
     }
     &:hover:after {
-        border-color: $dark-accent;
+        border-color: $accent;
         right: 0;
     }
     &:after {
         border-radius: 1em;
-        border-top: 2px solid $dark-accent;
+        border-top: 2px solid $accent;
         content: "";
         position: absolute;
         right: 100%;
@@ -172,7 +164,7 @@ a {
 
     svg {
         vertical-align: top;
-        fill: $dark-accent;
+        fill: $accent;
     }
 }
 
@@ -217,13 +209,12 @@ a.float-right {
 
 .specs {
     dt {
-        color: $light-accent;
+        color: $accent;
         font-weight: 400;
     }
     dd {
         margin-left: 0;
         margin-bottom: 1rem;
-        max-width: 48rem;
     }
 }
 
@@ -402,7 +393,7 @@ a.float-right {
     }
 }
 
-/* Video
+/* Skills
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul.skills {
     padding: 0;
@@ -420,23 +411,17 @@ ul.skills {
         font-weight: 400;
         cursor: default;
         background-color: $accent;
+    }
+}
 
-        /*
-        background-image: linear-gradient(135deg, $gradient1, $gradient2 50%, $gradient3 55%, $gradient4);
+/* 404
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.error-page {
+    margin: 4rem 0;
+    text-align: center;
 
-        background-size: 300% 100%;
-        -o-transition: all .4s ease-in-out;
-        -webkit-transition: all .4s ease-in-out;
-        transition: all .4s ease-in-out;
-        &:hover {
-            background-position: 100% 0;
-            -o-transition: all .4s ease-in-out;
-            -webkit-transition: all .4s ease-in-out;
-            transition: all .4s ease-in-out;
-
-            color: #524000;
-        }
-            */
+    p {
+        max-width: none;
     }
 }
 
@@ -450,7 +435,7 @@ ul.skills {
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 footer {
-    border-top: 1px solid $light-accent;
+    border-top: 1px solid $accent;
     margin-top: 4rem;
     padding-top: 1rem;
     p {
