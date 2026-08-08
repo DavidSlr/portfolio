@@ -1,0 +1,5 @@
+# The image only needs the dependency manifests; the site source is mounted at
+# runtime (-v $PWD:/site), so nothing else needs to be in the build context.
+*
+!Gemfile
+!Gemfile.lock

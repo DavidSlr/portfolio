@@ -7,13 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Build the site in the jekyll/builder container
-      # running jekyll build in docker. Using a different destination folder and two config files
-      # config_prod overrides values in config which are for development
+    - name: Build the site with the project's Docker image
+      # Uses the same image (./Dockerfile) and command as `./build.sh prod`, so the
+      # local build and this one are identical. Gem versions come from Gemfile.lock.
+      # Two config files: _config_prod.yml overrides _config.yml for production.
       run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:4.2.2 /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --destination _prod_site/ --config _config.yml,_config_prod.yml"
+        docker build -t portfolio-jekyll .
+        docker run --rm -v "${{ github.workspace }}":/site portfolio-jekyll \
+          bundle exec jekyll build --destination _prod_site/ --config _config.yml,_config_prod.yml
     - name: Setup Environment.
       env:
         known_hosts: ${{ secrets.KNOWN_HOSTS }} 
@@ -36,7 +37,8 @@ jobs:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       timeout-minutes: 1
-
+    #  Old FTP deploy before moving to Netlify
+    #
     # - name: Upload site to FTP.
     #   env: 
     #     ftp_location: ${{ secrets.FTP_LOCATION }}
