@@ -1,5 +1,5 @@
 ---
-layout: subpage
+layout: default
 title: Impressum
 ---
 # Impressum
@@ -11,7 +11,7 @@ David Schneller<br />
 Ober dem Hof 5<br />
 51381 Leverkusen<br />
 
-<img src="/images/contact.png" width="260px">
+<img src="/images/contact.png" width="260px" alt="Kontaktdaten als Bild">
 
 Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br />
 David Schneller<br />

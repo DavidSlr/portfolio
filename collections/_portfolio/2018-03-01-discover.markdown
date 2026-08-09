@@ -18,7 +18,7 @@ division_of_work: This was an established project when I joined and is in consta
 
 
 <div class="images">
-    <a href="/images/projects/discover/discover_laptop.jpg" class="float-right"><img src="/images/projects/discover/discover_laptop.jpg"></a>
+    <a href="/images/projects/discover/discover_laptop.jpg" class="float-right"><img src="/images/projects/discover/discover_laptop.jpg" alt="The Discover news monitoring tool on a laptop, showing four parallel lanes of incoming articles filtered by category, language and search query."></a>
 </div>
 
 The Discover tool is a part of an award-winning set of tools that gives professional newsroom users the functionality they need to publish newspapers in the digital age. Discover is used to find, read and monitor news from a variety of sources.
@@ -26,14 +26,20 @@ The Discover tool is a part of an award-winning set of tools that gives professi
 News articles are collected from websites, mobile apps and social media are pushed into customizable "lanes" on the user's screen. The lanes can be filtered and set up for topics and sources that are currently relevant to the user.
 <br />
 
-#### Some key challenges developing the tool were
+## Key Challenges
+
+Some key challenges developing the tool were:
 
 - How do we handle and prioritize a high amount of news coming in on a constant basis?
 - Understanding the needs of news editors and journalist while driving the shift from print news to a true digital news provider
 - Unifying five toolbox products that were developed separately by their own teams and UX designers to feature a common look & feel
 
-{% include gallery.html base_url="/images/projects/discover/"
-                        images="01.png,02.png,03.png"%}
+{% assign gallery_base = "/images/projects/discover/" %}
+{% capture gallery %}
+{% include gallery-item.html src="01.png" alt="Four lanes side by side: sports articles, English articles, German articles and a query for refugee, each headline listing its source and arrival time." %}
+{% include gallery-item.html src="02.png" alt="Three lanes showing a news search, a licensed feed from the wire providers TT and Omni, and an unfiltered mobile feed." %}
+{% include gallery-item.html src="03.png" alt="The article reader opened on a Bloomberg story, with a list of five related articles from other outlets on the left." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## Design Process
 
@@ -49,8 +55,12 @@ This was a long-running and ever changing project. So the process was less linea
 
 Here are some example of prototypes that I have made to test ideas for interactions, animations and so on:
 
-{% include gallery.html base_url="/images/projects/discover/"
-                        images="prot_form.gif,prot_tele.gif,prot_notif2.gif"%}
+{% assign gallery_base = "/images/projects/discover/" %}
+{% capture gallery %}
+{% include gallery-item.html src="prot_form.gif" alt="Prototype of the lane filter form, with rows for account type, content and language, and a sort order switched between most recent, highest engagement and highest growth." %}
+{% include gallery-item.html src="prot_tele.gif" alt="Prototype of a compact article list where each item shows the headline, time, source, category and version number." %}
+{% include gallery-item.html src="prot_notif2.gif" alt="Prototype of the full tool window showing how a notification for a newly arrived article appears in a lane." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## Project Takeaways
 

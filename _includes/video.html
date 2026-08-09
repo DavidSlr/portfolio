@@ -1,4 +1,13 @@
-<video width="100%" controls>
-  <source src="{{include.url}}" type="video/mp4">
-    Your browser does not support the video tag.
-</video> 
+{% comment %}
+  `caption` describes what the recording shows, so the content is available to
+  anyone who cannot watch it (WCAG 1.2.x). Silent screen recordings need no
+  captions track; if a clip ever carries narration, add a <track kind="captions">
+  with a WebVTT file.
+{% endcomment %}
+<figure class="video">
+  <video width="100%" controls preload="metadata"{% if include.caption %} aria-label="{{ include.caption | escape }}"{% endif %}>
+    <source src="{{include.url}}" type="video/mp4">
+    <a href="{{include.url}}">Download the video</a> — your browser does not support embedded video.
+  </video>
+  {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+</figure>

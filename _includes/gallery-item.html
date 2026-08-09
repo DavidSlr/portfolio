@@ -1,0 +1,17 @@
+{% comment %}
+  One image inside a gallery. Every value is an ordinary include parameter, so
+  there are no delimiters to escape — commas, colons and quotes in the text are
+  all fine.
+
+    src       Required. Filename, resolved against the {{ gallery_base }}
+              variable assigned by the page. A full path works too, in which
+              case gallery_base does not need to be set.
+    alt       Required. The description read out to screen reader users
+              (WCAG 1.1.1). Describe what is actually in the picture. Omit it
+              only for images that carry no information of their own, which
+              renders alt="" and hides them from assistive technology.
+    title     Optional. The short caption the lightbox shows, and the tooltip
+              on hover. This is a display caption, not a replacement for alt.
+{% endcomment %}
+{%- assign item_src = include.base | default: gallery_base | append: include.src -%}
+<a href="{{ item_src }}"><img src="{{ item_src }}" alt="{{ include.alt | escape }}"{% if include.title %} title="{{ include.title | escape }}"{% endif %}></a>

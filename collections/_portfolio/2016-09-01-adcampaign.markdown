@@ -16,7 +16,7 @@ division_of_work: This was a new project with a team of 5-6 people with me as a 
 
 
 <div class="images">
-    <a href="/images/projects/adcampaign/main.png" class="float-right"><img src="/images/projects/adcampaign/main.png"></a>
+    <a href="/images/projects/adcampaign/main.png" class="float-right"><img src="/images/projects/adcampaign/main.png" alt="The Ad Campaign Monitoring app on a tablet, showing a campaign's geographical view with click volumes plotted on a map of Scandinavia next to a table of the top locations."></a>
 </div>
 
 Schibsted sells online advertising inventory on most of their online products and has sales departments that monitor the performance of advertising campaigns to make sure that goals are met and communicate campaign results. This app was developed as a proof of concept to test and show how professional users can benefit from live data on a mobile device.
@@ -27,8 +27,13 @@ In Schibsted we were developing solutions for creating advertising campaign repo
 
 The availability of up-to-date data was limited. Therefore we created this easy to use mobile application that could display live data and easily create customized data slices that present different views on the campaign.
 
-{% include gallery.html base_url="/images/projects/adcampaign/"
-                        images="01.jpg,02.jpg,03.jpg,04.png"%}
+{% assign gallery_base = "/images/projects/adcampaign/" %}
+{% capture gallery %}
+{% include gallery-item.html src="01.jpg" alt="Campaign search on the tablet app: a list of campaigns matching the query Volvo, with type, status and running dates." %}
+{% include gallery-item.html src="02.jpg" alt="Campaign summary with delivered impressions, clicks, CTR and viewability beside a daily performance graph." %}
+{% include gallery-item.html src="03.jpg" alt="Geographical view with clicks plotted on a map of Scandinavia and a sortable table of the top locations." %}
+{% include gallery-item.html src="04.png" alt="The same views on a phone: campaign list, campaign summary, map and regional data table." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 
 ## Design Process
@@ -40,8 +45,13 @@ The concept was based on research and knowledge from another project for static 
 - **Wireframes** were created with **pen+paper and Axure RP Pro** to discuss concepts with the team and them over to the visual designer.
 - We held a **design workshop** with participants from the department preparing the reports for advertising sales departments. They provided good insights into what data is important and when it is misinterpreted but the sales departments.
 
-{% include gallery.html base_url="/images/projects/adcampaign/"
-                        images="05.jpg,06.png,07.png,08.jpg"%}
+{% assign gallery_base = "/images/projects/adcampaign/" %}
+{% capture gallery %}
+{% include gallery-item.html src="05.jpg" alt="Pen and paper sketch of the sales team and person search field, including the popup used to pick a filter." %}
+{% include gallery-item.html src="06.png" alt="Grayscale wireframes of the campaign header on mobile: a collapsed summary, an expanded flight list with checkboxes, and a single flight view." %}
+{% include gallery-item.html src="07.png" alt="Grayscale wireframes comparing two layouts for the mobile performance summary and its impressions graph." %}
+{% include gallery-item.html src="08.jpg" alt="Workshop wall where printed campaign status labels are grouped under handwritten sticky notes reading before start, have started and finished." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 
 ## Project Takeaways

@@ -1,11 +1,20 @@
-{% assign images = include.images | split: ',' %}
-<div class="gallery images border">
-{% for image in images %}
-   {% assign params = image | split: ":" %}
+{% comment %}
+  Wraps a set of gallery-item.html includes in the gallery container, so pages
+  never have to write the wrapper markup themselves.
 
-   {% assign url = params[0] %}
-   {% assign title = params[1] %}
+  Usage:
 
-   <a href="{{include.base_url}}{{ url }}"><img src="{{include.base_url}}{{ url }}" title="{{ title }}"></a>
-{% endfor %}
-</div>
+    {% assign gallery_base = "/images/projects/survey/" %}
+    {% capture gallery %}
+      {% include gallery-item.html src="dashboard.png" title="Dashboard"
+                 alt="Dashboard listing submitted questionnaires, filtered by
+                      date, division, state and location." %}
+      {% include gallery-item.html src="wireframes.png"
+                 alt="Four grayscale wireframes: report search, a dashboard
+                      detail page, a user profile and a group search." %}
+    {% endcapture %}{% include gallery.html items=gallery %}
+
+  See gallery-item.html for what each parameter does. gallery_base is read by
+  the items, so assign it once per gallery before the capture.
+{% endcomment %}
+<div class="gallery images border">{{ include.items }}</div>

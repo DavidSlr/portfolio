@@ -14,7 +14,7 @@ division_of_work: The implementation was done by a web development team
 ---
 
 <div class="images">
-    <a href="/images/projects/survey/quest_overview.png" class="float-right"><img src="/images/projects/survey/quest_overview.png"></a>
+    <a href="/images/projects/survey/quest_overview.png" class="float-right"><img src="/images/projects/survey/quest_overview.png" alt="The survey overview screen: six question categories listed with their completion status, a due date countdown, a flagged inconsistency, and a three-step progress bar from data entry through supervisor to coordinator validation."></a>
 </div>
 
 The client had a web application to fill out surveys by departments all over the world. The application also provided ways to audit data in a multi-stage approval process. The interface was very outdated and tedious to handle.
@@ -26,8 +26,12 @@ In the end the application was not just redesigned with a modern style and the c
 The interface was changed for the presentation in this portfolio to not show client information and processes.
 
 
-{% include gallery.html base_url="/images/projects/survey/"
-                        images="dashboard.png:Dashboard,quest_overview.png:Survey overview,quest_category.png:One category of a survey with questions"%}
+{% assign gallery_base = "/images/projects/survey/" %}
+{% capture gallery %}
+{% include gallery-item.html src="dashboard.png" title="Dashboard" alt="Dashboard listing submitted questionnaires, filtered by date, division, state and location, with each row showing region, questionnaire type and status." %}
+{% include gallery-item.html src="quest_overview.png" title="Survey overview" alt="Survey overview with six question categories, their completion status, a flagged inconsistency and a three-step validation progress bar." %}
+{% include gallery-item.html src="quest_category.png" title="One category of a survey with questions" alt="One survey category open for editing: warehousing questions with yes-no toggles and number fields that each show the previous month's answer, plus a warning when an entered value looks implausible." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## Design Process
 
@@ -39,8 +43,12 @@ The interface was changed for the presentation in this portfolio to not show cli
 - HiFi Mockups delivered with Zeplin and click prototypes for the developers
 - Animations and interactions built as guide for developers with [Drama](https://www.drama.app)
 
-{% include gallery.html base_url="/images/projects/survey/"
-                        images="process_actors.jpg: Review process mapped out with stakeholders,affinity_diagramming.jpg:Affinity diagramming of interview findings,interaction.gif:Draft of an animation to add conditional questions to a questionnaire"%}
+{% assign gallery_base = "/images/projects/survey/" %}
+{% capture gallery %}
+{% include gallery-item.html src="process_actors.jpg" title="Review process mapped out with stakeholders" alt="Whiteboard flow diagram where sticky notes for the data owner, input user and data evaluation roles are linked through steps such as receive info email, input data, release finished data and check if questionnaire is valid, ending at Done." %}
+{% include gallery-item.html src="affinity_diagramming.jpg" title="Affinity diagramming of interview findings" alt="A window covered in colour-coded sticky notes grouped under the headings ideas, investigate, facts, problems and questions." %}
+{% include gallery-item.html src="interaction.gif" title="Draft of an animation to add conditional questions to a questionnaire" alt="Prototype animation of a questionnaire form in which a conditional question is added below an existing group of checkboxes." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## UX learnings
 - In the old app the users had to set very specific filters to find the surveys they needed to fill out. Working with sorting and account-specific parameters yielded the most relevant surveys to the user for most use cases without any filtering and all other surveys with very few filter interactions.

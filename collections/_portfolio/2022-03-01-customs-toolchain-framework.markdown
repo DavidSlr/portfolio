@@ -20,8 +20,13 @@ As a part of the development the [Quadrel application and UI framework](https://
 I worked here as a UX designer for close to 4 years and primarily worked with the application teams to plan user flows and make sure that the framework is used within its capabilities, standard design decisions are followed and UX best practices are considered. Further, I shared the requirements of applications in the framework team and made proposals or reviewed how framework extensions could work and bring value to the whole program.
 
 
-{% include gallery.html base_url="/images/projects/customs/"
-                        images="mock1-passar.png: Goods declaration for review by the customs office,mock2-prezius.png:Request management at the office for precious metals,mock3-prezius.png:Request for manufacturer's mark registration with progress guide,mock4-prezius.png:New request screen adapting to registered items in the user's account"%}
+{% assign gallery_base = "/images/projects/customs/" %}
+{% capture gallery %}
+{% include gallery-item.html src="mock1-passar.png" title="Goods declaration for review by the customs office" alt="The Passar application showing an import declaration: status, goods destination and dates along the top, then cards for the procedure holder and the consignee, a table of additional parties, financial data, a summary of positions and an additional information table." %}
+{% include gallery-item.html src="mock2-prezius.png" title="Request management at the office for precious metals" alt="The Prezius Info trademark register: an introductory text above a filterable table of applications listing type, application number, holder, business type, registration date and active or inactive status." %}
+{% include gallery-item.html src="mock3-prezius.png" title="Request for manufacturer's mark registration with progress guide" alt="A single Prezius application in progress, with an information banner, an outstanding registration fee notice, the trademark holder's details, and a progress table stepping from application creation through both checks to activation." %}
+{% include gallery-item.html src="mock4-prezius.png" title="New request screen adapting to registered items in the user's account" alt="A New application dialog offering grouped choices for trademarks, melting permits, purchasing permits and agreements, where options the account is not yet eligible for show their prerequisite instead of a link." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## Application Design Process
 
@@ -39,8 +44,12 @@ The rough process looked something like this:
 - Review with the prototypes with the framework team for feasibility as well as review with BAs stakeholders if requirements are met
 - Iterate after testing and getting feedback from real world use
 
-{% include gallery.html base_url="/images/projects/customs/"
-                        images="proc-user-flow.png:User flow mapping of customer-facing account management,proc-suchverfahren.png:Process overview of customs communication with other countries - co-created with stakeholders,proc-figma.png:Request management for precious metals - UI design and prototyping in Figma"%}
+{% assign gallery_base = "/images/projects/customs/" %}
+{% capture gallery %}
+{% include gallery-item.html src="proc-user-flow.png" title="User flow mapping of customer-facing account management" alt="A FigJam board titled Connex User Flow Mapping, where an overview screen branches into colour-coded lanes for adding a company, an association, a private person and a branch, plus adding a role, activating and viewing details, each lane holding a chain of linked screen thumbnails." %}
+{% include gallery-item.html src="proc-suchverfahren.png" title="Process overview of customs communication with other countries - co-created with stakeholders" alt="A wide process board titled Suchverfahren Anforderungen und Prozess, mapping the enquiry and search-notice workflow across lanes of sticky notes and decision points, with rows of screen mockups beneath each step." %}
+{% include gallery-item.html src="proc-figma.png" title="Request management for precious metals - UI design and prototyping in Figma" alt="A Figma file organised into sections for Prezius Info, the business partner view and the employee view, each holding rows of screens grouped by status such as draft, in progress, final check, supplement and rejected." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## Challenges and UX impact
 While working with the application teams to draft and plan new features we usually had to strengthen in the user-centered aspects into the processes.
@@ -66,12 +75,15 @@ The UI framework was developed in an agile way during the project and was consta
 
 On top of our usual Figma component library I established a FigJam board that includes a majority of our components. This lets Business Analysts copy & paste those components to their own FigJam Boards and easily compose their own UI drafts. This has a few limitations but is very easy to learn and avoids more difficult concepts like the layer tree, auto layout and component configuration while allowing text changes and component variants. This was very valuable when we only had 1-3 UX designers to support 14+ application teams as it enabled BAs to prepare simple concepts and discuss them with stakeholders while upholding UI standards.
 
-{% include gallery.html base_url="/images/projects/customs/"
-                        images="ba-toolkit.png:Business analyst FigJam toolkit for simple mockups,ba-toolkit2.png:Form components in FigJam toolkit"%}
+{% assign gallery_base = "/images/projects/customs/" %}
+{% capture gallery %}
+{% include gallery-item.html src="ba-toolkit.png" title="Business analyst FigJam toolkit for simple mockups" alt="The BA Toolkit FigJam board: an instructions panel with best practices, a User Flow section, a large Components section holding tables, form sections, dialogs and notification banners, and a Templates section for the Quadrel layout system." %}
+{% include gallery-item.html src="ba-toolkit2.png" title="Form components in FigJam toolkit" alt="The Form Fields page of the toolkit, showing input, dropdown, radio button, checkbox, date picker and textarea components in one-column and two-column widths, plus vertical variants." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 In this screencast you can see how the UIs can be quickly composed with the FigJam components.
 
-{% include video.html url="/images/projects/customs/figjam.mp4" %}
+{% include video.html url="/images/projects/customs/figjam.mp4" caption="Silent screen recording of the FigJam toolkit in use: labelled form field components are copied, aligned and rearranged on the board to compose a customs goods declaration screen with a section of entry fields, help descriptions and cancel and save buttons." %}
 
 
 ## Project Takeaways

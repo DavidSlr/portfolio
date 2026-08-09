@@ -12,7 +12,7 @@ division_of_work: Content produced with photographers and content writer, struct
 ---
 
 <div class="images">
-    <a href="/images/projects/dalibri/full.jpg" class="float-right"><img src="/images/projects/dalibri/full.jpg"></a>
+    <a href="/images/projects/dalibri/full.jpg" class="float-right"><img src="/images/projects/dalibri/full.jpg" alt="The finished dalibri start page in full length: a teal hero section with the logo and claim, a client logo bar, an agency introduction, three expertise blocks for data analytics, user experience design and software development, and a contact section."></a>
 </div>
 
 In 2020, dalibri's website was still one that has been put together in two evenings. It was clear that potential new clients that looked us up should get a better first impression. The goal was to have a professional but friendly presentation that shows what services dalibri provides at a quick glance and a more detailed level.
@@ -32,5 +32,8 @@ In 2020, dalibri's website was still one that has been put together in two eveni
 - The website was built with HTML, CSS (SASS) and Jekyll as a static site generator
 - The code was checked into a bitbucket repository and deployed with a bitbucket pipeline script
 
-{% include gallery.html base_url="/images/projects/dalibri/"
-                        images="structure.jpg,exploration.png"%}
+{% assign gallery_base = "/images/projects/dalibri/" %}
+{% capture gallery %}
+{% include gallery-item.html src="structure.jpg" alt="Workshop whiteboard where the three service areas user experience, software development and big data are broken down into sticky notes such as UX research, prototyping and APIs." %}
+{% include gallery-item.html src="exploration.png" alt="Four alternative design directions for the start page side by side, from a photo-led teal layout to a dark neon variant." %}
+{% endcapture %}{% include gallery.html items=gallery %}

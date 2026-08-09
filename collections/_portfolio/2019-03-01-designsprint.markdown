@@ -19,7 +19,7 @@ The goal of this design sprint was to give us insights into the company context 
 
 <div class="images">
     <a href="/images/projects/designsprint/head.png">
-        <img src="/images/projects/designsprint/head.png" class="full-width">
+        <img src="/images/projects/designsprint/head.png" class="full-width" alt="Three mockup screens of the business intelligence portal: a home page with favourite and suggested dashboards, a dashboard detail page with attributes and comments, and a user profile with group memberships.">
     </a>
 </div>
 
@@ -35,8 +35,13 @@ The goal of this design sprint was to give us insights into the company context 
 - User testing
 - Feedback sorting and possible next steps
 
-{% include gallery.html base_url="/images/projects/designsprint/"
-                        images="workflowmap.jpg,problems.jpg,sketches.jpg,wireframes.png"%}
+{% assign gallery_base = "/images/projects/designsprint/" %}
+{% capture gallery %}
+{% include gallery-item.html src="workflowmap.jpg" alt="A long wall of brown paper with the user workflow mapped in sticky notes on the left and clusters of user goals and ideas to the right." %}
+{% include gallery-item.html src="problems.jpg" alt="A board where problem statements on green cards, such as users fail when trying to access reports, sit above hand-drawn solution sketches." %}
+{% include gallery-item.html src="sketches.jpg" alt="Hand-drawn wireframes of the portal home and search screens next to a user flow diagram linking report details, user directory and user profile." %}
+{% include gallery-item.html src="wireframes.png" alt="Four grayscale wireframes: report search with filters, a dashboard detail page with a comment thread, a user profile, and a combined user and group search." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## Project Takeaways
 

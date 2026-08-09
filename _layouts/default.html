@@ -1,15 +1,15 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Hi, I am David, a software developer and designer from Germany. I love programming and creating products that are enjoyable to use. This is my portfolio.">
     <meta name="keywords" content="David Schneller, dave_slr, interaction design, programming, Chalmers, Göteborg, Gothenburg, Germany, Leverkusen, Aachen, FH Aachen, IxD, C#, HTML, CSS, mobile, Prototyping, Usability, designer, arduino, processing, tangible">
 
     <title>David Schneller - {{page.title}}</title>
 
-    <link rel="stylesheet" href="/css/style.css" /> 
+    <link rel="stylesheet" href="/css/style.css" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -25,8 +25,29 @@
   </head>
   <body>
     <div class="main">
+      <a class="skip-link" href="#content">Skip to content</a>
 
-      {{ content }}
+      {% comment %}
+        The subpage header  by default
+        index switches it off and creates its own header
+      {% endcomment %}
+      {% unless page.subpage_header == false %}
+      <header class="subpage">
+        <a href="/" style="display: flex; align-items: center;">
+          <svg width="32" height="29" style="margin-right:16px" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M10.0509 0.957783C10.4531 1.33628 10.4723 1.96919 10.0938 2.37139L5.15906 7.61481H19.6864C20.2387 7.61481 20.6864 8.06252 20.6864 8.61481V9.61481C20.6864 10.1671 20.2387 10.6148 19.6864 10.6148H5.15906L10.0938 15.8582C10.4723 16.2604 10.4531 16.8933 10.0509 17.2718L9.32187 17.9578C8.91967 18.3363 8.28681 18.3171 7.90832 17.9149L0.271766 9.80013C-0.0905812 9.41509 -0.0905811 8.81452 0.271766 8.42948L7.90832 0.314708C8.28681 -0.0874805 8.91967 -0.106703 9.32187 0.271773L10.0509 0.957783Z" fill="black"/>
+          </svg>
+          <span>
+            <span class="site-name">David Schneller</span>
+            <span class="site-role">Portfolio</span>
+          </span>
+        </a>
+      </header>
+      {% endunless %}
+
+      <main id="content">
+        {{ content }}
+      </main>
 
       <footer>
         <p>
@@ -46,13 +67,23 @@
       {
         uniqueImages: false,
         fileExt: 'png|jpg|jpeg|gif|svg'
+        // Captions come from each image's title attribute (SimpleLightbox's
+        // default). Titles are short display captions; alt is the separate,
+        // longer description written for assistive technology.
       });
 
-      // Open external links in a new tab; leave internal links untouched
+      // Open external links in a new tab; leave internal links untouched.
+      // The CSS adds a visual "opens in new tab" icon, so the hidden span here
+      // gives assistive technology the same warning (WCAG G201).
       document.querySelectorAll('a[href]').forEach(function (link) {
         if (link.hostname !== window.location.hostname && /^https?:$/.test(link.protocol)) {
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
+
+          var note = document.createElement('span');
+          note.className = 'visually-hidden';
+          note.textContent = ' (opens in a new tab)';
+          link.appendChild(note);
         }
       });
     </script>

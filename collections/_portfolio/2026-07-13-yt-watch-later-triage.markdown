@@ -22,7 +22,7 @@ You can try it as a [demo page](https://davidslr.github.io/yt-watch-later-triage
 The code and installation instructions can be found on [GitHub](https://github.com/DavidSlr/yt-watch-later-triage/).
 
 <div class="images">
-    <a href="/images/projects/watchlater/screenshot.png"><img src="/images/projects/watchlater/screenshot.png" class="full-width"></a>
+    <a href="/images/projects/watchlater/screenshot.png"><img src="/images/projects/watchlater/screenshot.png" class="full-width" alt="The extension's Watch Later page in a dark theme: a video player on the left, and on the right a panel with Remove and Keep buttons, an AI summary, a highlighted click-bait answer, key takeaways with timestamps, and a comment sentiment bar with example quotes."></a>
 </div>
 
 ## Overview
@@ -37,7 +37,7 @@ The application consists of:
 - Three GitHub workflows signing the extension releases, registering the Docker container with GHCR.io and building the Storybook / demo pages
 
 <div class="images">
-    <a href="/images/projects/watchlater/architecture2.svg"><img src="/images/projects/watchlater/architecture2.svg" class="full-width"></a>
+    <a href="/images/projects/watchlater/architecture2.svg"><img src="/images/projects/watchlater/architecture2.svg" class="full-width" alt="System architecture diagram. A YouTube box, where a content script reads the Watch Later playlist and the selected video's metadata and comments, feeds two services: a Transcript Harvester running in Docker that takes a video ID and returns the transcript, and an AI Analysis step that combines that transcript, the video metadata and comments with an analysis prompt. Both flow into the browser extension, which shows the metadata, video player, summary, takeaways, clickbait answer and comment sentiment."></a>
 </div>
 
 ## The AI Analysis
@@ -50,8 +50,10 @@ The **key takeaways** display an overview of the points made in the video and pr
 
 The **comment sentiment** presents how commenters feel about the video as statistics, short summaries and example quotes.
 
-{% include gallery.html base_url="/images/projects/watchlater/"
-                        images="clickbait.png: The extension checks a video - The cooking skill that can't be taught - and offers a simple answer to the click-baity title that it is intuition which can only be learned through practice"%}
+{% assign gallery_base = "/images/projects/watchlater/" %}
+{% capture gallery %}
+{% include gallery-item.html src="clickbait.png" title="The extension checks a video - The cooking skill that can't be taught - and offers a simple answer to the click-baity title that it is intuition which can only be learned through practice" alt="A video card for The Cooking Skill That Can't Be Taught beside a highlighted click-bait answer panel, explaining that intuition is the ability to make correct cooking judgments without measuring, and that it is taught through hands-on practice." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## What Needed Adjustment
 
@@ -83,8 +85,11 @@ I pushed the components to Figma over MCP to see whether a code-to-design-to-cod
 
 Once I shifted to components I could work on accessibility improvements. The WCAG audit is documented in Storybook. Claude is helpful with auditing and especially with fixing issues. There were still failures found by testing rather than by the audit, like keyboard control issues.
 
-{% include gallery.html base_url="/images/projects/watchlater/"
-                        images="figma_foundations.png,figma_components.png:Components were generated from code in Figma but were not perfectly replicating the code components. This state is after a few revisions."%}
+{% assign gallery_base = "/images/projects/watchlater/" %}
+{% capture gallery %}
+{% include gallery-item.html src="figma_foundations.png" alt="The design foundations generated in Figma: colour tokens for surfaces, text, borders, accent, status and sentiment, plus the typography, spacing, radius and shadow scales." %}
+{% include gallery-item.html src="figma_components.png" title="Components were generated from code in Figma but were not perfectly replicating the code components. This state is after a few revisions." alt="The generated component library in Figma, showing tabs, form fields, badges, chips, buttons, sentiment bars, accordions, queue cards, menus, radio cards and a modal." %}
+{% endcapture %}{% include gallery.html items=gallery %}
 
 ## What I Take From This
 
