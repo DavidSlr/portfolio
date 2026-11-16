@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio-jekyll",
+      "runtimeExecutable": "docker",
+      "runtimeArgs": [
+        "run",
+        "--rm",
+        "-v",
+        "C:/Users/David/Documents/projects/portfolio:/site",
+        "-p",
+        "4000:4000",
+        "portfolio-jekyll",
+        "bundle",
+        "exec",
+        "jekyll",
+        "serve",
+        "--host",
+        "0.0.0.0",
+        "--force_polling"
+      ],
+      "port": 4000
+    }
+  ]
+}

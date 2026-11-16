@@ -142,4 +142,4 @@ For each application I worked out the requirements with business analysts and us
 
 - Most requests arrive as a solution: a filter, a preview, a drag and drop. The work is to find the question behind it, and the answer is often simpler than the request.
 
-- Consistent adoption across 14 teams stayed hard to the end. What helped most was explaining why a standard exists and finding a workable answer inside it.
+- Consistent adoption across more than 10 teams and 40 applications stayed hard to the end. Stakeholders all have ideas and expectations. It requires continuous tech evangelizing work. What helped most was explaining why a standard exists and finding a workable answer inside it.
