@@ -42,6 +42,8 @@ exclude:
   - images/projects/retrospect
   # Superseded figures that no current page references (~0.8 MB):
   - images/projects/customs/framework1.png
+  - images/projects/customs/mock2-prezius.png
+  - images/projects/customs/mock3-prezius.png
   - images/projects/discover/03ani.gif
   - images/projects/discover/prot_notif.gif
   - images/projects/watchlater/comment_sentiment.png
