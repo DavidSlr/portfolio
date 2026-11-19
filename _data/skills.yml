@@ -12,8 +12,13 @@ groups:
   - name: Technical
     tags: [Software development background, System landscapes and dependencies, HTML, CSS, JavaScript, SQL, Git]
 
-# url: the public verification link.
+# url: the public verification link (the programme page while in progress).
+# status: optional, shown after the name with an orange dot, e.g. In progress.
 certificates:
+  - name: IBM RAG and Agentic AI Professional Certificate
+    issuer: IBM · Coursera
+    url: https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai
+    status: In progress
   - name: Professional Scrum Master I (PSM I)
     issuer: Scrum.org
     url: https://www.scrum.org/user/549072

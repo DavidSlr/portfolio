@@ -40,7 +40,7 @@
     <li class="row">
       <p class="row-aside meta">{{ certificate.issuer }}</p>
       <div class="flow">
-        <p><a href="{{ certificate.url }}">{{ certificate.name }}</a></p>
+        <p><a href="{{ certificate.url }}">{{ certificate.name }}</a>{% if certificate.status %}<span class="status status-progress">{{ certificate.status }}</span>{% endif %}</p>
       </div>
     </li>
     {%- endfor %}

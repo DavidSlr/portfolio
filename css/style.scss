@@ -42,6 +42,7 @@
     --color-text-muted:    #6B6B6B; // meta text. 5.3:1, 4.8:1 on surface
     --color-border:        #DDDDDD; // dividers only, never text
     --color-selection:     #CDE3EC; // selected text background
+    --color-progress:      #D96C00; // status dot for work in progress. 3.4:1
     --color-bg:            #FFFFFF;
 
     // One focus ring everywhere (WCAG 2.4.7), 3:1 against the page (1.4.11).
@@ -389,9 +390,10 @@ main > .tagline,
     font-variant-numeric: tabular-nums;
 }
 
-// A line that states availability, with a dot.
+// A status with a dot: availability, or "In progress" after a title.
+// Inline, so it can follow a link on the same line.
 .status {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: var(--space-1);
     font-size: var(--step-meta);
@@ -405,6 +407,14 @@ main > .tagline,
         border-radius: 50%;
         background-color: var(--color-accent);
     }
+
+    a + & {
+        margin-left: var(--space-2);
+    }
+}
+
+.status-progress::before {
+    background-color: var(--color-progress);
 }
 
 // Actions ----------------------------------------------------------------
