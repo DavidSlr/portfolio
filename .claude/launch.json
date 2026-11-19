@@ -7,10 +7,14 @@
       "runtimeArgs": [
         "run",
         "--rm",
+        "--name",
+        "portfolio-dev",
         "-v",
         "C:/Users/David/Documents/projects/portfolio:/site",
         "-p",
         "4000:4000",
+        "-p",
+        "35729:35729",
         "portfolio-jekyll",
         "bundle",
         "exec",
@@ -18,7 +22,8 @@
         "serve",
         "--host",
         "0.0.0.0",
-        "--force_polling"
+        "--force_polling",
+        "--livereload"
       ],
       "port": 4000
     }

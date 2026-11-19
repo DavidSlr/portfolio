@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-11-19T11:01:46.681Z",
         "reason": "Claude: the Inter comes from _includes/portfoliosnippets/ytwl_comments.html, a demo that reproduces the browser extension's own UI; the site itself now uses IBM Plex"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "_site/index.html"
+        ],
+        "createdAt": "2026-11-19T12:33:08.703Z",
+        "reason": "Claude: .surface blocks render with 33px padding (computed in browser at 1368px wide); the static detector cannot resolve the clamp() in the --inset token and reads it as zero. Note: this turns cramped-padding off for the whole home page, including .tag and .tile-title; recheck those by eye or with a browser-mode scan."
       }
     ]
   }

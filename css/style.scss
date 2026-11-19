@@ -7,7 +7,8 @@
 //   1. Tokens       colour, type, space and motion as CSS custom properties
 //   2. Fonts        self-hosted IBM Plex
 //   3. Base         plain HTML elements (headings, text, links, lists)
-//   4. Layout       two helpers: .flow (vertical rhythm) and .cluster (rows)
+//   4. Layout       .flow (vertical rhythm, with -snug/-tight/-block/-loose
+//                   steps), .cluster (wrapping rows), .plain-list
 //   5. Site chrome  page container, subpage header, footer
 //   6. Components   reusable pieces: label, meta, button, tag, surface,
 //                   thumb, tile, feature, rows and the home page blocks
@@ -40,7 +41,11 @@
     --color-text-body:     #555555; // running text
     --color-text-muted:    #6B6B6B; // meta text. 5.3:1, 4.8:1 on surface
     --color-border:        #DDDDDD; // dividers only, never text
+    --color-selection:     #CDE3EC; // selected text background
     --color-bg:            #FFFFFF;
+
+    // One focus ring everywhere (WCAG 2.4.7), 3:1 against the page (1.4.11).
+    --focus-ring: 3px solid var(--color-accent);
 
     // Thumbnail overlays. Tune the look of every project image here.
     // rest: on devices with hover, over a greyscale image.
@@ -63,7 +68,8 @@
 
     --measure: 68ch; // longest comfortable line for running text
 
-    // Space. Five steps; sections shrink on small screens.
+    // Space. Sections shrink on small screens.
+    --space-0: 0.25rem;                              //  4px: a title and its meta line
     --space-1: 0.5rem;                               //  8px: inside an item
     --space-2: 1rem;                                 // 16px: related items
     --space-3: 2rem;                                 // 32px: between blocks
@@ -71,7 +77,8 @@
     --space-5: clamp(4rem, 2.5rem + 5vw, 6rem);      // 64 to 96px: between sections
     --inset:   clamp(1.5rem, 1rem + 2vw, 2.5rem);    // padding inside a surface
 
-    --radius: 5px;
+    --radius: 5px;       // controls (buttons)
+    --radius-small: 3px; // labels (tags), so they don't read as buttons
 
     // Motion
     --ease-out: cubic-bezier(.16, 1, .3, 1);
@@ -120,7 +127,7 @@ body {
 }
 
 ::selection {
-    background-color: #CDE3EC;
+    background-color: var(--color-selection);
     color: var(--color-accent-deep);
 }
 
@@ -134,7 +141,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 { font-size: var(--step-display); line-height: 1.1; letter-spacing: -.02em;  font-weight: 700; margin-bottom: 0; }
 h2 { font-size: var(--step-section); line-height: 1.2; letter-spacing: -.015em; margin-top: var(--space-4); }
-h3 { font-size: var(--step-item);    line-height: 1.3; letter-spacing: -.01em; }
+h3,
+.rows-sub h4 { font-size: var(--step-item); line-height: 1.3; letter-spacing: -.01em; }
 h4 { font-size: var(--step-body);    line-height: 1.4; margin-top: var(--space-3); }
 
 p, li, dd {
@@ -142,6 +150,10 @@ p, li, dd {
     margin-top: 0;
     margin-bottom: var(--space-1);
     font-size: var(--step-body);
+}
+
+// Box bullets on unordered lists; items inherit it, ordered lists keep numbers.
+ul {
     list-style-image: url('/images/box.svg');
 }
 
@@ -163,7 +175,6 @@ p > a,
     font-weight: 400;
     text-decoration: none;
     border-bottom: 2px dotted var(--color-text-muted);
-    transition: color var(--duration-quick) ease-out;
 
     &::after {
         content: "";
@@ -176,20 +187,17 @@ p > a,
         transition: right .3s ease-in, border-color var(--duration-quick) ease-in;
     }
 
-    &:hover {
-        color: var(--color-accent);
-    }
-
     &:hover::after {
         right: 0;
     }
 }
 
-// External links (tagged with target="_blank" by the script in default.html)
-// get a small "opens in new tab" icon. The icon colour is baked into the SVG
-// and must match --color-accent by hand. A background image, because text
-// links already use ::after for the underline.
-a[target="_blank"]:not(.button) {
+// External text links (tagged with target="_blank" by the script in
+// default.html) get a small "opens in new tab" icon. Buttons and tiles don't.
+// The icon colour is baked into the SVG and must match --color-accent by
+// hand. A background image, because text links already use ::after.
+:is(p, li, dd) > a[target="_blank"],
+.action-link[target="_blank"] {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300749C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.05em center;
@@ -197,9 +205,8 @@ a[target="_blank"]:not(.button) {
     padding-right: 0.85em;
 }
 
-// One focus ring everywhere (WCAG 2.4.7), 3:1 against the page (WCAG 1.4.11).
 :focus-visible {
-    outline: 3px solid var(--color-accent);
+    outline: var(--focus-ring);
     outline-offset: 2px;
     border-radius: 2px;
 }
@@ -247,7 +254,7 @@ a[target="_blank"]:not(.button) {
 
 // Vertical rhythm: children stack with one gap between them and no margins
 // of their own. The gap is set on the container, so nested .flow blocks
-// keep their own spacing. Default 16px; modifiers for the other two uses.
+// keep their own spacing. Default 16px; one modifier per other step.
 .flow {
     --flow-space: var(--space-2);
     display: flex;
@@ -258,15 +265,17 @@ a[target="_blank"]:not(.button) {
         margin-block: 0;
     }
 }
+.flow-snug  { --flow-space: var(--space-0); } // a title and its meta line
 .flow-tight { --flow-space: var(--space-1); } // a label or meta with its title
+.flow-block { --flow-space: var(--space-3); } // a heading and its blocks
 .flow-loose { --flow-space: var(--space-4); } // groups of blocks in a section
 
-// A wrapping row with even gaps (tags, actions).
+// A wrapping row with even gaps (actions; tags are closer).
 .cluster {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--cluster-space, var(--space-1) var(--space-3));
+    gap: var(--space-1) var(--space-3);
 }
 
 // A list without bullets or indents, for lists that are components.
@@ -278,7 +287,6 @@ a[target="_blank"]:not(.button) {
     > li {
         max-width: none;
         margin: 0;
-        list-style: none;
     }
 }
 
@@ -366,7 +374,6 @@ main > .tagline,
 // A short label above an item (a year, a category). Also used to style a
 // group heading, e.g. <h3 class="label">.
 .label {
-    margin: 0;
     font-size: var(--step-label);
     font-weight: 600;
     line-height: 1.4;
@@ -376,7 +383,8 @@ main > .tagline,
 }
 
 // Figures in text: numbers and date ranges.
-.num {
+.num,
+.facts dd {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
 }
@@ -407,42 +415,37 @@ main > .tagline,
     height: 1.25em;
 }
 
-// Primary action.
-.button {
+// Primary action (.button) and the secondary action next to it.
+.button,
+.action-link {
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
     min-height: 3rem;
+    font-size: var(--step-body);
+    font-weight: 600;
+}
+
+.button {
     padding: .625rem 1.125rem;
     border-radius: var(--radius);
     background-color: var(--color-accent-strong);
     color: #fff;
-    font-size: var(--step-body);
-    font-weight: 600;
     line-height: 1.3;
     text-decoration: none;
     transition: background-color var(--duration-quick) var(--ease-out);
 
     &:hover {
         background-color: var(--color-accent-deep);
-        color: #fff;
     }
 }
 
-// Secondary action next to a button.
 .action-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    min-height: 3rem;
     color: var(--color-accent);
-    font-size: var(--step-body);
-    font-weight: 600;
     text-decoration: underline 2px dotted var(--color-text-muted);
     text-underline-offset: .3em;
 
     &:hover {
-        color: var(--color-accent);
         text-decoration-style: solid;
         text-decoration-color: var(--color-accent);
     }
@@ -451,23 +454,21 @@ main > .tagline,
 // Tags -------------------------------------------------------------------
 
 .tags {
-    --cluster-space: var(--space-1);
+    gap: var(--space-1);
 }
 
+// A label, not a control: no border, no strong colour, no hover. A light
+// fill on the page; white when it sits on a surface.
 .tag {
-    padding: .125rem .625rem;
-    border-radius: var(--radius);
-    background-color: var(--color-bg);
-    box-shadow: inset 0 0 0 1px #C4C4C4;
+    padding: .125rem .5rem;
+    border-radius: var(--radius-small);
+    background-color: var(--color-surface);
     color: var(--color-text);
     font-size: var(--step-meta);
-    line-height: 1.6;
-}
 
-.tag-strong {
-    background-color: var(--color-accent-strong);
-    box-shadow: none;
-    color: #fff;
+    .surface & {
+        background-color: var(--color-bg);
+    }
 }
 
 // Surface: the one tinted block (feature text, highlight, contact) --------
@@ -564,12 +565,6 @@ main > .tagline,
 // Rows alternate sides on wide screens; on phones the image sits on top.
 // The whole unit is one link (the title's link stretches over it).
 
-.features {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-}
-
 .feature {
     position: relative;
     display: grid;
@@ -612,16 +607,15 @@ main > .tagline,
 
     // Keyboard focus outlines the whole unit, not just the title.
     &:has(.stretched:focus-visible) {
-        outline: 3px solid var(--color-accent);
+        outline: var(--focus-ring);
         outline-offset: 4px;
     }
 }
 
-.feature-text {
-    > .feature-more {
-        margin-top: auto;
-        padding-top: var(--space-2);
-    }
+// The "Read the … case study" line, pushed to the bottom of the surface.
+.feature-more {
+    margin-top: auto;
+    padding-top: var(--space-2);
 }
 
 // Makes a link cover its nearest positioned ancestor. z-index keeps it above
@@ -667,47 +661,18 @@ main > .tagline,
     font-weight: 600;
 }
 
-.row-main {
-    --flow-space: .25rem;
-
-    > p {
-        margin: 0;
-    }
-
-    > .rows-sub {
-        margin-top: var(--space-1);
-    }
-}
-
+// Client projects nested under an employer (a .flow list).
 .rows-sub {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
     padding-left: var(--space-3);
     border-left: 1px solid var(--color-border);
-
-    > li {
-        --flow-space: .25rem;
-    }
-
-    h4 {
-        font-size: var(--step-item);
-        line-height: 1.3;
-        letter-spacing: -.01em;
-    }
 }
 
 // Home page blocks -------------------------------------------------------
 
-// Sections are a section apart; the heading sits a block above its content.
-// Several blocks inside one section go in a .flow-loose wrapper.
+// Sections are a section apart. Inside, use .flow.flow-block (heading a block
+// above its content) and a .flow-loose wrapper for several blocks.
 .section {
-    --flow-space: var(--space-3);
     margin-top: var(--space-5);
-}
-
-.hero {
-    --flow-space: var(--space-3);
 }
 
 .skill-groups {
@@ -736,7 +701,6 @@ main > .tagline,
 }
 
 .border img {
-    box-sizing: border-box;
     border: 1px solid var(--color-border);
 }
 
@@ -797,9 +761,7 @@ a.float-right {
 
     dd {
         margin: 0;
-        font-family: var(--font-mono);
         font-size: var(--step-lead);
-        font-variant-numeric: tabular-nums;
         font-weight: 500;
         line-height: 1.2;
         white-space: nowrap;
@@ -848,10 +810,6 @@ a.float-right {
         margin: 0;
         padding-left: 1.4rem;
     }
-
-    ol li {
-        list-style-image: none;
-    }
 }
 
 // A screenshot with numbered markers and a matching legend underneath.
@@ -860,7 +818,6 @@ a.float-right {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     width: 1.75rem;
     height: 1.75rem;
     border: 2px solid #fff;
@@ -908,7 +865,6 @@ figure.annotated {
             position: relative;
             margin-bottom: .75rem;
             padding-left: 2.5rem;
-            list-style: none;
             counter-increment: marker;
 
             &::before {

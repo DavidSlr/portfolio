@@ -4,7 +4,8 @@ title:  DaziT - Digital customs tools
 categories: portfolio
 image: images/projects/customs/square.png
 
-# Home page "Selected work": position, year label, context line, link name
+# Home page "Selected work": position, year label, a shorter context line
+# than "context" below, short name for the link
 featured: 1
 period: 2022 – 2025
 setting: Client project for Swiss customs (BAZG)

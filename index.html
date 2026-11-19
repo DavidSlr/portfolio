@@ -6,39 +6,44 @@ title: Senior UX Designer for complex enterprise software
 subpage_header: false
 ---
 {% comment %}
-  The home page only composes sections. Each section is one include built
-  from the shared components in css/style.scss; content lives in _data/ and
-  in the case studies' front matter.
+  The home page, built from the shared components in css/style.scss. The
+  start and contact blocks live here; the longer sections are includes, with
+  their lists in _data/ and the case studies' front matter.
 {% endcomment %}
-<header class="hero flow">
+<header class="flow flow-block">
   <div class="flow flow-tight">
     <h1>David Schneller</h1>
     <p class="tagline">Senior UX Designer for complex enterprise software</p>
   </div>
   <p>For more than ten years I have designed complex B2B and public sector applications, most recently four years in the central UI framework team of the Swiss customs' digital transformation. I prototype in working code and contribute to the codebase where it helps the team. AI coding tools make me fast, and my background in software development makes sure the result is something a team can build on.</p>
   <p class="status">Looking for my next role, in the Cologne area or remote</p>
-  {% include contact-actions.html %}
+  <div class="cluster">
+    <a class="button" href="https://www.linkedin.com/in/davidslr">{% include icon.html name="linkedin" %}Get in touch on LinkedIn</a>
+  </div>
 </header>
 
-<section class="section flow" aria-labelledby="selected-work">
+<section class="section flow flow-block" aria-labelledby="selected-work">
   <h2 id="selected-work">Selected work</h2>
   {% include work.html %}
 </section>
 
-<section class="section flow" aria-labelledby="work-and-education">
+<section class="section flow flow-block" aria-labelledby="work-and-education">
   <h2 id="work-and-education">Work and education</h2>
   {% include cv.html %}
 </section>
 
-<section class="section flow" aria-labelledby="skills">
+<section class="section flow flow-block" aria-labelledby="skills">
   <h2 id="skills">Skills</h2>
   {% include skills.html %}
 </section>
 
 <section class="section" aria-labelledby="get-in-touch">
-  <div class="surface flow contact">
+  <div class="surface flow">
     <h2 id="get-in-touch">Get in touch</h2>
     <p>I am looking for my next role as a senior UX designer, in the Cologne area or remote. If you are building complex software for professionals, I would be glad to talk.</p>
-    {% include contact-actions.html linkedin_label="Message me on LinkedIn" xing=true %}
+    <div class="cluster">
+      <a class="button" href="https://www.linkedin.com/in/davidslr">{% include icon.html name="linkedin" %}Message me on LinkedIn</a>
+      <a class="action-link" href="https://www.xing.com/profile/David_Schneller">David on Xing</a>
+    </div>
   </div>
 </section>

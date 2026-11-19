@@ -7,13 +7,15 @@
   {%- for entry in site.data.cv %}
   <li class="row">
     <p class="row-aside meta"><span class="num">{{ entry.years }}</span><span class="row-kind">{{ entry.kind }}</span></p>
-    <div class="row-main flow">
-      <h3>{{ entry.title }}</h3>
-      <p class="meta">{{ entry.context }}{% include case-study-links.html list=entry.case_studies %}</p>
+    <div class="flow">
+      <div class="flow flow-snug">
+        <h3>{{ entry.title }}</h3>
+        <p class="meta">{{ entry.context }}{% include case-study-links.html list=entry.case_studies %}</p>
+      </div>
       {%- if entry.projects %}
-      <ol class="rows-sub plain-list">
+      <ol class="rows-sub flow plain-list">
         {%- for project in entry.projects %}
-        <li class="flow">
+        <li class="flow flow-snug">
           <h4>{{ project.title }}</h4>
           <p class="meta"><span class="num">{{ project.years }}</span> · {{ project.context }}{% include case-study-links.html list=project.case_studies %}</p>
         </li>

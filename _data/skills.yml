@@ -1,13 +1,5 @@
-# Skills and certificates on the home page. Rendered by _includes/skills.html.
-
-# The one group shown as a highlighted surface block, with filled tags.
-highlight:
-  label: AI
-  title: Prototyping and automation with AI
-  text: I build working prototypes and small tools with AI-assisted development, from concept to a running application. Two of them are published as open source.
-  tags: [Claude Code, LLM interfaces, Python, PostgreSQL, Docker]
-  case_study: 2026-07-13-yt-watch-later-triage
-  link_text: Read the AI Browser Extension case study
+# Skill groups and certificates on the home page. Rendered by
+# _includes/skills.html, which also holds the AI highlight block.
 
 # Shown as outline tags, two groups per row on wide screens.
 groups:
@@ -20,15 +12,14 @@ groups:
   - name: Technical
     tags: [Software development background, System landscapes and dependencies, HTML, CSS, JavaScript, SQL, Git]
 
-# url: the public verification link. While it is empty the name shows as
-# plain text instead of a link.
+# url: the public verification link.
 certificates:
   - name: Professional Scrum Master I (PSM I)
     issuer: Scrum.org
-    url:
+    url: https://www.scrum.org/user/549072
   - name: Professional Scrum Product Owner I (PSPO I)
     issuer: Scrum.org
-    url:
+    url: https://www.scrum.org/user/549072
   - name: UI Design Patterns for Successful Software
     issuer: Interaction Design Foundation
-    url:
+    url: https://ixdf.org/courses/ui-design-patterns-for-successful-software

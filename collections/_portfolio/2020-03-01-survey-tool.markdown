@@ -4,11 +4,9 @@ title:  Survey Tool
 categories: portfolio
 image: images/projects/survey/square.png
 
-# Home page "Selected work": position, year label, context line, link name
+# Home page "Selected work": position and year label
 featured: 3
 period: 2020
-setting: Client project at Cognizant
-short_title: Survey Tool
 
 tagline: Redesigning a 20-year-old web application for data collection
 

@@ -3,15 +3,6 @@ title: David Schneller Portfolio
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "davidschneller.com" # the base hostname & protocol for your site, e.g. http://example.com
 
-# Contact links used by the home page start and "Get in touch" blocks.
-# cv_pdf: path to a CV PDF without private contact details (e.g.
-# /files/cv-david-schneller.pdf). While it is empty, the download links are
-# not shown.
-contact:
-  linkedin: https://www.linkedin.com/in/davidslr
-  xing: https://www.xing.com/profile/David_Schneller
-  cv_pdf:
-
 # Build settings
 markdown: kramdown
 
