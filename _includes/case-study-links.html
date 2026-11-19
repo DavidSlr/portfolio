@@ -1,0 +1,12 @@
+{% comment %}
+  Appends " · Case study: <link>" (or "Case studies:" for several) to a meta
+  line. list is an array of case study file names without the extension.
+{% endcomment %}
+{%- if include.list -%}
+{%- assign count = include.list | size -%}
+{{ " · " }}Case {% if count > 1 %}studies{% else %}study{% endif %}:
+{%- for name in include.list -%}
+{%- assign study = site.portfolio | where_exp: "doc", "doc.url contains name" | first -%}
+{{ " " }}<a href="{{ study.url | relative_url }}">{{ study.title }}</a>{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+{%- endif -%}

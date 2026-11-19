@@ -1,0 +1,34 @@
+# Skills and certificates on the home page. Rendered by _includes/skills.html.
+
+# The one group shown as a highlighted surface block, with filled tags.
+highlight:
+  label: AI
+  title: Prototyping and automation with AI
+  text: I build working prototypes and small tools with AI-assisted development, from concept to a running application. Two of them are published as open source.
+  tags: [Claude Code, LLM interfaces, Python, PostgreSQL, Docker]
+  case_study: 2026-07-13-yt-watch-later-triage
+  link_text: Read the AI Browser Extension case study
+
+# Shown as outline tags, two groups per row on wide screens.
+groups:
+  - name: Design
+    tags: [Interaction and interface design, Wireframes, Interactive prototypes, Design systems, Information architecture, Figma]
+  - name: Research
+    tags: [Workflow and requirements analysis, User interviews, Usability testing, Co-creation, Workshop facilitation, Design sprints]
+  - name: Collaboration
+    tags: [Stakeholder management, Prioritisation, Standing in for product managers, SAFe and PI Planning, Scrum, Kanban, Jira and Confluence]
+  - name: Technical
+    tags: [Software development background, System landscapes and dependencies, HTML, CSS, JavaScript, SQL, Git]
+
+# url: the public verification link. While it is empty the name shows as
+# plain text instead of a link.
+certificates:
+  - name: Professional Scrum Master I (PSM I)
+    issuer: Scrum.org
+    url:
+  - name: Professional Scrum Product Owner I (PSPO I)
+    issuer: Scrum.org
+    url:
+  - name: UI Design Patterns for Successful Software
+    issuer: Interaction Design Foundation
+    url:

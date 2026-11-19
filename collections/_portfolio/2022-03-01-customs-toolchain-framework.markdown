@@ -4,6 +4,12 @@ title:  DaziT - Digital customs tools
 categories: portfolio
 image: images/projects/customs/square.png
 
+# Home page "Selected work": position, year label, context line, link name
+featured: 1
+period: 2022 – 2025
+setting: Client project for Swiss customs (BAZG)
+short_title: DaziT
+
 tagline: UX for 15 specialist applications and the shared UI framework of the Swiss customs' digital transformation
 
 context: Full time client project, embedded as a UX designer in the UI framework team

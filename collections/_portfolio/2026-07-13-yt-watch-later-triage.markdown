@@ -4,6 +4,12 @@ title:  AI Browser Extension
 categories: portfolio
 image: images/projects/watchlater/square.png
 
+# Home page "Selected work": position, year label, context line, link name
+featured: 2
+period: 2026
+setting: Open-source side project
+short_title: extension
+
 tagline: Building an AI-powered open-source browser extension with an accessible design system and reusable components
 
 context: Side project, open source

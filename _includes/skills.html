@@ -1,15 +1,52 @@
-<ul class="skills">
-    <li>User research</li>
-    <li>User interviews</li>
-    <li>Prototyping</li>
-    <li>Wireframes</li>
-    <li>Mockups</li>
-    <li>User testing</li>
-    <li>Figma</li>
-    <li>Design Systems</li>
-    <li>Claude Code</li>
-    <li>Git</li>
-    <li>Stakeholder workshops</li>
-    <li>Kanban</li>
-    <li>Scrum</li>
-</ul>
+{% comment %}
+  "Skills" on the home page, rendered from _data/skills.yml: the highlighted
+  group as a surface block, the other groups as outline tags, then the
+  certificates with the rows component.
+{% endcomment %}
+{%- assign skills = site.data.skills -%}
+{%- assign highlight_study = skills.highlight.case_study -%}
+{%- assign study = site.portfolio | where_exp: "doc", "doc.url contains highlight_study" | first -%}
+<div class="flow flow-loose">
+<div class="surface flow">
+  <div class="flow flow-tight">
+    <p class="label">{{ skills.highlight.label }}</p>
+    <h3>{{ skills.highlight.title }}</h3>
+  </div>
+  <p>{{ skills.highlight.text }}</p>
+  <ul class="cluster tags plain-list">
+    {%- for tag in skills.highlight.tags %}
+    <li class="tag tag-strong">{{ tag }}</li>
+    {%- endfor %}
+  </ul>
+  {%- if study %}
+  <p><a href="{{ study.url | relative_url }}">{{ skills.highlight.link_text }}</a></p>
+  {%- endif %}
+</div>
+
+<div class="skill-groups">
+  {%- for group in skills.groups %}
+  <div class="flow">
+    <h3 class="label">{{ group.name }}</h3>
+    <ul class="cluster tags plain-list">
+      {%- for tag in group.tags %}
+      <li class="tag">{{ tag }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endfor %}
+</div>
+
+<div class="flow">
+  <h3>Certificates</h3>
+  <ul class="rows plain-list">
+    {%- for certificate in skills.certificates %}
+    <li class="row">
+      <p class="row-aside meta">{{ certificate.issuer }}</p>
+      <div class="row-main">
+        <p>{% if certificate.url %}<a href="{{ certificate.url }}">{{ certificate.name }}</a>{% else %}{{ certificate.name }}{% endif %}</p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>
+</div>

@@ -1,28 +1,208 @@
 ---
 ---
 
+// The portfolio design system. One stylesheet for every page.
+//
+// How it is built, top to bottom:
+//   1. Tokens       colour, type, space and motion as CSS custom properties
+//   2. Fonts        self-hosted IBM Plex
+//   3. Base         plain HTML elements (headings, text, links, lists)
+//   4. Layout       two helpers: .flow (vertical rhythm) and .cluster (rows)
+//   5. Site chrome  page container, subpage header, footer
+//   6. Components   reusable pieces: label, meta, button, tag, surface,
+//                   thumb, tile, feature, rows and the home page blocks
+//   7. Case study   blocks used inside case study pages
+//   8. Pages        page-specific bits (404)
+//
+// Rules of thumb: use a token instead of a raw value, a step instead of a
+// new font size, and an existing component instead of styling a section.
+// Components own their inner spacing; .flow and .section own the spacing
+// between things.
+
 @use "normalize";
 @use "mixins" as *;
-@use "sass:color";
 @use "simple-lightbox" with (
-    $sl-font-family: (Inter, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif),
+    $sl-font-family: ("IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif),
     $sl-overlay-background: #000,
     $sl-navigation-color: #fff
 );
 
-/* Colors
+/* 1. Tokens
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$accent: #00749C;
-$accent-fill: color.adjust($accent, $lightness: -6%);
-$accent-deep: color.adjust($accent, $lightness: -14%);
+:root {
+    // Colour. Contrast values are against white unless noted.
+    --color-accent:        #00749C; // links, labels, focus ring. 5.3:1, 4.7:1 on surface
+    --color-accent-strong: #005E7E; // filled controls. White text on it 7.2:1
+    --color-accent-deep:   #003F55; // thumbnail overlay at rest
+    --color-surface:       #EEF3F6; // the one tinted background
+    --color-surface-hover: #E5EDF1;
+    --color-text:          #333333; // headings, strong text
+    --color-text-body:     #555555; // running text
+    --color-text-muted:    #6B6B6B; // meta text. 5.3:1, 4.8:1 on surface
+    --color-border:        #DDDDDD; // dividers only, never text
+    --color-bg:            #FFFFFF;
 
-$dark-text: #333;
-$medium-text: #555;
-$light-text: #6b6b6b;
-$light-border: #ddd;
+    // Thumbnail overlays. Tune the look of every project image here.
+    // rest: on devices with hover, over a greyscale image.
+    // touch: on devices without hover, behind a title on the image.
+    --thumb-overlay-rest:  linear-gradient(to top, rgb(0 63 85 / 1) 0%, rgb(0 63 85 / .7) 30%, rgb(0 63 85 / .15) 100%);
+    --thumb-overlay-touch: linear-gradient(to top, rgb(51 51 51 / .9) 0%, rgb(51 51 51 / .72) 28%, rgb(51 51 51 / 0) 58%);
 
-/* Accessibility helpers
+    // Type. Steps grow by about 1.25 around an 18px body and shrink a little
+    // on small screens. Plex Mono is only for figures (numbers, dates).
+    --font-sans: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+
+    --step-display: clamp(2.25rem, 1.5rem + 3.2vw, 3.5rem);     // 36 to 56px: page title
+    --step-section: clamp(1.75rem, 1.35rem + 1.7vw, 2.25rem);   // 28 to 36px: section heading
+    --step-lead:    clamp(1.375rem, 1.15rem + 0.95vw, 1.75rem); // 22 to 28px: tagline, key figures
+    --step-item:    clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);     // 20 to 24px: project, employer
+    --step-body:    clamp(1.0625rem, 1rem + 0.25vw, 1.125rem);  // 17 to 18px: running text
+    --step-meta:    0.9375rem;                                  // 15px: dates, captions, context
+    --step-label:   0.875rem;                                   // 14px: labels above an item
+
+    --measure: 68ch; // longest comfortable line for running text
+
+    // Space. Five steps; sections shrink on small screens.
+    --space-1: 0.5rem;                               //  8px: inside an item
+    --space-2: 1rem;                                 // 16px: related items
+    --space-3: 2rem;                                 // 32px: between blocks
+    --space-4: 4rem;                                 // 64px: between groups
+    --space-5: clamp(4rem, 2.5rem + 5vw, 6rem);      // 64 to 96px: between sections
+    --inset:   clamp(1.5rem, 1rem + 2vw, 2.5rem);    // padding inside a surface
+
+    --radius: 5px;
+
+    // Motion
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --duration-reveal: .4s;
+    --duration-quick: .2s;
+}
+
+/* 2. Fonts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+// IBM Plex, self-hosted from /fonts (Latin subset, from @fontsource 5.3.0,
+// SIL Open Font License, see fonts/OFL.txt). Only the weights in use.
+@mixin plex($family, $file, $weight, $style: normal) {
+    @font-face {
+        font-family: $family;
+        src: url("/fonts/#{$file}.woff2") format("woff2");
+        font-weight: $weight;
+        font-style: $style;
+        font-display: swap;
+    }
+}
+
+@include plex("IBM Plex Sans", "ibm-plex-sans-latin-400-normal", 400);
+@include plex("IBM Plex Sans", "ibm-plex-sans-latin-400-italic", 400, italic);
+@include plex("IBM Plex Sans", "ibm-plex-sans-latin-600-normal", 600);
+@include plex("IBM Plex Sans", "ibm-plex-sans-latin-700-normal", 700);
+@include plex("IBM Plex Mono", "ibm-plex-mono-latin-400-normal", 400);
+@include plex("IBM Plex Mono", "ibm-plex-mono-latin-500-normal", 500);
+
+/* 3. Base
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+// Widths and heights include padding and border, so a min-height or a
+// width means the size you see.
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    background-color: var(--color-bg);
+}
+
+::selection {
+    background-color: #CDE3EC;
+    color: var(--color-accent-deep);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    font-weight: 600;
+    color: var(--color-text);
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+h1 { font-size: var(--step-display); line-height: 1.1; letter-spacing: -.02em;  font-weight: 700; margin-bottom: 0; }
+h2 { font-size: var(--step-section); line-height: 1.2; letter-spacing: -.015em; margin-top: var(--space-4); }
+h3 { font-size: var(--step-item);    line-height: 1.3; letter-spacing: -.01em; }
+h4 { font-size: var(--step-body);    line-height: 1.4; margin-top: var(--space-3); }
+
+p, li, dd {
+    max-width: var(--measure);
+    margin-top: 0;
+    margin-bottom: var(--space-1);
+    font-size: var(--step-body);
+    list-style-image: url('/images/box.svg');
+}
+
+strong {
+    font-weight: 700;
+}
+
+img {
+    display: block;
+}
+
+// Text links: dotted underline at rest, a solid accent line grows on hover.
+// .link gives the same look to a non-link (e.g. inside a clickable card).
+p > a,
+.link,
+.bottom-navigation a {
+    position: relative;
+    color: var(--color-accent);
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 2px dotted var(--color-text-muted);
+    transition: color var(--duration-quick) ease-out;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 100%;
+        bottom: -2px;
+        left: 0;
+        border-top: 2px solid var(--color-accent);
+        border-radius: 1em;
+        transition: right .3s ease-in, border-color var(--duration-quick) ease-in;
+    }
+
+    &:hover {
+        color: var(--color-accent);
+    }
+
+    &:hover::after {
+        right: 0;
+    }
+}
+
+// External links (tagged with target="_blank" by the script in default.html)
+// get a small "opens in new tab" icon. The icon colour is baked into the SVG
+// and must match --color-accent by hand. A background image, because text
+// links already use ::after for the underline.
+a[target="_blank"]:not(.button) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300749C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.05em center;
+    background-size: 0.62em 0.62em;
+    padding-right: 0.85em;
+}
+
+// One focus ring everywhere (WCAG 2.4.7), 3:1 against the page (WCAG 1.4.11).
+:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
 
 // Visible to screen readers, removed from the visual layout.
 @mixin visually-hidden {
@@ -42,219 +222,527 @@ $light-border: #ddd;
     @include visually-hidden;
 }
 
-// One shared focus ring so keyboard focus is always visible (WCAG 2.4.7) and
-// clears the 3:1 non-text contrast bar against the white page (WCAG 1.4.11).
-:focus-visible {
-    outline: 3px solid $accent;
-    outline-offset: 2px;
-    border-radius: 2px;
-}
-
 .skip-link {
     @include visually-hidden;
 
     &:focus {
         position: static;
+        display: inline-block;
         width: auto;
         height: auto;
-        margin: 0 0 1rem 0;
+        margin: 0 0 var(--space-2);
+        padding: var(--space-1) var(--space-2);
         overflow: visible;
         clip: auto;
         clip-path: none;
-        display: inline-block;
-        padding: 0.4rem 0.8rem;
-        border-radius: 5px;
-        background-color: $accent-fill;
+        border-radius: var(--radius);
+        background-color: var(--color-accent-strong);
         color: #fff;
         text-decoration: none;
     }
 }
 
-/* Outer container
+/* 4. Layout helpers
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+// Vertical rhythm: children stack with one gap between them and no margins
+// of their own. The gap is set on the container, so nested .flow blocks
+// keep their own spacing. Default 16px; modifiers for the other two uses.
+.flow {
+    --flow-space: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--flow-space);
+
+    > * {
+        margin-block: 0;
+    }
+}
+.flow-tight { --flow-space: var(--space-1); } // a label or meta with its title
+.flow-loose { --flow-space: var(--space-4); } // groups of blocks in a section
+
+// A wrapping row with even gaps (tags, actions).
+.cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--cluster-space, var(--space-1) var(--space-3));
+}
+
+// A list without bullets or indents, for lists that are components.
+.plain-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+        max-width: none;
+        margin: 0;
+        list-style: none;
+    }
+}
+
+/* 5. Site chrome
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .main {
     width: 95%;
     max-width: 56rem;
-    margin: 2rem auto;
+    margin: var(--space-3) auto;
 
     @include breakpoint('medium') {
-        margin: 4rem auto; 
+        margin: var(--space-4) auto;
     }
-}
-
-/* Typography
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-body {
-    font-family: Inter, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #fff;
-    font-size: 100%;
-    color: $medium-text;
-    font-weight: 400;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    font-weight: 700;
-    color: $dark-text;
-    overflow-wrap: break-word;
-}
-  h1 { font-size: clamp(2rem, 8vw, 4.0rem); line-height: 1.2;  letter-spacing: -.025em; font-weight: 900; margin-bottom: 0}
-  h2 { font-size: clamp(1.75rem, 6vw, 3.2rem); line-height: 1.25; letter-spacing: -.031em; margin-top: 4rem;}
-  h3 { font-size: clamp(1.4rem, 4vw, 2.4rem); line-height: 1.3;  letter-spacing: -.025em; }
-  h4 { font-size: 1.4rem; line-height: 1.35; letter-spacing: -.06rem; margin-top: 2rem;}
-
-.tagline {
-    main > &,
-    .error-page > & {
-        font-size: clamp(1.25rem, 4vw, 2rem);
-        margin: 0.5rem 0 2rem 0;
-        line-height: 1.25;
-        letter-spacing: -.05em;
-    }
-    font-size: 1em;
-    line-height: 1.5;
-    font-weight: 400;
-    color: $accent;
-}
-
-p, li, dd {
-    max-width: 48rem;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-
-    list-style-image: url('/images/box.svg');
-}
-
-p > a, .bottom-navigation a {
-    color: $accent;
-    text-decoration: none;
-    border-bottom: 2px dotted $light-text;
-    font-weight: 400;
-    position: relative;
-    transition: color .2s ease-out;
-
-    &:hover {
-        color: $accent;
-        right: 0;
-    }
-    &:hover:after {
-        border-color: $accent;
-        right: 0;
-    }
-    &:after {
-        border-radius: 1em;
-        border-top: 2px solid $accent;
-        content: "";
-        position: absolute;
-        right: 100%;
-        bottom: -2px;
-        left: 0;
-        transition: right .3s ease-in,
-                border-color .2s ease-in;
-    }
-    &:hover:after {
-        right: 0;
-    }
-}
-
-// External links (tagged with target="_blank" by the script in default.html)
-// get a small "opens in new tab" icon. Internal links are untouched.
-// The icon color is baked into the SVG and must be kept in step with $accent
-// (#00749C) by hand
-// Uses a background-image rather than ::after because p > a already uses
-// ::after for its animated underline.
-a[target="_blank"] {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300749C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.05em center;
-    background-size: 0.62em 0.62em;
-    padding-right: 0.85em;
-}
-
-strong {
-    font-weight: bold;
 }
 
 header.subpage {
-    padding: 1rem 0;
-    border-bottom: 1px dotted $light-text;
-    margin-top: -2rem;
-    margin-bottom: 1rem;
+    margin-top: calc(-1 * var(--space-3));
+    margin-bottom: var(--space-2);
+    padding: var(--space-2) 0;
+    border-bottom: 1px dotted var(--color-text-muted);
+
     a {
         text-decoration: none;
     }
 
-    .site-name, .site-role {
+    svg {
+        flex: none;
+    }
+
+    .site-name,
+    .site-role {
         display: block;
         margin: 0;
     }
     .site-name {
-        font-size: 1.2rem;
+        font-size: var(--step-body);
+        font-weight: 600;
         line-height: 1.3;
-        letter-spacing: -.02rem;
-        font-weight: 700;
-        color: $dark-text;
+        color: var(--color-text);
     }
     .site-role {
-        font-size: 1rem;
+        font-size: var(--step-meta);
         line-height: 1.35;
-        font-weight: 400;
-        color: $light-text;
+        color: var(--color-text-muted);
     }
 }
 
-a {
-    &.linkedin svg {
-        height: 1.8rem;
+footer {
+    margin-top: var(--space-4);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-accent);
+
+    p {
+        font-size: var(--step-meta);
+    }
+}
+
+/* 6. Components
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+// Text roles -----------------------------------------------------------
+
+// Tagline under a page title. Outside a .flow (case studies, 404) it brings
+// its own spacing; inside one, the flow decides.
+.tagline {
+    font-size: var(--step-lead);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -.01em;
+    color: var(--color-accent);
+}
+
+main > .tagline,
+.error-page > .tagline {
+    margin: var(--space-1) 0 var(--space-3);
+}
+
+// Small context text: dates, places, captions.
+.meta {
+    font-size: var(--step-meta);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+
+// A short label above an item (a year, a category). Also used to style a
+// group heading, e.g. <h3 class="label">.
+.label {
+    margin: 0;
+    font-size: var(--step-label);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+// Figures in text: numbers and date ranges.
+.num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+// A line that states availability, with a dot.
+.status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--step-meta);
+    color: var(--color-text);
+
+    &::before {
+        content: "";
+        flex: none;
+        width: .625rem;
+        height: .625rem;
+        border-radius: 50%;
+        background-color: var(--color-accent);
+    }
+}
+
+// Actions ----------------------------------------------------------------
+
+.icon {
+    flex: none;
+    width: 1.25em;
+    height: 1.25em;
+}
+
+// Primary action.
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 3rem;
+    padding: .625rem 1.125rem;
+    border-radius: var(--radius);
+    background-color: var(--color-accent-strong);
+    color: #fff;
+    font-size: var(--step-body);
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+    transition: background-color var(--duration-quick) var(--ease-out);
+
+    &:hover {
+        background-color: var(--color-accent-deep);
+        color: #fff;
+    }
+}
+
+// Secondary action next to a button.
+.action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 3rem;
+    color: var(--color-accent);
+    font-size: var(--step-body);
+    font-weight: 600;
+    text-decoration: underline 2px dotted var(--color-text-muted);
+    text-underline-offset: .3em;
+
+    &:hover {
+        color: var(--color-accent);
+        text-decoration-style: solid;
+        text-decoration-color: var(--color-accent);
+    }
+}
+
+// Tags -------------------------------------------------------------------
+
+.tags {
+    --cluster-space: var(--space-1);
+}
+
+.tag {
+    padding: .125rem .625rem;
+    border-radius: var(--radius);
+    background-color: var(--color-bg);
+    box-shadow: inset 0 0 0 1px #C4C4C4;
+    color: var(--color-text);
+    font-size: var(--step-meta);
+    line-height: 1.6;
+}
+
+.tag-strong {
+    background-color: var(--color-accent-strong);
+    box-shadow: none;
+    color: #fff;
+}
+
+// Surface: the one tinted block (feature text, highlight, contact) --------
+
+.surface {
+    padding: var(--inset);
+    background-color: var(--color-surface);
+    transition: background-color var(--duration-reveal) var(--ease-out);
+}
+
+// Thumb: a project image under the accent overlay ------------------------
+// At rest (on devices with hover) the image is greyscale under the deep
+// accent; hovering or focusing the surrounding tile or feature reveals the
+// full colour. Touch devices see the colour image straight away.
+
+.thumb {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background-color: var(--color-accent-deep);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: filter var(--duration-reveal) var(--ease-out);
+    }
+}
+
+.thumb-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--thumb-overlay-touch);
+    transition: opacity var(--duration-reveal) var(--ease-out);
+}
+
+@media (hover: hover) {
+    .thumb img {
+        filter: saturate(0);
     }
 
-    .bottom-navigation & svg {
-        height: 1.2rem;
-        padding-top: 3px;
-        path {
-            fill: $accent;
+    .thumb-overlay {
+        background: var(--thumb-overlay-rest);
+    }
+
+    :is(.tile, .feature):is(:hover, :focus-within) {
+        .thumb img {
+            filter: saturate(1);
+        }
+
+        .thumb-overlay {
+            opacity: 0;
+        }
+    }
+}
+
+// Tile: a small linked project, title on the image -----------------------
+
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+
+    @include breakpoint('medium') {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--space-3) var(--space-2);
+    }
+}
+
+.tile {
+    position: relative;
+    display: block;
+    text-decoration: none;
+
+    .thumb {
+        aspect-ratio: 1;
+    }
+}
+
+.tile-title {
+    position: absolute;
+    right: var(--space-2);
+    bottom: var(--space-2);
+    left: var(--space-2);
+    color: #fff;
+    font-size: var(--step-body);
+    font-weight: 600;
+    line-height: 1.25;
+    text-wrap: balance;
+    text-shadow: 0 1px 8px rgb(0 0 0 / .5);
+}
+
+// Feature: a featured project, thumb and surface as one unit -------------
+// Rows alternate sides on wide screens; on phones the image sits on top.
+// The whole unit is one link (the title's link stretches over it).
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.feature {
+    position: relative;
+    display: grid;
+
+    .thumb {
+        aspect-ratio: 4 / 3;
+    }
+
+    @include breakpoint('medium') {
+        grid-template-columns: minmax(0, 27rem) minmax(0, 1fr);
+
+        .thumb {
+            aspect-ratio: auto;
+            min-height: 20.25rem; // 4:3 at 27rem wide
+        }
+
+        &:nth-child(even) {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 27rem);
+
+            .thumb {
+                order: 2;
+            }
         }
     }
 
-    svg {
-        vertical-align: top;
-        fill: $accent;
+    h3 a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:is(:hover, :focus-within) {
+        .surface {
+            background-color: var(--color-surface-hover);
+        }
+
+        .link::after {
+            right: 0;
+        }
+    }
+
+    // Keyboard focus outlines the whole unit, not just the title.
+    &:has(.stretched:focus-visible) {
+        outline: 3px solid var(--color-accent);
+        outline-offset: 4px;
     }
 }
 
-
-/* 
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-img {
-    display: block;
+.feature-text {
+    > .feature-more {
+        margin-top: auto;
+        padding-top: var(--space-2);
+    }
 }
 
-.gallery{
+// Makes a link cover its nearest positioned ancestor. z-index keeps it above
+// other positioned children (like .link), so the whole card is clickable.
+.stretched {
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+// Rows: context on the left, the item on the right -----------------------
+// Used for the CV and for certificates. Stacks on phones.
+
+.rows {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.row {
+    display: grid;
+    gap: var(--space-1) var(--space-3);
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-border);
+
+    @include breakpoint('medium') {
+        grid-template-columns: 10rem minmax(0, 1fr);
+    }
+}
+
+.row-aside {
+    margin: 0;
+}
+
+.row-kind {
+    display: block;
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.row-main {
+    --flow-space: .25rem;
+
+    > p {
+        margin: 0;
+    }
+
+    > .rows-sub {
+        margin-top: var(--space-1);
+    }
+}
+
+.rows-sub {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-left: var(--space-3);
+    border-left: 1px solid var(--color-border);
+
+    > li {
+        --flow-space: .25rem;
+    }
+
+    h4 {
+        font-size: var(--step-item);
+        line-height: 1.3;
+        letter-spacing: -.01em;
+    }
+}
+
+// Home page blocks -------------------------------------------------------
+
+// Sections are a section apart; the heading sits a block above its content.
+// Several blocks inside one section go in a .flow-loose wrapper.
+.section {
+    --flow-space: var(--space-3);
+    margin-top: var(--space-5);
+}
+
+.hero {
+    --flow-space: var(--space-3);
+}
+
+.skill-groups {
+    display: grid;
+    gap: var(--space-3) var(--space-4);
+
+    @include breakpoint('medium') {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 7. Case study blocks
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.gallery {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 2rem;
-    img  {
-        max-height: 12rem;
+    margin-top: var(--space-3);
+
+    img {
         max-width: 100%;
-        margin: 0.5rem;
+        max-height: 12rem;
+        margin: var(--space-1);
     }
 }
 
 .border img {
-    border: 1px solid $light-border;
     box-sizing: border-box;
+    border: 1px solid var(--color-border);
 }
 
 a.float-right {
     display: block;
+
     img {
         width: 20rem;
         max-width: 100%;
@@ -262,37 +750,35 @@ a.float-right {
 
     @include breakpoint('medium') {
         float: right;
-        margin-left: 2rem;
+        margin-left: var(--space-3);
     }
 }
 
 .full-width {
     width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
 }
 
 .specs {
     dt {
-        color: $accent;
+        color: var(--color-accent);
         font-weight: 400;
     }
+
     dd {
         margin-left: 0;
-        margin-bottom: 1rem;
+        margin-bottom: var(--space-2);
     }
 }
-
-/* Case study building blocks
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 // A strip of key numbers. The markup is a <dl> with the label as <dt> and the
 // number as <dd>; column-reverse puts the number on top visually.
 .facts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 2rem;
-    margin: 2rem 0;
+    gap: var(--space-3);
+    margin: var(--space-3) 0;
 
     @include breakpoint('medium') {
         // one equal column per fact, however many there are
@@ -305,65 +791,62 @@ a.float-right {
         display: flex;
         flex-direction: column-reverse;
         justify-content: flex-end;
-        border-top: 2px solid $accent;
-        padding-top: 0.5rem;
+        padding-top: var(--space-1);
+        border-top: 2px solid var(--color-accent);
     }
 
     dd {
         margin: 0;
-        font-size: clamp(1.5rem, 6vw, 2rem);
-        white-space: nowrap;
-        font-weight: 900;
+        font-family: var(--font-mono);
+        font-size: var(--step-lead);
+        font-variant-numeric: tabular-nums;
+        font-weight: 500;
         line-height: 1.2;
-        letter-spacing: -.025em;
-        color: $dark-text;
+        white-space: nowrap;
+        color: var(--color-text);
     }
 
     dt {
-        font-size: 1rem;
+        font-size: var(--step-meta);
         line-height: 1.4;
-        color: $light-text;
+        color: var(--color-text-muted);
     }
 }
 
 // Two boxes side by side: before / after, or asked for / built instead.
 .compare {
     display: grid;
-    gap: 1rem;
-    margin: 1.5rem 0 2rem;
+    gap: var(--space-2);
+    margin: var(--space-3) 0;
 
     @include breakpoint('medium') {
         grid-template-columns: 1fr 1fr;
     }
 
     > div {
-        padding: 1rem 1.25rem;
-        border: 2px solid $light-border;
-        border-radius: 5px;
+        padding: var(--space-2) 1.25rem;
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius);
     }
 
     > .after {
-        border-color: $accent;
+        border-color: var(--color-accent);
     }
 
     .compare-label {
-        margin-bottom: 0.5rem;
-        font-size: 1rem;
+        margin-bottom: var(--space-1);
+        font-size: var(--step-meta);
         font-weight: 700;
-        color: $light-text;
+        color: var(--color-text-muted);
     }
 
     .after .compare-label {
-        color: $accent;
+        color: var(--color-accent);
     }
 
     ol, ul {
         margin: 0;
         padding-left: 1.4rem;
-    }
-
-    li {
-        font-size: 1.05rem;
     }
 
     ol li {
@@ -377,21 +860,21 @@ a.float-right {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     width: 1.75rem;
     height: 1.75rem;
-    box-sizing: border-box;
     border: 2px solid #fff;
     border-radius: 50%;
-    background-color: $accent-deep;
+    background-color: var(--color-accent-deep);
     color: #fff;
     font-size: 1rem;
     font-weight: 700;
     line-height: 1;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 1px 4px rgb(0 0 0 / .45);
 }
 
 figure.annotated {
-    margin: 2rem 0;
+    margin: var(--space-3) 0;
 
     .stage {
         position: relative;
@@ -416,16 +899,15 @@ figure.annotated {
     }
 
     .legend {
-        margin: 1rem 0 0;
+        margin: var(--space-2) 0 0;
         padding: 0;
         list-style: none;
         counter-reset: marker;
 
         li {
             position: relative;
+            margin-bottom: .75rem;
             padding-left: 2.5rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
             list-style: none;
             counter-increment: marker;
 
@@ -433,8 +915,8 @@ figure.annotated {
                 @include marker;
                 content: counter(marker);
                 position: absolute;
-                left: 0;
                 top: 0;
+                left: 0;
                 box-shadow: none;
             }
         }
@@ -444,8 +926,8 @@ figure.annotated {
 // Larger figures with captions, two per row on wide screens.
 .figures {
     display: grid;
-    gap: 1.5rem;
-    margin: 2rem 0;
+    gap: var(--space-3);
+    margin: var(--space-3) 0;
 
     @include breakpoint('medium') {
         grid-template-columns: 1fr 1fr;
@@ -458,185 +940,31 @@ figure.annotated {
     img {
         width: 100%;
     }
-
-    figcaption {
-        margin-top: 0.5rem;
-        font-size: 1rem;
-        color: $light-text;
-    }
 }
 
-/* Portfolio List
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-.portfolio-list {
-    display: flex;
-    flex-direction: column;
-
-    > p {
-        margin-bottom: 2rem;
-    }
-
-    @include breakpoint('medium') {
-        flex: 0 0 calc(50% - 0.5em);
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-        &::after {
-            content: "";
-            flex: 0 0 calc(50% - 0.5em);;
-        }
-    }
-
-    @include breakpoint('large') {
-        &::after {
-            content: "";
-            flex: 0 0 calc(33% - 0.5em);;
-        }
-    }
-
-    .portfolio-teaser {
-        margin-bottom: 2rem;
-        position: relative;
-
-        @include breakpoint('medium') {
-            flex: 0 0 calc(50% - 0.5em);
-        }
-
-        @include breakpoint('large') {
-            flex: 0 0 calc(33% - 0.5em);
-        }
-        
-        img {
-            width: 100%;
-            transition: filter .4s ease-in-out;
-
-            @media (hover: hover) {
-                filter: saturate(0%);
-            }
-        }
-
-        > a {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: block;
-        }
-
-        &:hover {
-            .overlay {
-                opacity: 0;
-                transition: opacity .4s ease-in-out;
-            }
-
-            img {
-                filter: saturate(100%);
-                transition: filter .4s ease-in-out;
-            }
-        }
-
-        .overlay {
-            position: absolute;
-            background: linear-gradient(to top, rgba($dark-text, 0.9) 0%, rgba($dark-text, 0.72) 28%, rgba($dark-text, 0) 58%);
-            opacity: 1;
-            transition: opacity .4s ease-in-out;
-
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-
-            @media (hover: hover) {
-                background: linear-gradient(to top, rgba($accent-deep, 1.0) 0%, rgba($accent-deep, 0.7) 30%, rgba($accent-deep, 0.15) 100%);
-            }
-
-        }
-
-        .label {
-            position: absolute;
-            bottom: 0.7rem;
-            left: 1rem;
-            right: 1rem;
-            line-height: 1;
-            pointer-events:none;
-
-            .title {
-                display: block;
-                font-weight: 900;
-                color: #fff;
-                font-size: 2rem;
-                line-height: 1.1;
-                text-decoration: none;
-                text-shadow: 1px 1px 10px $dark-text;
-                overflow-wrap: break-word;
-            }
-            
-        }
-    }
+// Captions under figures and videos.
+.figures figcaption,
+figure.video figcaption {
+    margin-top: var(--space-1);
+    font-size: var(--step-meta);
+    color: var(--color-text-muted);
 }
 
-
-/* CV
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.cv {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    & > div {
-        @include breakpoint('medium') {
-            flex: 0 0 calc(50% - 0.5em);
-        }
-    }
-
-    ul {
-        padding: 0;
-        ul {
-            padding-left: 1rem;
-            border-left: 2px solid $light-border; /* gray line */
-        }
-    }
-
-    li {
-        list-style-type: none;
-        list-style-image: none;
-    }
-
-    h3, p {
-        margin-bottom: 0;
-    }
-    h3 {
-        font-size: 1.4rem;
-        line-height: 1.5;
-        letter-spacing: -.06rem;
-        margin-top: 1rem;
-    }
-    p {
-        font-size: 1.0rem;
-        line-height: 1.75;
-        letter-spacing: -.02rem;
-        font-weight: 400;
-    }
-
-    img.flag {
-        display: inline-block;
-        vertical-align: middle;
-        height: 12px;
-        margin-bottom: 3px;
-    }
+figure.video {
+    margin: var(--space-3) 0;
 }
 
-/* Portfolio item page
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.bottom-navigation{
-    margin-top: 4rem;
+.vimeo {
+    width: 100%;
+    height: 24rem;
+}
+
+// Previous / home / next links at the end of a case study.
+.bottom-navigation {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: var(--space-4);
 
     @include breakpoint('medium') {
         flex-direction: row;
@@ -645,57 +973,24 @@ figure.annotated {
 
     a {
         display: block;
-        margin: 1rem 0;
+        margin: var(--space-2) 0;
     }
 
-    div.empty{
-        width: 7rem;
-    }
-}
+    svg {
+        height: 1.2rem;
+        padding-top: 3px;
+        vertical-align: top;
 
-/* Skills
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-ul.skills {
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-
-    li {
-        list-style-type: none;
-        list-style-image: none;
-        padding: 0.05rem 0.5rem;
-        border-radius: 5px;
-        margin-right: 0.5rem;
-        margin-bottom: 1rem;
-        color: #fff;
-        font-weight: 400;
-        cursor: default;
-        background-color: $accent-fill;
+        path {
+            fill: var(--color-accent);
+        }
     }
 }
 
-/* Button
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.button {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    border-radius: 5px;
-    background-color: $accent-fill;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color .2s ease-out;
-
-    &:hover {
-        background-color: $accent-deep;
-    }
-}
-
-/* 404
+/* 8. Pages
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .error-page {
-    margin: 4rem 0 6rem;
+    margin: var(--space-4) 0 var(--space-5);
     text-align: center;
 
     p {
@@ -703,34 +998,6 @@ ul.skills {
     }
 
     .button {
-        margin-top: 1.5rem;
-    }
-}
-
-/* Video
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.vimeo {
-    width: 100%;
-    height: 24rem;
-}
-
-figure.video {
-    margin: 2rem 0;
-
-    figcaption {
-        margin-top: 0.5rem;
-        font-size: 1rem;
-        color: $light-text;
-    }
-}
-
-/* Footer
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-footer {
-    border-top: 1px solid $accent;
-    margin-top: 4rem;
-    padding-top: 1rem;
-    p {
-        font-size: 1rem;
+        margin-top: var(--space-3);
     }
 }
