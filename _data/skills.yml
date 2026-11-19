@@ -1,0 +1,25 @@
+# Skill groups and certificates on the home page. Rendered by
+# _includes/skills.html, which also holds the AI highlight block.
+
+# Shown as outline tags, two groups per row on wide screens.
+groups:
+  - name: Design
+    tags: [Interaction and interface design, Wireframes, Interactive prototypes, Design systems, Information architecture, Figma]
+  - name: Research
+    tags: [Workflow and requirements analysis, User interviews, Usability testing, Co-creation, Workshop facilitation, Design sprints]
+  - name: Collaboration
+    tags: [Stakeholder management, Prioritisation, Standing in for product managers, SAFe and PI Planning, Scrum, Kanban, Jira and Confluence]
+  - name: Technical
+    tags: [Software development background, System landscapes and dependencies, HTML, CSS, JavaScript, SQL, Git]
+
+# url: the public verification link.
+certificates:
+  - name: Professional Scrum Master I (PSM I)
+    issuer: Scrum.org
+    url: https://www.scrum.org/user/549072
+  - name: Professional Scrum Product Owner I (PSPO I)
+    issuer: Scrum.org
+    url: https://www.scrum.org/user/549072
+  - name: UI Design Patterns for Successful Software
+    issuer: Interaction Design Foundation
+    url: https://ixdf.org/courses/ui-design-patterns-for-successful-software

@@ -1,0 +1,36 @@
+{% comment %}
+  "Selected work" on the home page.
+  A case study is featured when its front matter has "featured: <number>"
+  (the order) and "period" (the year label). Optional: "setting", a shorter
+  line than "context", and "short_title" for the link text. Featured
+  projects render as feature rows (thumb + surface), all others as small
+  tiles, newest first. Images are decorative: the title next to them names
+  the project. The first image sits near the fold, so it is not lazy.
+{% endcomment %}
+{%- assign featured = site.portfolio | where_exp: "doc", "doc.featured" | sort: "featured" -%}
+{%- assign others = site.portfolio | where_exp: "doc", "doc.featured == nil" | sort: "date" | reverse -%}
+<div class="flow flow-loose">
+<ol class="flow flow-loose plain-list">
+  {%- for project in featured %}
+  <li class="feature">
+    <div class="thumb" aria-hidden="true"><img src="{{ project.image | relative_url }}" alt=""{% unless forloop.first %} loading="lazy"{% endunless %}><span class="thumb-overlay"></span></div>
+    <div class="surface flow flow-tight">
+      <p class="label">{{ project.period }}</p>
+      <h3><a class="stretched" href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+      <p class="meta">{{ project.setting | default: project.context }}</p>
+      <p>{{ project.tagline }}</p>
+      <p class="feature-more" aria-hidden="true"><span class="link">Read the {{ project.short_title | default: project.title }} case study</span></p>
+    </div>
+  </li>
+  {%- endfor %}
+</ol>
+
+<div class="flow">
+  <h3>More projects</h3>
+  <ul class="tile-grid plain-list">
+    {%- for project in others %}
+    <li><a class="tile" href="{{ project.url | relative_url }}"><span class="thumb"><img src="{{ project.image | relative_url }}" alt="" loading="lazy"><span class="thumb-overlay" aria-hidden="true"></span></span><span class="tile-title">{{ project.title }}</span></a></li>
+    {%- endfor %}
+  </ul>
+</div>
+</div>

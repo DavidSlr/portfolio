@@ -1,58 +1,28 @@
 {% comment %}
-  The flag images are decorative: the country name always follows in the same
-  line of text, so alt="" keeps screen readers from announcing it twice
-  (WCAG 1.1.1).
+  "Work and education", rendered from _data/cv.yml with the rows component:
+  years and kind on the left, the entry on the right. Client projects nest
+  under their employer.
 {% endcomment %}
-<div class="cv">
-    <div>
-        <h2>Work</h2>
-        <ul>
-            <li>
-                <h3>dalibri digital solutions</h3>
-                <p>10/2020 - today | <img src="/images/flag-de.svg" class="flag" alt="" /> Leverkusen, Germany</p>
-
-                <ul>
-                    <li>
-                        <h3>Bundesamt für Zoll und Grenzsicherheit</h3>
-                        <p>Project | 03/2022 - 12/2025 | <img src="/images/flag-ch.svg" class="flag" alt="" /> Bern, Switzerland</p>
-                    </li>
-
-
-                    <li>
-                        <h3>digivod - security video management</h3>
-                        <p>Project | 03/2021 - 02/2022 | <img src="/images/flag-de.svg" class="flag" alt="" /> Remote, Germany </p>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <h3>Cognizant Interactive Studio</h3>
-                <p>06/2018 - 09/2020 | <img src="/images/flag-de.svg" class="flag" alt="" /> Cologne, Germany</p>
-            </li>
-            <li>
-                <h3>Schibsted Products & Technology</h3>
-                <p>06/2015 - 06/2018 | <img src="/images/flag-se.svg" class="flag" alt="" /> Stockholm, Sweden</p>
-            </li>
-            <li>
-                <h3>Mobile Media & Communication Lab</h3>
-                <p>University of Appplied Sciences Aachen</p>
-                <p>11/2009 - 08/2012 | <img src="/images/flag-de.svg" class="flag" alt="" /> Aachen, Germany</p>
-            </li>
-        </ul>
+<ol class="rows plain-list">
+  {%- for entry in site.data.cv %}
+  <li class="row">
+    <p class="row-aside meta"><span class="num">{{ entry.years }}</span><span class="row-kind">{{ entry.kind }}</span></p>
+    <div class="flow">
+      <div class="flow flow-snug">
+        <h3>{{ entry.title }}</h3>
+        <p class="meta">{{ entry.context }}{% include case-study-links.html list=entry.case_studies %}</p>
+      </div>
+      {%- if entry.projects %}
+      <ol class="rows-sub flow plain-list">
+        {%- for project in entry.projects %}
+        <li class="flow flow-snug">
+          <h4>{{ project.title }}</h4>
+          <p class="meta"><span class="num">{{ project.years }}</span> · {{ project.context }}{% include case-study-links.html list=project.case_studies %}</p>
+        </li>
+        {%- endfor %}
+      </ol>
+      {%- endif %}
     </div>
-
-    <div>
-        <h2>Education</h2>
-        <ul>
-            <li>
-                <h3>Interaction Design &amp; Technologies, M.Sc.</h3>
-                <p>Chalmers University of Technology</p>
-                <p>2012 - 2014, <img src="/images/flag-se.svg" class="flag" alt="" /> Göteborg, Sweden</p>
-            </li>
-            <li>
-                <h3>Computer Science, Dipl.-Inf.(FH)</h3>
-                <p>University of Appplied Sciences Aachen</p>
-                <p>2005 - 2009, <img src="/images/flag-de.svg" class="flag" alt="" /> Aachen, Germany</p>
-            </li>
-        </ul>
-    </div>
-</div>
+  </li>
+  {%- endfor %}
+</ol>

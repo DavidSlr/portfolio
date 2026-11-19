@@ -1,0 +1,57 @@
+# Work and education on the home page, newest first.
+# Rendered by _includes/cv.html with the "rows" component.
+#
+#   years         Shown in the left column, in the figure font.
+#   kind          Shown under the years: Work, Education, Own projects.
+#   title         The employer, school or project.
+#   context       One meta line: place, degree or a short note.
+#   case_studies  Case study file names (without .markdown), linked in the
+#                 meta line under their own titles.
+#   projects      Client projects inside an employer, same fields minus kind.
+
+- years: 2026 – today
+  kind: Own projects
+  title: Prototypes with AI-assisted development
+  context: Two published as open source
+  case_studies: [2026-07-13-yt-watch-later-triage]
+
+- years: 2020 – 2026
+  kind: Work
+  title: dalibri digital solutions
+  context: Leverkusen, Germany
+  case_studies: [2021-01-01-dalibri-website]
+  projects:
+    - years: 2022 – 2025
+      title: Swiss customs (BAZG)
+      context: Client project · Bern, Switzerland
+      case_studies: [2022-03-01-customs-toolchain-framework]
+    - years: 2021 – 2022
+      title: digivod, security video management
+      context: Client project · Remote, Germany
+
+- years: 2018 – 2020
+  kind: Work
+  title: Cognizant Interactive Studio
+  context: Cologne, Germany
+  case_studies: [2020-03-01-survey-tool, 2019-03-01-designsprint]
+
+- years: 2015 – 2018
+  kind: Work
+  title: Schibsted Products & Technology
+  context: Stockholm, Sweden
+  case_studies: [2018-03-01-discover, 2016-09-01-adcampaign]
+
+- years: 2012 – 2014
+  kind: Education
+  title: Interaction Design & Technologies, M.Sc.
+  context: Chalmers University of Technology · Göteborg, Sweden
+
+- years: 2009 – 2012
+  kind: Work
+  title: Mobile Media & Communication Lab
+  context: University of Applied Sciences Aachen · Aachen, Germany
+
+- years: 2005 – 2009
+  kind: Education
+  title: Computer Science, Dipl.-Inf. (FH)
+  context: University of Applied Sciences Aachen · Aachen, Germany

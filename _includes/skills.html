@@ -1,15 +1,49 @@
-<ul class="skills">
-    <li>User research</li>
-    <li>User interviews</li>
-    <li>Prototyping</li>
-    <li>Wireframes</li>
-    <li>Mockups</li>
-    <li>User testing</li>
-    <li>Figma</li>
-    <li>Design Systems</li>
-    <li>Claude Code</li>
-    <li>Git</li>
-    <li>Stakeholder workshops</li>
-    <li>Kanban</li>
-    <li>Scrum</li>
-</ul>
+{% comment %}
+  "Skills" on the home page: the AI highlight as a surface block (written
+  here), then the skill groups and certificates from _data/skills.yml.
+{% endcomment %}
+{%- assign skills = site.data.skills -%}
+<div class="flow flow-loose">
+<div class="surface flow">
+  <div class="flow flow-tight">
+    <p class="label">AI</p>
+    <h3>Prototyping and automation with AI</h3>
+  </div>
+  <p>I build working prototypes and small tools with AI-assisted development, from concept to a running application. Two of them are published as open source.</p>
+  <ul class="cluster tags plain-list">
+    <li class="tag">Claude Code</li>
+    <li class="tag">AI as product feature</li>
+    <li class="tag">Claude and Gemini APIs</li>
+    <li class="tag">Python</li>
+    <li class="tag">Docker</li>
+  </ul>
+  <p><a href="{% link _portfolio/2026-07-13-yt-watch-later-triage.markdown %}">Read the AI Browser Extension case study</a></p>
+</div>
+
+<div class="skill-groups">
+  {%- for group in skills.groups %}
+  <div class="flow">
+    <h3 class="label">{{ group.name }}</h3>
+    <ul class="cluster tags plain-list">
+      {%- for tag in group.tags %}
+      <li class="tag">{{ tag }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endfor %}
+</div>
+
+<div class="flow">
+  <h3>Certificates</h3>
+  <ul class="rows plain-list">
+    {%- for certificate in skills.certificates %}
+    <li class="row">
+      <p class="row-aside meta">{{ certificate.issuer }}</p>
+      <div class="flow">
+        <p><a href="{{ certificate.url }}">{{ certificate.name }}</a></p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>
+</div>
