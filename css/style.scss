@@ -67,7 +67,10 @@
     --step-meta:    0.9375rem;                                  // 15px: dates, captions, context
     --step-label:   0.875rem;                                   // 14px: labels above an item
 
-    --measure: 68ch; // longest comfortable line for running text
+    // Two widths: text stops at the reading width; images and visual blocks
+    // use the full column (56rem, see .main). In rem, not ch, so text of
+    // every size ends at the same right edge.
+    --measure: 42rem; // reading width, about 670px
 
     // Space. Sections shrink on small screens.
     --space-0: 0.25rem;                              //  4px: a title and its meta line
@@ -147,10 +150,15 @@ h3,
 h4 { font-size: var(--step-body);    line-height: 1.4; margin-top: var(--space-3); }
 
 p, li, dd {
-    max-width: var(--measure);
     margin-top: 0;
     margin-bottom: var(--space-1);
     font-size: var(--step-body);
+}
+
+// Everything that is text stops at the reading width. Page titles (h1) are
+// short and stay on one line, so they are not capped.
+p, li, dd, h2, h3, h4, figcaption {
+    max-width: var(--measure);
 }
 
 // Box bullets on unordered lists; items inherit it, ordered lists keep numbers.
@@ -279,6 +287,11 @@ p > a,
     gap: var(--space-1) var(--space-3);
 }
 
+// Keeps a short phrase or link on one line.
+.nowrap {
+    white-space: nowrap;
+}
+
 // A list without bullets or indents, for lists that are components.
 .plain-list {
     margin: 0;
@@ -358,11 +371,15 @@ footer {
     line-height: 1.3;
     letter-spacing: -.01em;
     color: var(--color-accent);
+    // Full column width with balanced lines; a reading-width cap on top of
+    // balancing made it too narrow.
+    max-width: none;
+    text-wrap: balance;
 }
 
 main > .tagline,
 .error-page > .tagline {
-    margin: var(--space-1) 0 var(--space-3);
+    margin-block: var(--space-1) var(--space-3);
 }
 
 // Small context text: dates, places, captions.
@@ -964,8 +981,9 @@ figure.video {
     margin: var(--space-4) 0 var(--space-5);
     text-align: center;
 
+    // Centred page: keep the reading width, but centre the text block.
     p {
-        max-width: none;
+        margin-inline: auto;
     }
 
     .button {
