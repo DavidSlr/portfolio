@@ -54,11 +54,11 @@ The account already knows which department and location a person belongs to. The
 
 <figure class="annotated images border">
     <div class="stage">
-        <a href="/images/projects/survey/dashboard.png"><img src="/images/projects/survey/dashboard.png" title="After: the new dashboard" alt="The new dashboard: a filter row for date, division, report type, state and location above a table of questionnaires sorted by date, newest first, each row showing month, region, questionnaire type and a status in plain words with the time of the last edit."></a>
-        <span class="marker" style="left: 66%; top: 29.6%" aria-hidden="true">1</span>
-        <span class="marker" style="left: 23.5%; top: 26.2%" aria-hidden="true">2</span>
-        <span class="marker" style="left: 15.8%; top: 34.3%" aria-hidden="true">3</span>
-        <span class="marker" style="left: 90.6%; top: 43.4%" aria-hidden="true">4</span>
+        <a href="/images/projects/survey/dashboard.png"><img src="/images/projects/survey/dashboard.png" title="After: the new dashboard" alt="The new dashboard: a filter row for date, division, report type, state and location above a table of questionnaires sorted by date, newest first, each row showing the month and reporting period, region, questionnaire type, the due date of the open one and a status in plain words with the time of the last edit."></a>
+        <span class="marker" style="left: 70.5%; top: 34.6%" aria-hidden="true">1</span>
+        <span class="marker" style="left: 14.1%; top: 30.2%" aria-hidden="true">2</span>
+        <span class="marker" style="left: 12.6%; top: 41.2%" aria-hidden="true">3</span>
+        <span class="marker" style="left: 73.8%; top: 53.8%" aria-hidden="true">4</span>
     </div>
     <ol class="legend">
         <li>Division and location come from the account. They can be changed, but rarely need to be.</li>
@@ -104,11 +104,11 @@ The questionnaire overview brings decisions 2 and 3 together.
 <figure class="annotated images border">
     <div class="stage">
         <a href="/images/projects/survey/quest_overview.png"><img src="/images/projects/survey/quest_overview.png" title="The questionnaire overview" alt="The questionnaire overview screen: six question categories listed with their completion status and who last edited them, a due date countdown, a list of editors, a flagged inconsistency, and a three-step progress bar from data entry through supervisor to coordinator validation."></a>
-        <span class="marker" style="left: 78.6%; top: 44.1%" aria-hidden="true">1</span>
-        <span class="marker" style="left: 56.8%; top: 31.6%" aria-hidden="true">2</span>
-        <span class="marker" style="left: 43.3%; top: 50.9%" aria-hidden="true">3</span>
-        <span class="marker" style="left: 36.4%; top: 78.4%" aria-hidden="true">4</span>
-        <span class="marker" style="left: 31.6%; top: 89.1%" aria-hidden="true">5</span>
+        <span class="marker" style="left: 81%; top: 43.6%" aria-hidden="true">1</span>
+        <span class="marker" style="left: 54.8%; top: 29.6%" aria-hidden="true">2</span>
+        <span class="marker" style="left: 42%; top: 51%" aria-hidden="true">3</span>
+        <span class="marker" style="left: 34.8%; top: 81.6%" aria-hidden="true">4</span>
+        <span class="marker" style="left: 30.3%; top: 93.4%" aria-hidden="true">5</span>
     </div>
     <ol class="legend">
         <li>Each category shows how many questions are answered, so anyone coming back sees what is left.</li>
@@ -125,7 +125,7 @@ The old application already showed last period's answer next to each field, warn
 
 <div class="figures single images border">
     <figure>
-        <a href="/images/projects/survey/quest_category.png"><img src="/images/projects/survey/quest_category.png" title="One category of a questionnaire" alt="One questionnaire category open for editing: questions with yes-no toggles and number fields that each show the previous month's answer, a full-width comment field, a warning when an entered value looks implausible, and a calculated value with the inputs it was computed from."></a>
+        <a href="/images/projects/survey/quest_category.png"><img src="/images/projects/survey/quest_category.png" title="One category of a questionnaire" alt="One questionnaire category open for editing: questions with yes-no toggles and number fields that each show the answer from the previous report, a full-width comment field, a warning when an entered value looks implausible, and a calculated value with the inputs it was computed from."></a>
         <figcaption>A category with previous values, a plausibility warning, a large comment field and a calculated value.</figcaption>
     </figure>
 </div>
