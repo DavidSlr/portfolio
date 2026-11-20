@@ -899,6 +899,11 @@ figure.annotated {
         grid-template-columns: 1fr 1fr;
     }
 
+    // one figure on its own takes the full width
+    &.single {
+        grid-template-columns: 1fr;
+    }
+
     figure {
         margin: 0;
     }
